@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class Class1
+    public class FuncionarioDAO
     {
+
+
     }
 }
