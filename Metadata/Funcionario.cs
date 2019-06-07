@@ -18,6 +18,24 @@ namespace Metadata
         public bool EhAdmin { get; set; }
         public bool EhAtivo { get; set; }
         
+        public Funcionario(string nome, string cpf, string rg, string endereco, string telefone, string email, string senha, bool ehAdmin, bool ehAtivo)
+        {
+            this.Nome = nome;
+            this.CPF = cpf;
+            this.RG = rg;
+            this.Endereco = endereco;
+            this.Telefone = telefone;
+            this.Email = email;
+            this.Senha = senha;
+            this.EhAdmin = ehAdmin;
+            this.EhAtivo = ehAtivo;
+        }
+
+        public string LerDadosFuncionario()
+        {
+            string s = "\r\n";
+            return Nome + s + CPF + s + RG + s + Endereco + s + Telefone + s + Email + s + Senha + s + EhAdmin + s + EhAtivo; 
+        }
 
         public string Atualizar(Funcionario item)
         {
