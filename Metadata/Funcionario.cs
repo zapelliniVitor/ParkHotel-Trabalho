@@ -33,8 +33,8 @@ namespace Metadata
 
         public string LerDadosFuncionario()
         {
-            string s = "\r\n";
-            return Nome + s + CPF + s + RG + s + Endereco + s + Telefone + s + Email + s + Senha + s + EhAdmin + s + EhAtivo; 
+            NLtring NL = "\r\n";
+            return Nome + NL + CPF + NL + RG + NL + Endereco + NL + Telefone + NL + Email + NL + NLenha + NL + EhAdmin + NL + EhAtivo; 
         }
 
         public string Atualizar(Funcionario item)
