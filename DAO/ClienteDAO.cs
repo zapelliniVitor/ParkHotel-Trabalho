@@ -8,20 +8,16 @@ using Metadata;
 
 namespace DAO
 {
-    class ClienteDAO : IEntityCRUD<Cliente>
+    public class ClienteDAO
     {
-        public string Atualizar(Cliente item)
-        {
-            throw new NotImplementedException();
-        }
-
-        #region Inserir
-        public string Inserir(Cliente cli)
+        #region Atualizar
+        public DbResponse<int> Atualizar(Cliente cli)
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = @"INSERT INTO CLIENTES (NOME, CPF, RG, TELEFONE1, TELEFONE2, EMAIL) VALUES
-                                  (@NOME, @CPF, @RG,  @TELEFONE1, @TELEFONE2, @EMAIL)";
+
+            command.CommandText = @"UPDATE FROM CLIENTES SET NOME = @NOME, CPF = @CPF, RG = @RG, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2, EMAIL = @EMAIL WHERE  ID = " + cli.ID;
             command.Parameters.AddWithValue("@NOME", cli.Nome);
             command.Parameters.AddWithValue("@CPF", cli.CPF);
             command.Parameters.AddWithValue("@RG", cli.RG);
@@ -35,24 +31,82 @@ namespace DAO
                 command.ExecuteNonQuery();
 
             }
-            catch (Exception EX)
+            catch (Exception ex)
             {
-                if (EX.Message.Contains("UNIQUE") || EX.Message.Contains("FK"))
-                {
-                    return "Funcionário já cadastrado";
-                }
-                return "Erro no Bando de Dados, favor contactar o suporte ou admin";
+                return new DbResponse<int> {
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível",
+                    Sucesso = false,
+                };
             }
             finally
             {
                 connection.Dispose();
             }
-            return "Cliente cadastrado com sucesso";
+            return new DbResponse<int>
+            {
+                Dados = cli.ID,
+                Mensagem = "Cliente atualizado com sucesso",
+                Sucesso = true,
+            };
+        }
+        #endregion
+
+        #region Inserir
+        public DbResponse<int> Inserir(Cliente cli)
+        {
+            int IdInserida = -1;
+
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = @"INSERT INTO CLIENTES (NOME, CPF, RG, TELEFONE1, TELEFONE2, EMAIL) VALUES
+                                  (@NOME, @CPF, @RG,  @TELEFONE1, @TELEFONE2, @EMAIL); select scope_identity()" ;
+            command.Parameters.AddWithValue("@NOME", cli.Nome);
+            command.Parameters.AddWithValue("@CPF", cli.CPF);
+            command.Parameters.AddWithValue("@RG", cli.RG);
+            command.Parameters.AddWithValue("@TELEFONE1", cli.Telefone1);
+            command.Parameters.AddWithValue("@TELEFONE2", cli.Telefone2);
+            command.Parameters.AddWithValue("@EMAIL", cli.email);
+
+            try
+            {
+                connection.Open();
+                IdInserida = Convert.ToInt32(command.ExecuteNonQuery());
+
+            }
+            catch (Exception EX)
+            {
+                if (EX.Message.Contains("UNIQUE") || EX.Message.Contains("FK"))
+                {
+                    return new DbResponse<int>
+                    {
+                        Sucesso = false,
+                        Mensagem = "Funcionário já cadastrado",
+                        Excessao = EX
+                    };
+                }
+                return new DbResponse<int>
+                {
+                    Sucesso = false,
+                    Mensagem = "Erro no Bando de Dados, favor contactar o suporte ou admin",
+                    Excessao = EX
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<int>
+            {
+                Sucesso = true,
+                Mensagem = "Cliente cadastrado com sucesso",
+                Dados = IdInserida
+            };
         }
         #endregion
 
         #region LerPorID
-        public Cliente LerPorID(int ID)
+        public DbResponse<Cliente> LerPorID(int ID)
         {
 
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
@@ -77,23 +131,37 @@ namespace DAO
                     cli.Telefone1 = (string)reader["TELEFONE1"];
                     cli.Telefone2 = (string)reader["TELEFONE2"];
                     cli.email = (string)reader["EMAIL"];
-                    return cli;
+                    return new DbResponse<Cliente>
+                    {
+                        Sucesso = true,
+                        Mensagem = "Cliente encontrado",
+                        Dados = cli
+                    };
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Banco de dados indisponível");
+                return new DbResponse<Cliente>
+                {
+                    Sucesso = false,
+                    Mensagem = "Banco de dados indisponível",
+                    Excessao = ex
+                };
             }
             finally
             {
                 connection.Dispose();
             }
-            throw new Exception("ID não encontrado");
+            return new DbResponse<Cliente>
+            {
+                Sucesso = false,
+                Mensagem = "Cliente não encontrado",
+            };
         }
         #endregion
 
         #region LerTodos
-        public List<Cliente> LerTodos()
+        public DbResponse<List<Cliente>> LerTodos()
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
@@ -120,15 +188,25 @@ namespace DAO
                 }
 
             }
-            catch 
+            catch (Exception ex)
             {
-                throw new Exception("Banco de dados indisponível");
+                return new DbResponse<List<Cliente>>
+                {
+                    Sucesso = false,
+                    Mensagem = "Banco de dados indisponível",
+                    Excessao = ex
+                };
             }
             finally
             {
                 connection.Dispose();
             }
-            return listCli;
+            return new DbResponse<List<Cliente>>
+            {
+                Sucesso = true,
+                Mensagem = "Clientes recebidos",
+                Dados = listCli
+            };
         }
         #endregion
     }
