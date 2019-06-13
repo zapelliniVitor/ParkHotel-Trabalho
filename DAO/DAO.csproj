@@ -48,9 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Metadata\Metadata.csproj">
-      <Project>{2DAA7B0D-F015-413A-B5CE-AD322780C207}</Project>
+      <Project>{2daa7b0d-f015-413a-b5ce-ad322780c207}</Project>
       <Name>Metadata</Name>
     </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  </ItemGroup> <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
