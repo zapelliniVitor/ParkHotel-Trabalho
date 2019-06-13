@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    public class FuncionarioDAO
+    public class FuncionarioDAO 
     {
-
         public string inserir(Funcionario func)
         {
             string ConnectionString = Parametros.GetConnectionString();
