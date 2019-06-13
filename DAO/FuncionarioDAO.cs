@@ -14,7 +14,7 @@ namespace DAO
         {
             string ConnectionString = Parametros.GetConnectionString();
 
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(ConnectionString);
 
             SqlCommand command = new SqlCommand();
             command.CommandText = @"INSERT INTO FUNCIONARIOS (NOME, CPF, RG, ENDERECO, TELEFONE, EMAIL, SENHA, EHADMIN, EHATIVO) VALUES

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metadata
 {
-    class Cliente : IEntityCRUD<Cliente>
+    public class Cliente : IEntityCRUD<Cliente>
     {
         public string Nome { get; set; }
         public string CPF { get; set; }
