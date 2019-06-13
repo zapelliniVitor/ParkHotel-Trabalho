@@ -63,9 +63,37 @@ namespace DAO
             command.CommandText = "SELECT * FROM FUNCIONARIOS";
 
             command.Connection = connection;
-            List<Funcionario> func = new List<Funcionario>();
+            List<Funcionario> listFunc = new List<Funcionario>();
+            try 
+        	{	        
+		        connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+	            {
+                    int id = (int)reader["ID"];
+                    string nome = (string)reader["NOME"];
+                    string CPF = (string)reader["CPF"];
+                    string RG = (string)reader["RG"];
+                    string Endereco = (string)reader["ENDERECO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+                    string Senha = (string)reader["SENHA"];
+                    string EhAdmin = (bool)reader["EHADMIN"];
+                    string EhAtivo = (bool)reader["EHADMIN"];
+                    Funcionario funcionar = new Funcionario(nome, CPF, RG, Endereco, Telefone, Email, Senha, EhAdmin, EhAtivo);
+                    listFunc.Add(funcionar);
+	            }
 
-
+        	}
+	        catch (Exception)
+	        {
+        		
+	        }
+            finally
+            {
+                connection.Dispose();
+            }
+            return listFunc;
 
         }
     }
