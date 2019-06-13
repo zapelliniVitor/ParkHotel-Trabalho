@@ -46,5 +46,11 @@
     <Compile Include="Parametros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Metadata\Metadata.csproj">
+      <Project>{2daa7b0d-f015-413a-b5ce-ad322780c207}</Project>
+      <Name>Metadata</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,6 +9,6 @@ namespace DAO
 {
     class ClienteDAO
     {
-        Cliente
+        
     }
 }
