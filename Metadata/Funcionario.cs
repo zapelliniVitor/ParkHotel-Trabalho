@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metadata
 {
-    public class Funcionario : IEntityCRUD<Funcionario>
+    public class Funcionario 
     {
         public string Nome { get; set; }
         public string CPF { get; set; }
@@ -18,6 +18,8 @@ namespace Metadata
         public bool EhAdmin { get; set; }
         public bool EhAtivo { get; set; }
         
+
+        //Construtor COM senha
         public Funcionario(string nome, string cpf, string rg, string endereco, string telefone, string email, string senha, bool ehAdmin, bool ehAtivo)
         {
             this.Nome = nome;
@@ -31,30 +33,25 @@ namespace Metadata
             this.EhAtivo = ehAtivo;
         }
 
-        public string LerDadosFuncionario()
+        //Construtor SEM senha
+        public Funcionario(string nome, string cpf, string rg, string endereco, string telefone, string email, bool ehAdmin, bool ehAtivo)
         {
-            NLtring NL = "\r\n";
-            return Nome + NL + CPF + NL + RG + NL + Endereco + NL + Telefone + NL + Email + NL + NLenha + NL + EhAdmin + NL + EhAtivo; 
+            this.Nome = nome;
+            this.CPF = cpf;
+            this.RG = rg;
+            this.Endereco = endereco;
+            this.Telefone = telefone;
+            this.Email = email;
+            this.EhAdmin = ehAdmin;
+            this.EhAtivo = ehAtivo;
         }
 
-        public string Atualizar(Funcionario item)
-        {
-            throw new NotImplementedException();
-        }
 
-        public string Inserir(Funcionario item)
-        {
-            throw new NotImplementedException();
-        }
+        //public string LerDadosFuncionario()
+        //{
+        //    String NL = "\r\n";
+        //    return Nome + NL + CPF + NL + RG + NL + Endereco + NL + Telefone + NL + Email + NL + Senha + NL + EhAdmin + NL + EhAtivo; 
+        //}
 
-        public Funcionario LerPorID(int ID)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Funcionario> LerTodos()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

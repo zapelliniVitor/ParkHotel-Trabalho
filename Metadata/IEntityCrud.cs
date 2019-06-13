@@ -10,7 +10,7 @@ namespace Metadata
     {
         string Inserir(T item);
         string Atualizar(T item);
-        T LerPorID(int ID);
+        string LerPorID(int ID);
         List<T> LerTodos();
     }
 }
