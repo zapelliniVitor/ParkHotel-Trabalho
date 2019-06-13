@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metadata
 {
-    public class Cliente : IEntityCRUD<Cliente>
+    public class Cliente
     {
         public int ID { get; set; }
         public string Nome { get; set; }
@@ -39,7 +39,7 @@ namespace Metadata
 
         public Cliente()
         {
-
+            
         }
 
         public string Atualizar(Cliente cli)

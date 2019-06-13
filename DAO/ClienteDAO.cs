@@ -8,12 +8,40 @@ using Metadata;
 
 namespace DAO
 {
-    class ClienteDAO : IEntityCRUD<Cliente>
+    public class ClienteDAO
     {
-        public string Atualizar(Cliente item)
+        #region Atualizar
+        public string Atualizar(Cliente cli)
         {
-            throw new NotImplementedException();
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+
+            command.CommandText = @"UPDATE FROM CLIENTES SET NOME = @NOME, CPF = @CPF, RG = @RG, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2, EMAIL = @EMAIL WHERE  ID = " + cli.ID;
+            command.Parameters.AddWithValue("@NOME", cli.Nome);
+            command.Parameters.AddWithValue("@CPF", cli.CPF);
+            command.Parameters.AddWithValue("@RG", cli.RG);
+            command.Parameters.AddWithValue("@TELEFONE1", cli.Telefone1);
+            command.Parameters.AddWithValue("@TELEFONE2", cli.Telefone2);
+            command.Parameters.AddWithValue("@EMAIL", cli.email);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch
+            {
+                throw new Exception("Banco de dados indisponível");
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return "Funcionário atualizado";
         }
+        #endregion
 
         #region Inserir
         public string Inserir(Cliente cli)
