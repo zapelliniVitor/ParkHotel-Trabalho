@@ -44,5 +44,11 @@
     <Compile Include="FuncionarioBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Metadata\Metadata.csproj">
+      <Project>{2DAA7B0D-F015-413A-B5CE-AD322780C207}</Project>
+      <Name>Metadata</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
