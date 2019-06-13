@@ -51,10 +51,46 @@ namespace DAO
         }
         #endregion
 
+        #region LerPorID
         public Cliente LerPorID(int ID)
         {
-            throw new NotImplementedException();
+
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = "SELECT * FROM CLIENTES WHERE ID = @ID";
+
+            command.Parameters.AddWithValue("@ID", ID);
+
+            Cliente cli = new Cliente();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    cli.ID = (int)reader["ID"];
+                    cli.Nome = (string)reader["NOME"];
+                    cli.CPF = (string)reader["CPF"];
+                    cli.RG = (string)reader["RG"];
+                    cli.Telefone1 = (string)reader["TELEFONE1"];
+                    cli.Telefone2 = (string)reader["TELEFONE2"];
+                    cli.email = (string)reader["EMAIL"];
+                    return cli;
+                }
+            }
+            catch
+            {
+                throw new Exception("Banco de dados indisponível");
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            throw new Exception("ID não encontrado");
         }
+        #endregion
 
         #region LerTodos
         public List<Cliente> LerTodos()
@@ -62,7 +98,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM FUNCIONARIOS";
+            command.CommandText = "SELECT * FROM CLIENTES";
 
             List<Cliente> listCli = new List<Cliente>();
             try
@@ -79,14 +115,14 @@ namespace DAO
                     string Telefone2 = (string)reader["TELEFONE2"];
                     string Email = (string)reader["EMAIL"];
                     
-                    Cliente cli = new Cliente(nome, CPF, RG, Telefone1, Telefone2, Email);
+                    Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email);
                     listCli.Add(cli);
                 }
 
             }
-            catch (Exception)
+            catch 
             {
-               
+                throw new Exception("Banco de dados indisponível");
             }
             finally
             {

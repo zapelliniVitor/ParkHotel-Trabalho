@@ -8,6 +8,7 @@ namespace Metadata
 {
     public class Cliente : IEntityCRUD<Cliente>
     {
+        public int ID { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
         public string RG { get; set; }
@@ -17,6 +18,17 @@ namespace Metadata
 
         public Cliente(string nome, string cpf, string rg, string telefone1, string telefone2, string email)
         {
+            this.Nome = nome;
+            this.CPF = cpf;
+            this.RG = rg;
+            this.Telefone1 = telefone1;
+            this.Telefone2 = telefone2;
+            this.email = email;
+        }
+
+        public Cliente(int id,string nome, string cpf, string rg, string telefone1, string telefone2, string email)
+        {
+            this.ID = id;
             this.Nome = nome;
             this.CPF = cpf;
             this.RG = rg;
