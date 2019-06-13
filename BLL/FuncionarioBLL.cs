@@ -1,8 +1,10 @@
-﻿using Metadata;
+﻿using DAO;
+using Metadata;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace BLL
@@ -83,18 +85,99 @@ namespace BLL
             else
             {
                 
-                cli.CPF = cli.CPF.Trim();
-                cli.CPF = cli.CPF.Replace(".", "").Replace("-", "");
-                if (!this.ValidarCPF(cli.CPF))
+                func.CPF = func.CPF.Trim();
+                func.CPF = func.CPF.Replace(".", "").Replace("-", "");
+                if (!this.validarCPF(func.CPF))
                 {
                     erros.Add("CPF inválido");
                 }
             }
             #endregion
 
+            #region RG
+            if (string.IsNullOrWhiteSpace(func.RG))
+            {
+                erros.Add("RG deve ser informado.");
+            }
+            else
+            {
+                func.RG = func.RG.Trim();
+                func.RG = func.RG.Replace(".", "").Replace("/", "").Replace("-", "");
+                if (func.RG.Length < 5 || func.RG.Length > 9)
+                {
+                    erros.Add("RG deve conter entre 5 e 9 caracteres.");
+                }
+            }
+            #endregion
+
+            #region endereco
+            if (string.IsNullOrWhiteSpace(func.Endereco))
+            {
+                erros.Add("Endereco deve ser informado");
+            }
+            else
+            {
+                if (func.Endereco.Length < 10 || func.Endereco.Length > 60)
+                {
+                    erros.Add("Endereco deve ter entre 10 e  60 caracteres");
+                }
+            }
+            #endregion
+
+            #region telefone
+            if (string.IsNullOrWhiteSpace(func.Telefone))
+            {
+                erros.Add("Telefone deve ser informado.");
+            }
+            else
+            {
+                func.Telefone =
+                    func.Telefone.Replace(" ", "")
+                                .Replace("(", "")
+                                .Replace(")", "")
+                                .Replace("-", "");
+
+                if (func.Telefone.Length < 8 || func.Telefone.Length > 15)
+                {
+                    erros.Add("Telefone deve conter entre 8 e 15 caracteres.");
+                }
+            }
+            #endregion
+
+             #region email
+            bool isEmail = Regex.IsMatch(func.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (!isEmail)
+            {
+                erros.Add("Email deve ser informado.");
+            }
+            #endregion
+
+            #region senha
+            if (string.IsNullOrWhiteSpace(func.Senha))
+            {
+                erros.Add("campo senha deve ser preenchido");
+            }
+            else
+            {
+                if (func.Senha.Length < 5 || func.Senha.Length > 30)
+                {
+                    erros.Add("Senha deve conter entre 5 e 30 caracteres");
+                }
+            }
+            #endregion
+
+            StringBuilder builder = new StringBuilder();
+            if (erros.Count != 0)
+            {
+                for (int i = 0; i < erros.Count; i++)
+                {
+                    builder.AppendLine(erros[i]);
+                }
+                return builder.ToString();
+            }
+            new FuncionarioDAO().Inserir(func);
+            return "Cliente cadastrado com sucesso";
 
         }
-
-
     }
 }

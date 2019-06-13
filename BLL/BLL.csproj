@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{9BCD3109-92B5-4210-BC78-9E513A0948D4}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Metadata\Metadata.csproj">
       <Project>{2DAA7B0D-F015-413A-B5CE-AD322780C207}</Project>
       <Name>Metadata</Name>
