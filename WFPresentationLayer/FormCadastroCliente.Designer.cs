@@ -119,7 +119,7 @@
             // mtxtCPF
             // 
             this.mtxtCPF.Location = new System.Drawing.Point(142, 40);
-            this.mtxtCPF.Mask = "000,000,000-00";
+            this.mtxtCPF.Mask = "000.000.000-00";
             this.mtxtCPF.Name = "mtxtCPF";
             this.mtxtCPF.Size = new System.Drawing.Size(100, 20);
             this.mtxtCPF.TabIndex = 27;
@@ -187,14 +187,17 @@
             // 
             // DataGridViewClientes
             // 
-            this.DataGridViewClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DataGridViewClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewClientes.Location = new System.Drawing.Point(275, 19);
             this.DataGridViewClientes.Name = "DataGridViewClientes";
+            this.DataGridViewClientes.RowHeadersVisible = false;
+            this.DataGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewClientes.Size = new System.Drawing.Size(552, 315);
             this.DataGridViewClientes.TabIndex = 35;
+            this.DataGridViewClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewClientes_CellDoubleClick);
             // 
-            // Form1
+            // FormCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,7 +219,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
-            this.Name = "Form1";
+            this.Name = "FormCadastroCliente";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).EndInit();
             this.ResumeLayout(false);

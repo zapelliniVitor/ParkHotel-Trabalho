@@ -32,6 +32,7 @@ namespace WFPresentationLayer
 
             Cliente cli = new Cliente(nome, CPF, RG, Fone1, Fone2, Email);
             MessageBox.Show(new ClienteBLL().Inserir(cli));
+            Resetar();
         }
         #endregion
 
@@ -48,6 +49,39 @@ namespace WFPresentationLayer
             Cliente cli = new Cliente(id, nome, CPF, RG, Fone1, Fone2, Email);
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
             txtID.Text = null;
+            Resetar();
+        }
+
+        private void Resetar()
+        {
+            txtID.Text = null;
+            txtNome.Text = null;
+            mtxtCPF.Text = null;
+            mtxtRG.Text = null;
+            txtEmail.Text = null;
+            mtxtFone1.Text = null;
+            mtxtFone2.Text = null;
+            DataGridViewClientes.DataSource = null;
+            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
+        }
+
+        private void DataGridViewClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = (int)DataGridViewClientes.Rows[e.RowIndex].Cells[0].Value;
+            string nome = (string)DataGridViewClientes.Rows[e.RowIndex].Cells[1].Value;
+            string cpf = (string)DataGridViewClientes.Rows[e.RowIndex].Cells[2].Value;
+            string rg = (string)DataGridViewClientes.Rows[e.RowIndex].Cells[3].Value;
+            string telefone1 = (string)DataGridViewClientes.Rows[e.RowIndex].Cells[4].Value;
+            string telefone2 = (string)DataGridViewClientes.Rows[e.RowIndex].Cells[5].Value;
+            string email = (string)DataGridViewClientes.Rows[e.RowIndex].Cells[6].Value;
+
+            txtID.Text = id.ToString();
+            txtNome.Text = nome;
+            mtxtCPF.Text = cpf;
+            mtxtRG.Text = rg;
+            txtEmail.Text = email;
+            mtxtFone1.Text = telefone1;
+            mtxtFone2.Text = telefone2;
         }
     }
 }

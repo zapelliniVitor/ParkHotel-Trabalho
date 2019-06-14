@@ -175,7 +175,7 @@ namespace BLL
             {
 
                 cli.CPF = cli.CPF.Trim();
-                cli.CPF = cli.CPF.Replace(".", "").Replace("-", "");
+                cli.CPF = cli.CPF.Replace(".", "").Replace("-", "").Replace(",","");
                 if (!this.validarCPF(cli.CPF))
                 {
                     erros.Add("CPF inválido");
