@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace WFPresentationLayer
 {
-    public partial class Form1 : Form
+    public partial class FormCadastroCliente : Form
     {
-        public Form1()
+        public FormCadastroCliente()
         {
             InitializeComponent();
         }

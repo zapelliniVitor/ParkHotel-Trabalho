@@ -31,8 +31,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inserirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manutençãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
@@ -65,6 +65,13 @@
             this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.funcionáriosToolStripMenuItem.Text = "Funcionários";
             // 
+            // inserirToolStripMenuItem
+            // 
+            this.inserirToolStripMenuItem.Name = "inserirToolStripMenuItem";
+            this.inserirToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.inserirToolStripMenuItem.Text = "Manutenção";
+            this.inserirToolStripMenuItem.Click += new System.EventHandler(this.inserirToolStripMenuItem_Click);
+            // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -73,18 +80,12 @@
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
-            // inserirToolStripMenuItem
-            // 
-            this.inserirToolStripMenuItem.Name = "inserirToolStripMenuItem";
-            this.inserirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.inserirToolStripMenuItem.Text = "Manutenção";
-            this.inserirToolStripMenuItem.Click += new System.EventHandler(this.inserirToolStripMenuItem_Click);
-            // 
             // manutençãoToolStripMenuItem
             // 
             this.manutençãoToolStripMenuItem.Name = "manutençãoToolStripMenuItem";
             this.manutençãoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.manutençãoToolStripMenuItem.Text = "Manutenção";
+            this.manutençãoToolStripMenuItem.Click += new System.EventHandler(this.manutençãoToolStripMenuItem_Click);
             // 
             // textBox1
             // 

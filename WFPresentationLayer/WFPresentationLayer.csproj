@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormCadastroCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormCadastroCliente.Designer.cs">
+      <DependentUpon>FormCadastroCliente.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCadastroFuncionario.cs">
       <SubType>Form</SubType>
@@ -72,8 +72,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="FormCadastroCliente.resx">
+      <DependentUpon>FormCadastroCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCadastroFuncionario.resx">
       <DependentUpon>FormCadastroFuncionario.cs</DependentUpon>
@@ -107,6 +107,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{203EE68F-C626-4B30-BBC7-404B0E7F1372}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{9BCD3109-92B5-4210-BC78-9E513A0948D4}</Project>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Metadata\Metadata.csproj">
       <Project>{2DAA7B0D-F015-413A-B5CE-AD322780C207}</Project>

@@ -25,5 +25,13 @@ namespace WFPresentationLayer
             frm.ShowDialog();
             this.Show();
         }
+
+        private void manutençãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormCadastroCliente frm = new FormCadastroCliente();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
     }
 }
