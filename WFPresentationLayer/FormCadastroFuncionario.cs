@@ -20,6 +20,7 @@ namespace WFPresentationLayer
             InitializeComponent();
             txtID.Enabled = false;
         }
+
         FuncionarioBLL bll = new FuncionarioBLL();
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -50,6 +51,10 @@ namespace WFPresentationLayer
             
             string menssagem = bll.cadastrarFuncionario(f);
             MessageBox.Show(menssagem);
+
+            dgvFuncionarios.DataSource = null;
+            dgvFuncionarios.DataSource = bll.LerTodos();
+            apagarDados();
         }
 
         private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
@@ -65,6 +70,7 @@ namespace WFPresentationLayer
             }
             cmbCidade.DataSource = null;
             cmbCidade.DataSource = cidades;
+            apagarDados();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -126,13 +132,6 @@ namespace WFPresentationLayer
                 chkÉAtivo.Checked = true;
             }
             
-                
-            
-
-
-
-
-
         }
 
         private void FormCadastroFuncionario_Load(object sender, EventArgs e)
@@ -168,7 +167,7 @@ namespace WFPresentationLayer
             MessageBox.Show(menssagem);
             dgvFuncionarios.DataSource = null;
             dgvFuncionarios.DataSource = bll.LerTodos();
-
+            apagarDados();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -178,8 +177,28 @@ namespace WFPresentationLayer
             {
                 return;
             }
-            
+            string mensagem = new FuncionarioDAO().Delete(Convert.ToInt32(txtID.Text));
+            MessageBox.Show(mensagem);
+            dgvFuncionarios.DataSource = null;
+            dgvFuncionarios.DataSource = bll.LerTodos();
+            apagarDados();
 
         }   
+
+        private void apagarDados()
+        {
+            txtID.Text = null;
+            txtNomeFuncionario.Text = null;
+            txtSenhaFuncionario.Text = null;
+            txtEmailFuncionario.Text = null;
+            mtxtCPFFuncionario.Text = null;
+            mtxtRGFuncionario.Text = null;
+            mtxtTelefoneFuncionario.Text = null;
+            chkÉAdm.Checked = false;
+            chkÉAtivo.Checked = false;
+            cmbCidade.DataSource = null;
+            cmbEstado.DataSource = null;
+
+        }
     }
 }

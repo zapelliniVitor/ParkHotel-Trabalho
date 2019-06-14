@@ -96,7 +96,7 @@ namespace DAO
             return "Funcionário cadastrado com sucesso";
         }
 
-        public string Delete(Funcionario func)
+        public string Delete(int id)
         {
             string connectionString = Parametros.GetConnectionString();
 
@@ -104,7 +104,7 @@ namespace DAO
 
             SqlCommand command = new SqlCommand();
             command.CommandText = @"DELETE FROM FUNCIONARIOS WHERE ID = @ID";
-            command.Parameters.AddWithValue("@ID", func.ID);
+            command.Parameters.AddWithValue("@ID", id);
 
             command.Connection = connection;
 

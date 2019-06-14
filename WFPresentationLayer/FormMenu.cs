@@ -33,5 +33,14 @@ namespace WFPresentationLayer
             frm.ShowDialog();
             this.Show();
         }
+
+        private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPesquisaFuncionario frm = new FormPesquisaFuncionario();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+                           
     }
 }
