@@ -17,7 +17,7 @@ namespace DAO
 
             SqlCommand command = new SqlCommand("", connection);
 
-            command.CommandText = @"UPDATE FROM CLIENTES SET NOME = @NOME, CPF = @CPF, RG = @RG, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2, EMAIL = @EMAIL WHERE  ID = " + cli.ID;
+            command.CommandText = @"UPDATE CLIENTES SET NOME = @NOME, CPF = @CPF, RG = @RG, TELEFONE1 = @TELEFONE1, TELEFONE2 = @TELEFONE2, EMAIL = @EMAIL WHERE  ID = " + cli.ID;
             command.Parameters.AddWithValue("@NOME", cli.Nome);
             command.Parameters.AddWithValue("@CPF", cli.CPF);
             command.Parameters.AddWithValue("@RG", cli.RG);

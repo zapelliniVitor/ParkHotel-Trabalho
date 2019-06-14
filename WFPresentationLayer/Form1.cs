@@ -17,19 +17,37 @@ namespace WFPresentationLayer
         public Form1()
         {
             InitializeComponent();
+            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        #region Cadastro
+        private void btnCadastro_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
-            string CPF = txtCPF.Text;
-            string RG = txtRG.Text;
+            string CPF = mtxtCPF.Text;
+            string RG = mtxtRG.Text;
             string Email = txtEmail.Text;
-            string Fone1 = txtFone1.Text;
-            string Fone2 = txtFone2.Text;
+            string Fone1 = mtxtFone1.Text;
+            string Fone2 = mtxtFone2.Text;
 
             Cliente cli = new Cliente(nome, CPF, RG, Fone1, Fone2, Email);
             MessageBox.Show(new ClienteBLL().Inserir(cli));
+        }
+        #endregion
+
+        private void btnAtualizar_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(txtID.Text);
+            string nome = txtNome.Text;
+            string CPF = mtxtCPF.Text;
+            string RG = mtxtRG.Text;
+            string Email = txtEmail.Text;
+            string Fone1 = mtxtFone1.Text;
+            string Fone2 = mtxtFone2.Text;
+
+            Cliente cli = new Cliente(id, nome, CPF, RG, Fone1, Fone2, Email);
+            MessageBox.Show(new ClienteBLL().Atualizar(cli));
+            txtID.Text = null;
         }
     }
 }

@@ -14,7 +14,124 @@ namespace BLL
         #region Atualizar
         public string Atualizar(Cliente cli)
         {
-            return "";
+            List<string> erros = new List<string>();
+
+            #region Nome
+            if (string.IsNullOrWhiteSpace(cli.Nome))
+            {
+                erros.Add("Nome deve ser informado.");
+            }
+            else
+            {
+                cli.Nome = cli.Nome.Trim();
+                if (cli.Nome.Length < 3 || cli.Nome.Length > 60)
+                {
+                    erros.Add("Nome deve conter entre 3 e 60 caracteres.");
+                }
+                else
+                {
+                    for (int i = 0; i < cli.Nome.Length; i++)
+                    {
+                        if (!char.IsLetter(cli.Nome[i]) && cli.Nome[i] != ' ')
+                        {
+                            erros.Add("Nome inválido");
+                            break;
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            #region CPF
+            if (string.IsNullOrWhiteSpace(cli.CPF))
+            {
+                erros.Add("CPF deve ser informado.");
+            }
+            else
+            {
+
+                cli.CPF = cli.CPF.Trim();
+                cli.CPF = cli.CPF.Replace(".", "").Replace("-", "");
+                if (!this.validarCPF(cli.CPF))
+                {
+                    erros.Add("CPF inválido");
+                }
+            }
+            #endregion
+
+            #region RG
+            if (string.IsNullOrWhiteSpace(cli.RG))
+            {
+                erros.Add("RG deve ser informado.");
+            }
+            else
+            {
+                cli.RG = cli.RG.Trim();
+                cli.RG = cli.RG.Replace(".", "").Replace("/", "").Replace("-", "");
+                if (cli.RG.Length < 5 || cli.RG.Length > 9)
+                {
+                    erros.Add("RG deve conter entre 5 e 9 caracteres.");
+                }
+            }
+            #endregion
+
+            #region telefone1
+            if (string.IsNullOrWhiteSpace(cli.Telefone1))
+            {
+                erros.Add("Telefone deve ser informado.");
+            }
+            else
+            {
+                cli.Telefone1 =
+                    cli.Telefone1.Replace(" ", "")
+                                .Replace("(", "")
+                                .Replace(")", "")
+                                .Replace("-", "");
+
+                if (cli.Telefone1.Length < 8 || cli.Telefone1.Length > 15)
+                {
+                    erros.Add("Telefone 1 deve conter entre 8 e 15 caracteres.");
+                }
+            }
+            #endregion
+
+            #region telefone2
+            if (!string.IsNullOrWhiteSpace(cli.Telefone2))
+            {
+                cli.Telefone2 =
+                    cli.Telefone2.Replace(" ", "")
+                                .Replace("(", "")
+                                .Replace(")", "")
+                                .Replace("-", "");
+
+                if (cli.Telefone2.Length < 8 || cli.Telefone2.Length > 15)
+                {
+                    erros.Add("Telefone 2 deve conter entre 8 e 15 caracteres.");
+                }
+            }
+
+            #endregion
+
+            #region email
+            bool isEmail = Regex.IsMatch(cli.email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            if (!isEmail)
+            {
+                erros.Add("Email válido deve ser informado.");
+            }
+            #endregion
+
+
+            StringBuilder builder = new StringBuilder();
+            if (erros.Count != 0)
+            {
+                for (int i = 0; i < erros.Count; i++)
+                {
+                    builder.AppendLine(erros[i]);
+                }
+                return builder.ToString();
+            }
+
+            return new ClienteDAO().Atualizar(cli).Mensagem;
         }
         #endregion
 
@@ -103,11 +220,7 @@ namespace BLL
             #endregion
 
             #region telefone2
-            if (string.IsNullOrWhiteSpace(cli.Telefone2))
-            {
-                erros.Add("Devem ser informados dois telefones.");
-            }
-            else
+            if (!string.IsNullOrWhiteSpace(cli.Telefone2))
             {
                 cli.Telefone2 =
                     cli.Telefone2.Replace(" ", "")
@@ -120,6 +233,7 @@ namespace BLL
                     erros.Add("Telefone 2 deve conter entre 8 e 15 caracteres.");
                 }
             }
+            
             #endregion
 
             #region email
@@ -155,7 +269,7 @@ namespace BLL
         #region LerTodos
         public List<Cliente> LerTodos()
         {
-            throw new NotImplementedException();
+            return new ClienteDAO().LerTodos().Dados;
         }
         #endregion
 
