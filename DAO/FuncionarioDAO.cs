@@ -10,7 +10,7 @@ namespace DAO
 {
     public class FuncionarioDAO 
     {
-        //Pronto VERIFICAR
+        //Pronto 
         public string Atualizar(Funcionario func)
         {
             string ConnectionString = Parametros.GetConnectionString();
@@ -18,8 +18,9 @@ namespace DAO
             connection.ConnectionString = ConnectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"UPDATE FROM FUNCIONARIOS SET NOME = @NOME, CPF = @CPF, RG = @RG, ENDERECO = @ENDERECO, TELEFONE = @TELEFONE, EMAIL = @EMAIL, SENHA = @SENHA,
-                                    EHADMIN = @EHADMIN, EHATIVO = @EHATIVO WHERE  ID = " + func.ID;
+            command.CommandText = @"UPDATE FUNCIONARIOS SET NOME = @NOME, CPF = @CPF, RG = @RG, ENDERECO = @ENDERECO, TELEFONE = @TELEFONE, EMAIL = @EMAIL, SENHA = @SENHA,
+                                    EHADMIN = @EHADMIN, EHATIVO = @EHATIVO WHERE  ID = @ID";
+            command.Parameters.AddWithValue("@ID", func.ID);
             command.Parameters.AddWithValue("@NOME", func.Nome);
             command.Parameters.AddWithValue("@CPF", func.CPF);
             command.Parameters.AddWithValue("@RG", func.RG);
@@ -38,9 +39,9 @@ namespace DAO
                 command.ExecuteNonQuery();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return "Erro: " + ex + "\r\nContate o admin";
+                return "Erro no banco de dados, contate o admin";
             }
             finally
             {
@@ -86,7 +87,7 @@ namespace DAO
                 {
                     return "Funcionário já cadastrado";
                 }
-                return "Erro no Bando de Dados, favor contactar o suporte ou admin";
+                return "Erro no Bando de Dados, favor contactar o suporte";
 	        }
             finally
             {
@@ -94,7 +95,36 @@ namespace DAO
             }
             return "Funcionário cadastrado com sucesso";
         }
-            
+
+        public string Delete(Funcionario func)
+        {
+            string connectionString = Parametros.GetConnectionString();
+
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = @"DELETE FROM FUNCIONARIOS WHERE ID = @ID";
+            command.Parameters.AddWithValue("@ID", func.ID);
+
+            command.Connection = connection;
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return "Erro no banco de dados, contate o suporte";
+                
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return "Funcionario apagado do sistema com sucesso";
+        }
+
         //Pronto VERIFICAR
         public Funcionario LerPorID(int ID)
         {
@@ -146,7 +176,7 @@ namespace DAO
             {
                 connection.Dispose();
             }
-            Funcionario funcionar = new Funcionario(nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
+            Funcionario funcionar = new Funcionario(id, nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
 
             return funcionar;
         }
@@ -180,7 +210,7 @@ namespace DAO
                     bool EhAtivo = (bool)reader["EHADMIN"];
 
                     //Utilizado construtor SEM senha do Funcionario
-                    Funcionario funcionar = new Funcionario(nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
+                    Funcionario funcionar = new Funcionario(id ,nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
                     listFunc.Add(funcionar);
 	            }
 
@@ -196,5 +226,7 @@ namespace DAO
             return listFunc;
 
         }
+
+        
     }
 }

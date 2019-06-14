@@ -47,12 +47,18 @@
             this.mtxtTelefoneFuncionario = new System.Windows.Forms.MaskedTextBox();
             this.mtxtRGFuncionario = new System.Windows.Forms.MaskedTextBox();
             this.mtxtCPFFuncionario = new System.Windows.Forms.MaskedTextBox();
+            this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
+            this.txtID = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnAtualizar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
@@ -61,7 +67,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 49);
+            this.label2.Location = new System.Drawing.Point(12, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 2;
@@ -70,7 +76,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 89);
+            this.label3.Location = new System.Drawing.Point(12, 129);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 13);
             this.label3.TabIndex = 4;
@@ -79,7 +85,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 129);
+            this.label4.Location = new System.Drawing.Point(12, 169);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 6;
@@ -87,7 +93,7 @@
             // 
             // txtEmailFuncionario
             // 
-            this.txtEmailFuncionario.Location = new System.Drawing.Point(15, 186);
+            this.txtEmailFuncionario.Location = new System.Drawing.Point(139, 26);
             this.txtEmailFuncionario.Name = "txtEmailFuncionario";
             this.txtEmailFuncionario.Size = new System.Drawing.Size(100, 20);
             this.txtEmailFuncionario.TabIndex = 9;
@@ -95,7 +101,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 169);
+            this.label5.Location = new System.Drawing.Point(136, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 8;
@@ -125,7 +131,7 @@
             this.cmbEstado.Items.AddRange(new object[] {
             "SC",
             "SP"});
-            this.cmbEstado.Location = new System.Drawing.Point(139, 25);
+            this.cmbEstado.Location = new System.Drawing.Point(139, 65);
             this.cmbEstado.Name = "cmbEstado";
             this.cmbEstado.Size = new System.Drawing.Size(121, 21);
             this.cmbEstado.TabIndex = 12;
@@ -135,7 +141,7 @@
             // 
             this.cmbCidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCidade.FormattingEnabled = true;
-            this.cmbCidade.Location = new System.Drawing.Point(139, 65);
+            this.cmbCidade.Location = new System.Drawing.Point(139, 104);
             this.cmbCidade.Name = "cmbCidade";
             this.cmbCidade.Size = new System.Drawing.Size(121, 21);
             this.cmbCidade.TabIndex = 13;
@@ -143,7 +149,7 @@
             // chkÉAdm
             // 
             this.chkÉAdm.AutoSize = true;
-            this.chkÉAdm.Location = new System.Drawing.Point(139, 109);
+            this.chkÉAdm.Location = new System.Drawing.Point(139, 125);
             this.chkÉAdm.Name = "chkÉAdm";
             this.chkÉAdm.Size = new System.Drawing.Size(98, 17);
             this.chkÉAdm.TabIndex = 14;
@@ -153,7 +159,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(136, 9);
+            this.label7.Location = new System.Drawing.Point(136, 49);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(40, 13);
             this.label7.TabIndex = 15;
@@ -162,7 +168,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(136, 49);
+            this.label8.Location = new System.Drawing.Point(136, 88);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 16;
@@ -191,14 +197,14 @@
             // txtNomeFuncionario
             // 
             this.txtNomeFuncionario.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.txtNomeFuncionario.Location = new System.Drawing.Point(15, 26);
+            this.txtNomeFuncionario.Location = new System.Drawing.Point(15, 66);
             this.txtNomeFuncionario.Name = "txtNomeFuncionario";
             this.txtNomeFuncionario.Size = new System.Drawing.Size(100, 20);
             this.txtNomeFuncionario.TabIndex = 1;
             // 
             // mtxtTelefoneFuncionario
             // 
-            this.mtxtTelefoneFuncionario.Location = new System.Drawing.Point(15, 145);
+            this.mtxtTelefoneFuncionario.Location = new System.Drawing.Point(15, 184);
             this.mtxtTelefoneFuncionario.Mask = "(00)00000-0000";
             this.mtxtTelefoneFuncionario.Name = "mtxtTelefoneFuncionario";
             this.mtxtTelefoneFuncionario.Size = new System.Drawing.Size(100, 20);
@@ -206,7 +212,7 @@
             // 
             // mtxtRGFuncionario
             // 
-            this.mtxtRGFuncionario.Location = new System.Drawing.Point(15, 105);
+            this.mtxtRGFuncionario.Location = new System.Drawing.Point(15, 145);
             this.mtxtRGFuncionario.Mask = "0,000,000";
             this.mtxtRGFuncionario.Name = "mtxtRGFuncionario";
             this.mtxtRGFuncionario.Size = new System.Drawing.Size(100, 20);
@@ -214,17 +220,70 @@
             // 
             // mtxtCPFFuncionario
             // 
-            this.mtxtCPFFuncionario.Location = new System.Drawing.Point(15, 65);
+            this.mtxtCPFFuncionario.Location = new System.Drawing.Point(15, 105);
             this.mtxtCPFFuncionario.Mask = "000,000,000-00";
             this.mtxtCPFFuncionario.Name = "mtxtCPFFuncionario";
             this.mtxtCPFFuncionario.Size = new System.Drawing.Size(100, 20);
             this.mtxtCPFFuncionario.TabIndex = 25;
             // 
+            // dgvFuncionarios
+            // 
+            this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFuncionarios.Location = new System.Drawing.Point(287, 9);
+            this.dgvFuncionarios.Name = "dgvFuncionarios";
+            this.dgvFuncionarios.RowHeadersVisible = false;
+            this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFuncionarios.Size = new System.Drawing.Size(513, 239);
+            this.dgvFuncionarios.TabIndex = 26;
+            this.dgvFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            // 
+            // txtID
+            // 
+            this.txtID.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            this.txtID.Location = new System.Drawing.Point(15, 26);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.TabIndex = 28;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 13);
+            this.label9.TabIndex = 27;
+            this.label9.Text = "ID";
+            // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Location = new System.Drawing.Point(15, 254);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(245, 23);
+            this.btnAtualizar.TabIndex = 29;
+            this.btnAtualizar.Text = "Atualizar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(15, 283);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(245, 23);
+            this.btnExcluir.TabIndex = 30;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // FormCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 264);
+            this.ClientSize = new System.Drawing.Size(812, 315);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnAtualizar);
+            this.Controls.Add(this.txtID);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.dgvFuncionarios);
             this.Controls.Add(this.mtxtCPFFuncionario);
             this.Controls.Add(this.mtxtRGFuncionario);
             this.Controls.Add(this.mtxtTelefoneFuncionario);
@@ -246,6 +305,8 @@
             this.Controls.Add(this.label1);
             this.Name = "FormCadastroFuncionario";
             this.Text = "FormCadastroFuncionario";
+            this.Load += new System.EventHandler(this.FormCadastroFuncionario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,5 +333,10 @@
         private System.Windows.Forms.MaskedTextBox mtxtTelefoneFuncionario;
         private System.Windows.Forms.MaskedTextBox mtxtRGFuncionario;
         private System.Windows.Forms.MaskedTextBox mtxtCPFFuncionario;
+        private System.Windows.Forms.DataGridView dgvFuncionarios;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }

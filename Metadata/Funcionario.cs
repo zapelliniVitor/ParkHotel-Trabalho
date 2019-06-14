@@ -34,9 +34,25 @@ namespace Metadata
             this.EhAtivo = ehAtivo;
         }
 
-        //Construtor SEM senha
-        public Funcionario(string nome, string cpf, string rg, string endereco, string telefone, string email, bool ehAdmin, bool ehAtivo)
+        //Construtor COM senha e COM ID
+        public Funcionario(int id, string nome, string cpf, string rg, string endereco, string telefone, string email, string senha, bool ehAdmin, bool ehAtivo)
         {
+            this.ID = id;
+            this.Nome = nome;
+            this.CPF = cpf;
+            this.RG = rg;
+            this.Endereco = endereco;
+            this.Telefone = telefone;
+            this.Email = email;
+            this.Senha = senha;
+            this.EhAdmin = ehAdmin;
+            this.EhAtivo = ehAtivo;
+        }
+        
+        //Construtor SEM senha e COM ID
+        public Funcionario(int id, string nome, string cpf, string rg, string endereco, string telefone, string email, bool ehAdmin, bool ehAtivo)
+        {
+            this.ID = id;
             this.Nome = nome;
             this.CPF = cpf;
             this.RG = rg;
@@ -47,12 +63,13 @@ namespace Metadata
             this.EhAtivo = ehAtivo;
         }
 
+        public Funcionario()
+        {
 
-        //public string LerDadosFuncionario()
-        //{
-        //    String NL = "\r\n";
-        //    return Nome + NL + CPF + NL + RG + NL + Endereco + NL + Telefone + NL + Email + NL + Senha + NL + EhAdmin + NL + EhAtivo; 
-        //}
+        }
+
+
+        
 
     }
 }
