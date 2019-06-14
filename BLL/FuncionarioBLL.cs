@@ -52,22 +52,22 @@ namespace BLL
             List<string> erros = new List<string>();
 
             #region Nome
-            if (string.IsNullOrWhiteSpace(cli.Nome))
+            if (string.IsNullOrWhiteSpace(func.Nome))
             {
                 erros.Add("Nome deve ser informado.");
             }
             else
             {
-                cli.Nome = cli.Nome.Trim();
-                if (cli.Nome.Length < 3 || cli.Nome.Length > 60)
+                func.Nome = func.Nome.Trim();
+                if (func.Nome.Length < 3 || func.Nome.Length > 60)
                 {
                     erros.Add("Nome deve conter entre 3 e 60 caracteres.");
                 }
                 else
                 {
-                    for (int i = 0; i < cli.Nome.Length; i++)
+                    for (int i = 0; i < func.Nome.Length; i++)
                     {
-                        if (!char.IsLetter(cli.Nome[i]) && cli.Nome[i] != ' ')
+                        if (!char.IsLetter(func.Nome[i]) && func.Nome[i] != ' ')
                         {
                             erros.Add("Nome inválido");
                             break;
@@ -117,7 +117,7 @@ namespace BLL
             }
             else
             {
-                if (func.Endereco.Length < 10 || func.Endereco.Length > 60)
+                if (func.Endereco.Length < 5 || func.Endereco.Length > 60)
                 {
                     erros.Add("Endereco deve ter entre 10 e  60 caracteres");
                 }
@@ -175,8 +175,7 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            new FuncionarioDAO().Inserir(func);
-            return "Cliente cadastrado com sucesso";
+            return new FuncionarioDAO().Inserir(func);
 
         }
     }

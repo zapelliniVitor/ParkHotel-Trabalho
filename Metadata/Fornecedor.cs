@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metadata
 {
-    class Fornecedor : IEntityCRUD<Fornecedor>
+    class Fornecedor 
     {
         public string NomeContato { get; set; }
         public string RazaoSocial { get; set; }

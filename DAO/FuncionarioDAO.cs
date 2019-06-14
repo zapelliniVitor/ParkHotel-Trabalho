@@ -55,11 +55,13 @@ namespace DAO
         {
             string connectionString = Parametros.GetConnectionString();
 
-            SqlConnection connection = new SqlConnection(ConnectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"INSERT INTO FUNCIONARIOS (ID, NOME, CPF, RG, ENDERECO, TELEFONE, EMAIL, SENHA, EHADMIN, EHATIVO) VALUES
+            command.CommandText = @"INSERT INTO FUNCIONARIOS (NOME, CPF, RG, ENDERECO, TELEFONE, EMAIL, SENHA, EHADMIN, EHATIVO) VALUES
                                   (@NOME, @CPF, @RG, @ENDERECO, @TELEFONE, @EMAIL, @SENHA, @EHADMIN, @EHATIVO)";
+            
+
             command.Parameters.AddWithValue("@NOME", func.Nome);
             command.Parameters.AddWithValue("@CPF", func.CPF);
             command.Parameters.AddWithValue("@RG", func.RG);
@@ -136,7 +138,7 @@ namespace DAO
                     
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 
             }
@@ -183,7 +185,7 @@ namespace DAO
 	            }
 
         	}
-	        catch (Exception ex)
+	        catch (Exception)
 	        {
         		
 	        }
