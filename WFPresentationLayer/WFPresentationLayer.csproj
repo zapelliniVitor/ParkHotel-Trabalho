@@ -71,6 +71,12 @@
     <Compile Include="FormMenu.Designer.cs">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPesquisaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPesquisaCliente.Designer.cs">
+      <DependentUpon>FormPesquisaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPesquisaFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
