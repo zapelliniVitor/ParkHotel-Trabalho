@@ -6,34 +6,40 @@ using System.Threading.Tasks;
 
 namespace Metadata
 {
-    class Fornecedor 
+    public class Fornecedor 
     {
+        public int ID { get; set; }
         public string NomeContato { get; set; }
         public string RazaoSocial { get; set; }
         public string CNPJ { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
 
-
-
-        public string Atualizar(Fornecedor item)
+        //Com ID
+        public Fornecedor(int id, string nomeContato, string razaoSocial, string cnpj, string telefone, string email)
         {
-            throw new NotImplementedException();
+            this.ID = id;
+            this.NomeContato = nomeContato;
+            this.RazaoSocial = razaoSocial;
+            this.CNPJ = cnpj;
+            this.Telefone = telefone;
+            this.Email = email;
         }
 
-        public string Inserir(Fornecedor item)
+        //Sem ID
+        public Fornecedor(string nomeContato, string razaoSocial, string cnpj, string telefone, string email)
         {
-            throw new NotImplementedException();
+            this.NomeContato = nomeContato;
+            this.RazaoSocial = razaoSocial;
+            this.CNPJ = cnpj;
+            this.Telefone = telefone;
+            this.Email = email;
         }
 
-        public Fornecedor LerPorID(int ID)
+        public Fornecedor()
         {
-            throw new NotImplementedException();
+
         }
 
-        public List<Fornecedor> LerTodos()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

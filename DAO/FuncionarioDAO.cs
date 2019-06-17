@@ -80,8 +80,9 @@ namespace DAO
 		        connection.Open();
                 command.ExecuteNonQuery();
 
-	        }
-	        catch (Exception EX)
+
+            }
+            catch (Exception EX)
 	        {
                 if (EX.Message.Contains("UNIQUE") || EX.Message.Contains("FK"))
                 {
@@ -176,7 +177,7 @@ namespace DAO
             {
                 connection.Dispose();
             }
-            Funcionario funcionar = new Funcionario(id, nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
+            Funcionario funcionar = new Funcionario();
 
             return funcionar;
         }
