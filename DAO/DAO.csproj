@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteDAO.cs" />
+    <Compile Include="FornecedorDAO.cs" />
+    <Compile Include="funcionario.cs" />
     <Compile Include="FuncionarioDAO.cs" />
     <Compile Include="Parametros.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -51,5 +53,6 @@
       <Project>{2daa7b0d-f015-413a-b5ce-ad322780c207}</Project>
       <Name>Metadata</Name>
     </ProjectReference>
-  </ItemGroup> <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

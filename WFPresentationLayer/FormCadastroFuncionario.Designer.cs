@@ -233,7 +233,7 @@
             this.dgvFuncionarios.Name = "dgvFuncionarios";
             this.dgvFuncionarios.RowHeadersVisible = false;
             this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFuncionarios.Size = new System.Drawing.Size(513, 239);
+            this.dgvFuncionarios.Size = new System.Drawing.Size(513, 297);
             this.dgvFuncionarios.TabIndex = 26;
             this.dgvFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 

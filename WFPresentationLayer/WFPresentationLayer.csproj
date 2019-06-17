@@ -58,6 +58,7 @@
     <Compile Include="FormCadastroFuncionario.Designer.cs">
       <DependentUpon>FormCadastroFuncionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCleaner.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -187,18 +187,7 @@ namespace WFPresentationLayer
 
         private void apagarDados()
         {
-            txtID.Text = null;
-            txtNomeFuncionario.Text = null;
-            txtSenhaFuncionario.Text = null;
-            txtEmailFuncionario.Text = null;
-            mtxtCPFFuncionario.Text = null;
-            mtxtRGFuncionario.Text = null;
-            mtxtTelefoneFuncionario.Text = null;
-            chkÉAdm.Checked = false;
-            chkÉAtivo.Checked = false;
-            cmbCidade.DataSource = null;
-            cmbEstado.DataSource = null;
-
+            FormCleaner.Clear(this);
         }
     }
 }
