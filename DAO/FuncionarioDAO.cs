@@ -11,7 +11,7 @@ namespace DAO
     public class FuncionarioDAO 
     {
         //Pronto 
-        public string Atualizar(Funcionario func)
+        public DbResponse<int> Atualizar(Funcionario func)
         {
             string ConnectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection();
@@ -39,21 +39,33 @@ namespace DAO
                 command.ExecuteNonQuery();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return "Erro no banco de dados, contate o admin";
+                return new DbResponse<int>
+                {
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponivel.",
+                    Sucesso = false
+                };
             }
             finally
             {
                 connection.Dispose();
             }
-            return "Funcionário atualizado";
+            return new DbResponse<int>
+            {
+                Sucesso = true,
+                Mensagem = "Atualizado com sucesso.",
+                Dados = func.ID
+            };
 
         }
 
         //Pronto
-        public string Inserir(Funcionario func)
+        public DbResponse<int> Inserir(Funcionario func)
         {
+            int idInserida = -1;
+
             string connectionString = Parametros.GetConnectionString();
 
             SqlConnection connection = new SqlConnection(connectionString);
@@ -78,25 +90,42 @@ namespace DAO
             try 
 	        {	        
 		        connection.Open();
-                command.ExecuteNonQuery();
-
+                idInserida = Convert.ToInt32(command.ExecuteNonQuery());
 
             }
             catch (Exception EX)
 	        {
                 if (EX.Message.Contains("UNIQUE") || EX.Message.Contains("FK"))
                 {
-                    return "Funcionário já cadastrado";
+                    return new DbResponse<int>
+                    {
+                        Sucesso = false,
+                        Mensagem = "Funcionario já cadastrado.",
+                        Excessao = EX
+
+                    };
                 }
-                return "Erro no Bando de Dados, favor contactar o suporte";
+                return new DbResponse<int>
+                {
+
+                    Sucesso = false,
+                    Mensagem = "Erro no Bando de Dados, favor contactar o suporte",
+                    Excessao = EX
+                };
 	        }
             finally
             {
                 connection.Dispose();
             }
-            return "Funcionário cadastrado com sucesso";
+            return new DbResponse<int>
+            {
+                Sucesso = true,
+                Mensagem = "Funcionário cadastrado com sucesso",
+                Dados = idInserida
+            };
         }
 
+        //Deletar CORRIGIR
         public string Delete(int id)
         {
             string connectionString = Parametros.GetConnectionString();
@@ -127,7 +156,7 @@ namespace DAO
         }
 
         //Pronto VERIFICAR
-        public Funcionario LerPorID(int ID)
+        public List<Funcionario> LerPorID(int ID)
         {
             string connectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection(connectionString);
@@ -139,37 +168,29 @@ namespace DAO
 
             command.Connection = connection;
 
-            int id = 0;
-            string nome = "";
-            string CPF = "";
-            string RG = "";
-            string Endereco = "";
-            string Telefone = "";
-            string Email = "";
-            bool EhAdmin = false;
-            bool EhAtivo = false;
-
+            List<Funcionario> listF = new List<Funcionario>();
+            
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    id = (int)reader["ID"];
-                    nome = (string)reader["NOME"];
-                    CPF = (string)reader["CPF"];
-                    RG = (string)reader["RG"];
-                    Endereco = (string)reader["ENDERECO"];
-                    Telefone = (string)reader["TELEFONE"];
-                    Email = (string)reader["EMAIL"];
-                    EhAdmin = (bool)reader["EHADMIN"];
-                    EhAtivo = (bool)reader["EHADMIN"];
+                    int id = (int)reader["ID"];
+                    string Nome = (string)reader["NOME"];
+                    string CPF = (string)reader["CPF"];
+                    string RG = (string)reader["RG"];
+                    string Endereco = (string)reader["ENDERECO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+                    bool EhAdmin = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHADMIN"];
 
-                    //Utilizado construtor SEM senha do Funcionario
-                    
+                    Funcionario funcionar = new Funcionario(id, Nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
+                    listF.Add(funcionar);
                 }
             }
-            catch (Exception)
+            catch (Exception )
             {
                 
             }
@@ -177,9 +198,9 @@ namespace DAO
             {
                 connection.Dispose();
             }
-            Funcionario funcionar = new Funcionario();
 
-            return funcionar;
+
+            return listF;
         }
         
         //Pronto
@@ -218,7 +239,7 @@ namespace DAO
         	}
 	        catch (Exception)
 	        {
-        		
+                
 	        }
             finally
             {

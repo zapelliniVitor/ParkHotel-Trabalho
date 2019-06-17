@@ -176,7 +176,7 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            return dao.Inserir(func);
+            return dao.Inserir(func).ToString();
 
         }
 
@@ -316,13 +316,18 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            return dao.Atualizar(func);
+            return dao.Atualizar(func).ToString();
 
         }
 
         public List<Funcionario> LerTodos()
         {
             return dao.LerTodos();
+        }
+
+        public List<Funcionario> lerPorId(int id)
+        {
+            return dao.LerPorID(id);
         }
     }
 }

@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvFuncionario = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionario)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvFuncionario
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(152, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(474, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvFuncionario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFuncionario.Location = new System.Drawing.Point(152, 12);
+            this.dgvFuncionario.Name = "dgvFuncionario";
+            this.dgvFuncionario.RowHeadersVisible = false;
+            this.dgvFuncionario.Size = new System.Drawing.Size(474, 150);
+            this.dgvFuncionario.TabIndex = 0;
             // 
             // label1
             // 
@@ -67,6 +68,7 @@
             this.btnPesquisar.TabIndex = 3;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // FormPesquisaFuncionario
             // 
@@ -76,10 +78,11 @@
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvFuncionario);
             this.Name = "FormPesquisaFuncionario";
             this.Text = "FormPesquisaFuncionario";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormPesquisaFuncionario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,7 +90,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvFuncionario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Button btnPesquisar;

@@ -124,6 +124,7 @@ namespace DAO
             command.CommandText = "SELECT * FROM FORNECEDORES WHERE ID = @ID";
 
             command.Parameters.AddWithValue("@ID", ID);
+            List<Funcionario> listF = new List<Funcionario>();
 
             Fornecedor f = new Fornecedor();
             try
@@ -162,8 +163,8 @@ namespace DAO
             }
             return new DbResponse<Fornecedor>
             {
-                Sucesso = false,
-                Mensagem = "fornecedor não encontrado.",
+                Sucesso = true,
+                Mensagem = "fornecedor encontrado.",
             };
         }
         #endregion

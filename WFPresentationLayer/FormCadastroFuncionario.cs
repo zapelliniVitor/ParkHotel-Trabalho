@@ -70,7 +70,7 @@ namespace WFPresentationLayer
             }
             cmbCidade.DataSource = null;
             cmbCidade.DataSource = cidades;
-            apagarDados();
+            
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
