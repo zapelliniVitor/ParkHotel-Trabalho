@@ -45,6 +45,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.DataGridViewClientes = new System.Windows.Forms.DataGridView();
+            this.btnExcluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,15 +194,26 @@
             this.DataGridViewClientes.Name = "DataGridViewClientes";
             this.DataGridViewClientes.RowHeadersVisible = false;
             this.DataGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridViewClientes.Size = new System.Drawing.Size(552, 315);
+            this.DataGridViewClientes.Size = new System.Drawing.Size(552, 326);
             this.DataGridViewClientes.TabIndex = 35;
             this.DataGridViewClientes.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewClientes_CellDoubleClick);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(12, 303);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(230, 42);
+            this.btnExcluir.TabIndex = 36;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // FormCadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 358);
+            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.DataGridViewClientes);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtID);
@@ -246,6 +258,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.DataGridView DataGridViewClientes;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }
 

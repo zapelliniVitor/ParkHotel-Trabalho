@@ -14,6 +14,11 @@ namespace BLL
         #region Atualizar
         public string Atualizar(Cliente cli)
         {
+            cli.EhAtivo = true;
+            if(!new ClienteDAO().LerPorID(cli.ID).Sucesso)
+            {
+                return "Cliente inexistente";
+            }
             List<string> erros = new List<string>();
 
             #region Nome
@@ -51,7 +56,7 @@ namespace BLL
             {
 
                 cli.CPF = cli.CPF.Trim();
-                cli.CPF = cli.CPF.Replace(".", "").Replace("-", "");
+                cli.CPF = cli.CPF.Replace(".", "").Replace("-", "").Replace(",","");
                 if (!this.validarCPF(cli.CPF))
                 {
                     erros.Add("CPF inválido");
@@ -112,8 +117,8 @@ namespace BLL
 
             #endregion
 
-            #region email
-            bool isEmail = Regex.IsMatch(cli.email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            #region Email
+            bool isEmail = Regex.IsMatch(cli.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
             if (!isEmail)
             {
                 erros.Add("Email válido deve ser informado.");
@@ -138,6 +143,7 @@ namespace BLL
         #region Inserir
         public string Inserir(Cliente cli)
         {
+            cli.EhAtivo = true;
             List<string> erros = new List<string>();
 
             #region Nome
@@ -236,8 +242,8 @@ namespace BLL
             
             #endregion
 
-            #region email
-            bool isEmail = Regex.IsMatch(cli.email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
+            #region Email
+            bool isEmail = Regex.IsMatch(cli.Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
             if (!isEmail)
             {
                 erros.Add("Email válido deve ser informado.");
@@ -256,6 +262,37 @@ namespace BLL
             }
 
             return new ClienteDAO().Inserir(cli).Mensagem;
+        }
+        #endregion
+
+        #region ProcurarCPF
+        public Cliente ProcurarCPF(Cliente cli)
+        {
+            ClienteDAO clientedao = new ClienteDAO();
+            DbResponse<List<Cliente>> respostadao = clientedao.LerTodosInativos();
+
+            if (!respostadao.Sucesso)
+            {
+                cli.ID = -1;
+                return cli;
+            }
+
+            
+            List<Cliente> listacli = respostadao.Dados;
+
+            cli.CPF = cli.CPF.Replace("-", "").Replace(".", "").Replace(",", "");
+            for (int i = 0; i < (listacli.Count); i++)
+            {
+                if (listacli[i].CPF == cli.CPF)
+                {
+                    cli.ID = listacli[i].ID;
+                    return cli;
+                }
+            }
+
+
+            cli.ID = -2;
+            return cli;//Esse id não afeta o cadastro de um novo cliente, porém ajuda na checagem de cpf
         }
         #endregion
 
@@ -310,5 +347,24 @@ namespace BLL
 
         }
         #endregion
+
+        #region Excluir
+        public string Excluir(int id)
+        {
+            if (!new ClienteDAO().LerPorID(id).Sucesso)
+            {
+                return "Cliente inexistente";
+            }
+
+            if(!new ClienteDAO().Excluir(id).Sucesso)
+            {
+                return "Banco de dados indispoível";
+            }
+            else
+            {
+                return "Cliente excluído com sucesso";
+            }
+            #endregion
+        }
     }
 }
