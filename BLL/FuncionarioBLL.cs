@@ -12,6 +12,8 @@ namespace BLL
     public class FuncionarioBLL
     {
         FuncionarioDAO dao = new FuncionarioDAO();
+
+        #region Validar CPF
         private bool validarCPF(string cpf)
         {
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -47,7 +49,9 @@ namespace BLL
             return cpf.EndsWith(digito);
 
         }
+        #endregion
 
+        #region Cadastrar
         public string cadastrarFuncionario(Funcionario func)
         {
             List<string> erros = new List<string>();
@@ -179,7 +183,9 @@ namespace BLL
             return dao.Inserir(func).ToString();
 
         }
+        #endregion
 
+        #region Atualizar
         public string atualizarFuncionario(Funcionario func)
         {
             List<string> erros = new List<string>();
@@ -319,15 +325,20 @@ namespace BLL
             return dao.Atualizar(func).ToString();
 
         }
+        #endregion
 
+        #region Ler Todos
         public List<Funcionario> LerTodos()
         {
             return dao.LerTodos();
         }
+        #endregion
 
+        #region ler por ID
         public List<Funcionario> lerPorId(int id)
         {
             return dao.LerPorID(id);
         }
+        #endregion
     }
 }
