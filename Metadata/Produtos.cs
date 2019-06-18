@@ -14,6 +14,7 @@ namespace Metadata
         public double PrecoVenda { get; set; }
         public int quantidadeEstoque { get; set; }
 
+        //Com ID
         public Produtos(int id, string nomeProduto, string descricaoProduto, double precoVenda, int quantidadeEstoque)
         {
             this.ID = id;
@@ -24,6 +25,7 @@ namespace Metadata
 
         }
 
+        //Sem ID
         public Produtos(string nomeProduto, string descricaoProduto, double precoVenda, int quantidadeEstoque)
         {
             this.NomeProduto = nomeProduto;
