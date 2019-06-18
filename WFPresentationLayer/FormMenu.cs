@@ -41,6 +41,13 @@ namespace WFPresentationLayer
             frm.ShowDialog();
             this.Show();
         }
-                           
+
+        private void PesquisarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPesquisaCliente frm = new FormPesquisaCliente();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
     }
 }

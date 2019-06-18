@@ -14,7 +14,8 @@ namespace Metadata
         public string RG { get; set; }
         public string Telefone1 { get; set; }
         public string Telefone2 { get; set; }
-        public string email { get; set; }
+        public string Email { get; set; }
+        public bool EhAtivo { get; set; }
 
         public Cliente(string nome, string cpf, string rg, string telefone1, string telefone2, string email)
         {
@@ -23,7 +24,7 @@ namespace Metadata
             this.RG = rg;
             this.Telefone1 = telefone1;
             this.Telefone2 = telefone2;
-            this.email = email;
+            this.Email = email;
         }
 
         public Cliente(int id,string nome, string cpf, string rg, string telefone1, string telefone2, string email)
@@ -34,12 +35,17 @@ namespace Metadata
             this.RG = rg;
             this.Telefone1 = telefone1;
             this.Telefone2 = telefone2;
-            this.email = email;
+            this.Email = email;
         }
 
         public Cliente()
         {
             
+        }
+
+        public Cliente(int id)
+        {
+            this.ID = id;
         }
 
         public string Atualizar(Cliente cli)
