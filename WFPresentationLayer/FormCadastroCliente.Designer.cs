@@ -192,6 +192,7 @@
             this.DataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewClientes.Location = new System.Drawing.Point(275, 19);
             this.DataGridViewClientes.Name = "DataGridViewClientes";
+            this.DataGridViewClientes.ReadOnly = true;
             this.DataGridViewClientes.RowHeadersVisible = false;
             this.DataGridViewClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridViewClientes.Size = new System.Drawing.Size(552, 326);

@@ -6,32 +6,37 @@ using System.Threading.Tasks;
 
 namespace Metadata
 {
-    public class Produtos
+    public class Produto
     {
         public int ID { get; set; }
-        public string NomeProduto { get; set; }
-        public string DescricaoProduto { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
         public double PrecoVenda { get; set; }
         public int quantidadeEstoque { get; set; }
 
         //Com ID
-        public Produtos(int id, string nomeProduto, string descricaoProduto, double precoVenda, int quantidadeEstoque)
+        public Produto(int id, string nomeProduto, string descricaoProduto, double precoVenda, int quantidadeEstoque)
         {
             this.ID = id;
-            this.NomeProduto = nomeProduto;
-            this.DescricaoProduto = descricaoProduto;
+            this.Nome = nomeProduto;
+            this.Descricao = descricaoProduto;
             this.PrecoVenda = precoVenda;
             this.quantidadeEstoque = quantidadeEstoque;
 
         }
 
         //Sem ID
-        public Produtos(string nomeProduto, string descricaoProduto, double precoVenda, int quantidadeEstoque)
+        public Produto(string nomeProduto, string descricaoProduto, double precoVenda, int quantidadeEstoque)
         {
-            this.NomeProduto = nomeProduto;
-            this.DescricaoProduto = descricaoProduto;
+            this.Nome = nomeProduto;
+            this.Descricao = descricaoProduto;
             this.PrecoVenda = precoVenda;
             this.quantidadeEstoque = quantidadeEstoque;
+        }
+
+        public Produto()
+        {
+
         }
 
     }

@@ -44,6 +44,7 @@
     <Compile Include="ClienteBLL.cs" />
     <Compile Include="FornecedorBLL.cs" />
     <Compile Include="FuncionarioBLL.cs" />
+    <Compile Include="ProdutoBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
