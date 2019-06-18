@@ -50,12 +50,9 @@ namespace WFPresentationLayer
             this.Show();
         }
 
-        private void manutençãoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void manutençãoProdutosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FormManutençãoProduto frm = new FormManutençãoProduto();
-            this.Hide();
-            frm.ShowDialog();
-            this.Show();
         }
     }
 }
