@@ -53,6 +53,9 @@ namespace WFPresentationLayer
         private void manutençãoProdutosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             FormManutençãoProduto frm = new FormManutençãoProduto();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
     }
 }
