@@ -58,18 +58,18 @@
     <Compile Include="FormCadastroFuncionario.Designer.cs">
       <DependentUpon>FormCadastroFuncionario.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCadastroQuarto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormCadastroQuarto.Designer.cs">
-      <DependentUpon>FormCadastroQuarto.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormCleaner.cs" />
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormManutençãoProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManutençãoProduto.Designer.cs">
+      <DependentUpon>FormManutençãoProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMenu.cs">
       <SubType>Form</SubType>
@@ -97,8 +97,8 @@
     <EmbeddedResource Include="FormCadastroFuncionario.resx">
       <DependentUpon>FormCadastroFuncionario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCadastroQuarto.resx">
-      <DependentUpon>FormCadastroQuarto.cs</DependentUpon>
+    <EmbeddedResource Include="FormManutençãoProduto.resx">
+      <DependentUpon>FormManutençãoProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>

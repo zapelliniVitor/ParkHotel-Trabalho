@@ -26,7 +26,7 @@ namespace WFPresentationLayer
             this.Show();
         }
 
-        private void manutençãoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void manutençãoClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCadastroCliente frm = new FormCadastroCliente();
             this.Hide();
@@ -34,7 +34,7 @@ namespace WFPresentationLayer
             this.Show();
         }
 
-        private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void pesquisarFuncionarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPesquisaFuncionario frm = new FormPesquisaFuncionario();
             this.Hide();
@@ -50,9 +50,9 @@ namespace WFPresentationLayer
             this.Show();
         }
 
-        private void manutençãoToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void manutençãoProdutosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FormCadastroQuarto frm = new FormCadastroQuarto();
+            FormManutençãoProduto frm = new FormManutençãoProduto();
             this.Hide();
             frm.ShowDialog();
             this.Show();

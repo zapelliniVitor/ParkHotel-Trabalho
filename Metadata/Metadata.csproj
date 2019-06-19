@@ -46,7 +46,7 @@
     <Compile Include="Fornecedor.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="IEntityCrud.cs" />
-    <Compile Include="Produtos.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quarto.cs" />
   </ItemGroup>

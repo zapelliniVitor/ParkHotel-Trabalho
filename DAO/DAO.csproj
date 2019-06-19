@@ -45,6 +45,7 @@
     <Compile Include="FornecedorDAO.cs" />
     <Compile Include="FuncionarioDAO.cs" />
     <Compile Include="Parametros.cs" />
+    <Compile Include="ProdutoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuartoDAO.cs" />
   </ItemGroup>
