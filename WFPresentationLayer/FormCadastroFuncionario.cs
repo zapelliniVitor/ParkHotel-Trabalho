@@ -49,12 +49,11 @@ namespace WFPresentationLayer
                                         ehAdmin, ehAtivo);
 
             
-            string menssagem = bll.cadastrarFuncionario(f);
-            MessageBox.Show(menssagem);
+            MessageBox.Show(bll.cadastrarFuncionario(f));
 
             dgvFuncionarios.DataSource = null;
             dgvFuncionarios.DataSource = bll.LerTodos();
-            apagarDados();
+            FormCleaner.Clear(this);
         }
 
         private void cmbEstado_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,27 +166,22 @@ namespace WFPresentationLayer
             MessageBox.Show(menssagem);
             dgvFuncionarios.DataSource = null;
             dgvFuncionarios.DataSource = bll.LerTodos();
-            apagarDados();
+            FormCleaner.Clear(this);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            
             DialogResult result = MessageBox.Show("Deseja apagar os dados do funcionario?", "ATENÇÃO", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (result == DialogResult.No)
             {
                 return;
             }
-            string mensagem = new FuncionarioDAO().Delete(Convert.ToInt32(txtID.Text));
-            MessageBox.Show(mensagem);
+            
+            MessageBox.Show(new FuncionarioDAO().Delete(Convert.ToInt32(txtID.Text)).Mensagem);
             dgvFuncionarios.DataSource = null;
             dgvFuncionarios.DataSource = bll.LerTodos();
-            apagarDados();
-
-        }   
-
-        private void apagarDados()
-        {
             FormCleaner.Clear(this);
-        }
+        }   
     }
 }

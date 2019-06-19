@@ -83,7 +83,7 @@ namespace DAO
                     return new DbResponse<int>
                     {
                         Sucesso = false,
-                        Mensagem = "Funcionário já cadastrado",
+                        Mensagem = "Cliente já cadastrado",
                         Excessao = EX
                     };
                 }

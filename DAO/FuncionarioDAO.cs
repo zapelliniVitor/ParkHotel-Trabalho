@@ -10,7 +10,7 @@ namespace DAO
 {
     public class FuncionarioDAO 
     {
-        //Pronto 
+        #region Atualizar 
         public DbResponse<int> Atualizar(Funcionario func)
         {
             string ConnectionString = Parametros.GetConnectionString();
@@ -60,8 +60,9 @@ namespace DAO
             };
 
         }
+        #endregion
 
-        //Pronto
+        #region Inserir
         public DbResponse<int> Inserir(Funcionario func)
         {
             int idInserida = -1;
@@ -72,7 +73,7 @@ namespace DAO
 
             SqlCommand command = new SqlCommand();
             command.CommandText = @"INSERT INTO FUNCIONARIOS (NOME, CPF, RG, ENDERECO, TELEFONE, EMAIL, SENHA, EHADMIN, EHATIVO) VALUES
-                                  (@NOME, @CPF, @RG, @ENDERECO, @TELEFONE, @EMAIL, @SENHA, @EHADMIN, @EHATIVO)";
+                                  (@NOME, @CPF, @RG, @ENDERECO, @TELEFONE, @EMAIL, @SENHA, @EHADMIN, @EHATIVO); select scope_identity()";
             
 
             command.Parameters.AddWithValue("@NOME", func.Nome);
@@ -124,38 +125,47 @@ namespace DAO
                 Dados = idInserida
             };
         }
+        #endregion
 
-        //Deletar CORRIGIR
-        public string Delete(int id)
+        #region Delete
+        public DbResponse<int> Delete(int id)
         {
-            string connectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
-            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand("", connection);
 
-            SqlCommand command = new SqlCommand();
-            command.CommandText = @"DELETE FROM FUNCIONARIOS WHERE ID = @ID";
-            command.Parameters.AddWithValue("@ID", id);
-
-            command.Connection = connection;
+            command.CommandText = @"UPDATE FUNCIONARIOS SET EHATIVO = @EHATIVO WHERE  ID = " + id;
+            command.Parameters.AddWithValue("@EHATIVO", false);
 
             try
             {
                 connection.Open();
                 command.ExecuteNonQuery();
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return "Erro no banco de dados, contate o suporte";
-                
+                return new DbResponse<int>
+                {
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível",
+                    Sucesso = false,
+                };
             }
             finally
             {
                 connection.Dispose();
             }
-            return "Funcionario apagado do sistema com sucesso";
+            return new DbResponse<int>
+            {
+                Dados = id,
+                Mensagem = "Funcionário removido com sucesso",
+                Sucesso = true,
+            };
         }
+        #endregion
 
-        //Pronto VERIFICAR
+        #region lerPorID
         public List<Funcionario> LerPorID(int ID)
         {
             string connectionString = Parametros.GetConnectionString();
@@ -163,7 +173,7 @@ namespace DAO
             connection.ConnectionString = connectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"SELECT FROM FUNCIONARIOS WHERE ID = @ID";
+            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE ID = @ID";
             command.Parameters.AddWithValue("@ID", ID);
 
             command.Connection = connection;
@@ -202,8 +212,9 @@ namespace DAO
 
             return listF;
         }
-        
-        //Pronto
+        #endregion
+
+        #region lerTodos
         public List<Funcionario> LerTodos()
         {
             string ConnectionString = Parametros.GetConnectionString();
@@ -211,7 +222,7 @@ namespace DAO
             connection.ConnectionString = ConnectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = "SELECT * FROM FUNCIONARIOS";
+            command.CommandText = "SELECT * FROM FUNCIONARIOS WHERE EHATIVO = 1";
 
             command.Connection = connection;
             List<Funcionario> listFunc = new List<Funcionario>();
@@ -246,9 +257,8 @@ namespace DAO
                 connection.Dispose();
             }
             return listFunc;
-
         }
+        #endregion
 
-        
     }
 }
