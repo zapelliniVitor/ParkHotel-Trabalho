@@ -1,6 +1,6 @@
 ﻿namespace WFPresentationLayer
 {
-    partial class FormCadastroFuncionario
+    partial class FormManutençãoFuncionario
     {
         /// <summary>
         /// Required designer variable.

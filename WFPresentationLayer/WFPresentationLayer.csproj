@@ -46,25 +46,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormCadastroCliente.cs">
+    <Compile Include="FormManutençãoCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCadastroCliente.Designer.cs">
-      <DependentUpon>FormCadastroCliente.cs</DependentUpon>
+    <Compile Include="FormManutençãoCliente.Designer.cs">
+      <DependentUpon>FormManutençãoCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCadastroFuncionario.cs">
+    <Compile Include="FormManutençãoFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCadastroFuncionario.Designer.cs">
-      <DependentUpon>FormCadastroFuncionario.cs</DependentUpon>
+    <Compile Include="FormManutençãoFuncionario.Designer.cs">
+      <DependentUpon>FormManutençãoFuncionario.cs</DependentUpon>
     </Compile>
     <Compile Include="FormCleaner.cs" />
-    <Compile Include="FormLogin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormManutençãoProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,13 +83,19 @@
     <Compile Include="FormPesquisaFuncionario.Designer.cs">
       <DependentUpon>FormPesquisaFuncionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPesquisaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPesquisaProduto.Designer.cs">
+      <DependentUpon>FormPesquisaProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormCadastroCliente.resx">
-      <DependentUpon>FormCadastroCliente.cs</DependentUpon>
+    <EmbeddedResource Include="FormManutençãoCliente.resx">
+      <DependentUpon>FormManutençãoCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCadastroFuncionario.resx">
-      <DependentUpon>FormCadastroFuncionario.cs</DependentUpon>
+    <EmbeddedResource Include="FormManutençãoFuncionario.resx">
+      <DependentUpon>FormManutençãoFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormManutençãoProduto.resx">
       <DependentUpon>FormManutençãoProduto.cs</DependentUpon>
@@ -105,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPesquisaFuncionario.resx">
       <DependentUpon>FormPesquisaFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPesquisaProduto.resx">
+      <DependentUpon>FormPesquisaProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

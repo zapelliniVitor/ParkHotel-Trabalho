@@ -159,7 +159,7 @@ namespace DAO
             return new DbResponse<int>
             {
                 Dados = id,
-                Mensagem = "Funcionário removido com sucesso",
+                Mensagem = "Funcionário desligado com sucesso",
                 Sucesso = true,
             };
         }
@@ -208,8 +208,6 @@ namespace DAO
             {
                 connection.Dispose();
             }
-
-
             return listF;
         }
         #endregion

@@ -105,55 +105,45 @@ namespace DAO
         #endregion
 
         #region LerPorID
-        public DbResponse<Produto> LerPorID(int ID)
+        public List<Produto> LerPorID(int ID)
         {
+            string connectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.ConnectionString = connectionString;
 
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM PRODUTOS WHERE ID = @ID";
-
+            SqlCommand command = new SqlCommand();
+            command.CommandText = @"SELECT * FROM PRODUTOS WHERE ID = @ID";
             command.Parameters.AddWithValue("@ID", ID);
 
-            Produto prod = new Produto();
+            command.Connection = connection;
+
+            List<Produto> list = new List<Produto>();
+
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    prod.ID = (int)reader["ID"];
-                    prod.Nome = (string)reader["NOME"];
-                    prod.Descricao = (string)reader["DESCRICAO"];
-                    prod.PrecoVenda = (double)reader["PRECOVENDA"];
-                    prod.quantidadeEstoque = (int)reader["ESTOQUE_QUANTIDADES"];
-                    return new DbResponse<Produto>
-                    {
-                        Sucesso = true,
-                        Mensagem = "Produto encontrado",
-                        Dados = prod
-                    };
+                    int id = (int)reader["ID"];
+                    string Nome = (string)reader["NOME"];
+                    string descricao = (string)reader["DESCRICAO"];
+                    double precoVenda = (double)reader["PRECOVENDA"];
+                    int qEstoque = (int)reader["ESTOQUE_QUANTIDADE"];
+
+                    Produto produto = new Produto(id, Nome, descricao, precoVenda, qEstoque);
+                    list.Add(produto);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return new DbResponse<Produto>
-                {
-                    Sucesso = false,
-                    Mensagem = "Banco de dados indisponível",
-                    Excessao = ex
-                };
+                throw new Exception("Erro no banco de dados, favor contatar suporte.");
             }
             finally
             {
                 connection.Dispose();
             }
-            return new DbResponse<Produto>
-            {
-                Sucesso = false,
-                Mensagem = "Produto não encontrado",
-            };
+            return list;
         }
         #endregion
 
@@ -201,6 +191,43 @@ namespace DAO
                 Sucesso = true,
                 Mensagem = "Produtos recebidos",
                 Dados = ListProd
+            };
+        }
+        #endregion
+
+        #region Delete
+        public DbResponse<int> Delete(int id)
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+            SqlCommand command = new SqlCommand(connection.ToString());
+
+            command.CommandText = @"DELETE FROM PRODUTOS WHERE ID = @ID";
+            command.Parameters.AddWithValue("@ID", id);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<int>
+                {
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível",
+                    Sucesso = false,
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<int>
+            {
+                Dados = id,
+                Mensagem = "Produto excluido com sucesso",
+                Sucesso = true,
             };
         }
         #endregion

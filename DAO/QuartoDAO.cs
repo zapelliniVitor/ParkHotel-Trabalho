@@ -85,8 +85,9 @@ namespace DAO
                     double preco = (double)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
+                    int nQuarto = (int)reader["N_QUARTO"];
 
-                    Quarto qua = new Quarto(id, tipoQuarto, preco, statusQuarto, descricaoQuarto);
+                    Quarto qua = new Quarto(id, tipoQuarto, preco, statusQuarto, descricaoQuarto, nQuarto);
                     listQua.Add(qua);
                 }
 
@@ -192,6 +193,51 @@ namespace DAO
                 Mensagem = "Quarto atualizado com sucesso",
                 Sucesso = true,
             };
+        }
+        #endregion
+
+        #region Read ID
+        public List<Quarto> LerPorID(int ID)
+        {
+            string connectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.ConnectionString = connectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = @"SELECT * FROM QUARTOS WHERE ID = @ID";
+            command.Parameters.AddWithValue("@ID", ID);
+
+            command.Connection = connection;
+
+            List<Quarto> list = new List<Quarto>();
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    int tipoQuarto = (int)reader["TIPO_QUARTO"];
+                    double preco = (double)reader["PRECO"];
+                    int statusQuarto = (int)reader["STATUSQUARTO"];
+                    string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
+                    int nQuarto = (int)reader["N_QUARTO"];
+
+                    Quarto quarto = new Quarto(id, tipoQuarto, preco, statusQuarto, descricaoQuarto, nQuarto);
+                    list.Add(quarto);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+
+            return list;
         }
         #endregion
 

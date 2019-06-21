@@ -21,8 +21,6 @@ namespace WFPresentationLayer
 
         private void btnCadastro_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text;
-            string Descricao = rtxtDescricao.Text;
             double Preco = 0;
             int Quantidade = 0;
 
@@ -37,15 +35,13 @@ namespace WFPresentationLayer
                 return;
             }
             
-            Produto prod = new Produto(nome, Descricao, Preco, Quantidade);
+            Produto prod = new Produto(txtNome.Text, rtxtDescricao.Text, Preco, Quantidade);
             MessageBox.Show(new ProdutoBLL().Inserir(prod));
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(txtID.Text);
-            string nome = txtNome.Text;
-            string Descricao = rtxtDescricao.Text;
             double Preco = 0;
             int Quantidade = 0;
 
@@ -60,13 +56,18 @@ namespace WFPresentationLayer
                 return;
             }
 
-            Produto prod = new Produto(id, nome, Descricao, Preco, Quantidade);
+            Produto prod = new Produto(id, txtNome.Text, rtxtDescricao.Text, Preco, Quantidade);
             MessageBox.Show(new ProdutoBLL().Atualizar(prod));
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-
+            if (txtID.Text == null)
+            {
+                MessageBox.Show("Selecione um produto a ser excluido.");
+                return;
+            }
+            MessageBox.Show(new ProdutoBLL().delete(Convert.ToInt32(txtID.Text)));
         }
     }
 }

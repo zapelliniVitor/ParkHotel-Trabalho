@@ -28,10 +28,7 @@ namespace WFPresentationLayer
                     ComboBox cmb = (ComboBox)item;
                     cmb.SelectedItem = -1;
                 }
-
-
             }
         }
-
     }
 }

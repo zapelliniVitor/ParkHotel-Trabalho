@@ -47,7 +47,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(11, 296);
+            this.btnExcluir.Location = new System.Drawing.Point(12, 257);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(230, 42);
             this.btnExcluir.TabIndex = 54;
@@ -59,18 +59,18 @@
             // 
             this.DGVProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVProdutos.Location = new System.Drawing.Point(274, 12);
+            this.DGVProdutos.Location = new System.Drawing.Point(265, 12);
             this.DGVProdutos.Name = "DGVProdutos";
             this.DGVProdutos.ReadOnly = true;
             this.DGVProdutos.RowHeadersVisible = false;
             this.DGVProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVProdutos.Size = new System.Drawing.Size(552, 326);
+            this.DGVProdutos.Size = new System.Drawing.Size(561, 287);
             this.DGVProdutos.TabIndex = 53;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(78, 158);
+            this.label7.Location = new System.Drawing.Point(138, 95);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 13);
             this.label7.TabIndex = 52;
@@ -78,7 +78,7 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(73, 174);
+            this.txtID.Location = new System.Drawing.Point(133, 111);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 20);
@@ -86,7 +86,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(11, 248);
+            this.btnAtualizar.Location = new System.Drawing.Point(12, 209);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(230, 42);
             this.btnAtualizar.TabIndex = 50;
@@ -96,7 +96,7 @@
             // 
             // btnCadastro
             // 
-            this.btnCadastro.Location = new System.Drawing.Point(11, 200);
+            this.btnCadastro.Location = new System.Drawing.Point(12, 161);
             this.btnCadastro.Name = "btnCadastro";
             this.btnCadastro.Size = new System.Drawing.Size(230, 42);
             this.btnCadastro.TabIndex = 49;
@@ -173,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 365);
+            this.ClientSize = new System.Drawing.Size(866, 314);
             this.Controls.Add(this.rtxtDescricao);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPreco);

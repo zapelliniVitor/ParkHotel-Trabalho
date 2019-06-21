@@ -10,13 +10,11 @@ namespace BLL
 {
      public class ProdutoBLL
     {
+        ProdutoDAO dao = new ProdutoDAO();
+
         #region Atualizar
         public string Atualizar(Produto prod)
         {
-            if (!new ProdutoDAO().LerPorID(prod.ID).Sucesso)
-            {
-                return "Produto inexistente";
-            }
             List<string> erros = new List<string>();
 
             #region Nome
@@ -73,7 +71,7 @@ namespace BLL
                 return builder.ToString();
             }
 
-            return new ProdutoDAO().Atualizar(prod).Mensagem;
+            return dao.Atualizar(prod).Mensagem;
         }
         #endregion
 
@@ -137,21 +135,26 @@ namespace BLL
                 return builder.ToString();
             }
 
-            return new ProdutoDAO().Inserir(prod).Mensagem;
+            return dao.Inserir(prod).Mensagem;
         }
         #endregion
 
-        #region LerPorID
-        public string LerPorID(int ID)
+        public string delete(int id)
         {
-            throw new NotImplementedException();
+            return dao.Delete(id).Mensagem;
+        }
+
+        #region LerPorID
+        public List<Produto> LerPorID(int ID)
+        {
+            return dao.LerPorID(ID);
         }
         #endregion
 
         #region LerTodos
         public List<Produto> LerTodos()
         {
-            return new ProdutoDAO().LerTodos().Dados;
+            return dao.LerTodos().Dados;
         }
         #endregion
     }

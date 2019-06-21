@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace WFPresentationLayer
 {
-    public partial class FormCadastroFuncionario : Form
+    public partial class FormManutençãoFuncionario : Form
     {
-        public FormCadastroFuncionario()
+        public FormManutençãoFuncionario()
         {
             InitializeComponent();
             txtID.Enabled = false;

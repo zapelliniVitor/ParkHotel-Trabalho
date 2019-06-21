@@ -18,23 +18,31 @@ namespace WFPresentationLayer
 
         }
 
-        private void inserirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void funcionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCadastroFuncionario frm = new FormCadastroFuncionario();
+            FormManutençãoFuncionario frm = new FormManutençãoFuncionario();
             this.Hide();
             frm.ShowDialog();
             this.Show();
         }
 
-        private void manutençãoClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCadastroCliente frm = new FormCadastroCliente();
+            FormManutençãoCliente frm = new FormManutençãoCliente();
             this.Hide();
             frm.ShowDialog();
             this.Show();
         }
 
-        private void pesquisarFuncionarioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormManutençãoProduto frm = new FormManutençãoProduto();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPesquisaFuncionario frm = new FormPesquisaFuncionario();
             this.Hide();
@@ -42,17 +50,9 @@ namespace WFPresentationLayer
             this.Show();
         }
 
-        private void PesquisarClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormPesquisaCliente frm = new FormPesquisaCliente();
-            this.Hide();
-            frm.ShowDialog();
-            this.Show();
-        }
-
-        private void manutençãoProdutosToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            FormManutençãoProduto frm = new FormManutençãoProduto();
             this.Hide();
             frm.ShowDialog();
             this.Show();

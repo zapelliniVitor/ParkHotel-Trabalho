@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace WFPresentationLayer
 {
-    public partial class FormCadastroCliente : Form
+    public partial class FormManutençãoCliente : Form
     {
-        public FormCadastroCliente()
+        public FormManutençãoCliente()
         {
             InitializeComponent();
             DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();

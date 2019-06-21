@@ -14,11 +14,6 @@ namespace BLL
         #region Atualizar
         public string Atualizar(Cliente cli)
         {
-            cli.EhAtivo = true;
-            if(!new ClienteDAO().LerPorID(cli.ID).Sucesso)
-            {
-                return "Cliente inexistente";
-            }
             List<string> erros = new List<string>();
 
             #region Nome
@@ -349,23 +344,10 @@ namespace BLL
         #endregion
 
         #region Excluir
-        public string Excluir(int id)
+        public List<Cliente> Excluir(int id)
         {
-            if (!new ClienteDAO().LerPorID(id).Sucesso)
-            {
-                return "Cliente inexistente";
-            }
-
-            if(!new ClienteDAO().Excluir(id).Sucesso)
-            {
-                return "Banco de dados indispoível";
-            }
-            else
-            {
-                return "Cliente excluído com sucesso";
-            }
-            #endregion
-            //teste
+            return new ClienteDAO().LerPorID(id);
         }
+        #endregion
     }
 }

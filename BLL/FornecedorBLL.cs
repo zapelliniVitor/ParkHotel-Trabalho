@@ -284,9 +284,9 @@ namespace BLL
         }
 
         //Ler por ID
-    //    public string lerPorId(Fornecedor f)
-    //    {
-    //       // return dao.LerPorID(f.ID);
-    //    }
+        public List<Fornecedor> lerPorId(int id)
+        {
+            return dao.LerPorID(id);
+        }
     }
 }

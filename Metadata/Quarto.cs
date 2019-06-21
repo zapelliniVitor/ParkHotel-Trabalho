@@ -13,26 +13,28 @@ namespace Metadata
         public double PrecoQuarto { get; set; }
         public int StatusQuarto { get; set; }
         public string DescriçãoQuarto { get; set; }
+        public int n_Quarto { get; set; }
+
 
         //Com ID
-        public Quarto(int id, int tipoQuarto, double precoQuarto, int statusQuarto, string descricaoQuarto)
+        public Quarto(int id, int tipoQuarto, double precoQuarto, int statusQuarto, string descricaoQuarto, int nQuarto)
         {
             this.ID = id;
             this.TipoQuarto = tipoQuarto;
             this.PrecoQuarto = precoQuarto;
             this.StatusQuarto = statusQuarto;
             this.DescriçãoQuarto = descricaoQuarto;
+            this.n_Quarto = nQuarto;
         }
 
         //Sem ID
-        public Quarto(int tipoQuarto, double precoQuarto, int statusQuarto, string descricaoQuarto)
+        public Quarto(int tipoQuarto, double precoQuarto, int statusQuarto, string descricaoQuarto, int nQuarto)
         {
             this.TipoQuarto = tipoQuarto;
             this.PrecoQuarto = precoQuarto;
             this.StatusQuarto = statusQuarto;
             this.DescriçãoQuarto = descricaoQuarto;
+            this.n_Quarto = nQuarto;
         }
-
-
     }
 }

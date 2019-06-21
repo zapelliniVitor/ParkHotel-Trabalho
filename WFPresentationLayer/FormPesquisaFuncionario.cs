@@ -29,6 +29,7 @@ namespace WFPresentationLayer
         {
             dgvFuncionario.DataSource = null;
             dgvFuncionario.DataSource = bll.lerPorId(Convert.ToInt32(txtID.Text));
+            FormCleaner.Clear(this);
         }
     }
 }

@@ -115,57 +115,46 @@ namespace DAO
         #endregion
 
         #region LerPorID
-        public DbResponse<Fornecedor> LerPorID(int ID)
+        public List<Fornecedor> LerPorID(int ID)
         {
+            string connectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.ConnectionString = connectionString;
 
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand(connection.ToString());
-            command.CommandText = "SELECT * FROM FORNECEDORES WHERE ID = @ID";
-
+            SqlCommand command = new SqlCommand();
+            command.CommandText = @"SELECT * FROM FORNECEDOR WHERE ID = @ID";
             command.Parameters.AddWithValue("@ID", ID);
-            List<Funcionario> listF = new List<Funcionario>();
 
-            Fornecedor f = new Fornecedor();
+            command.Connection = connection;
+
+            List<Fornecedor> list = new List<Fornecedor>();
+
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    f.ID = (int)reader["ID"];
-                    f.RazaoSocial = (string)reader["RAZAOSOCIAL"];
-                    f.CNPJ = (string)reader["CNPJ"];
-                    f.NomeContato = (string)reader["NOMECONTATO"];
-                    f.Telefone = (string)reader["TELEFONE"];
-                    f.Email = (string)reader["EMAIL"];
-                    return new DbResponse<Fornecedor>
-                    {
-                        Sucesso = true,
-                        Mensagem = "Fornecedor encontrado",
-                        Dados = f
-                    };
+                    int id = (int)reader["ID"];
+                    string razaoSocial = (string)reader["RAZAOSOCIAL"];
+                    string cnpj = (string)reader["CNPJ"];
+                    string nomeContato = (string)reader["NOMECONTATO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+
+                    Fornecedor fornecedor = new Fornecedor(id, nomeContato, razaoSocial, cnpj, Telefone, Email);
+                    list.Add(fornecedor);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return new DbResponse<Fornecedor>
-                {
-                    Sucesso = false,
-                    Mensagem = "Banco de dados indisponível",
-                    Excessao = ex
-                };
+                throw new Exception("Erro no banco de dados, favor contate o suporte");
             }
             finally
             {
                 connection.Dispose();
             }
-            return new DbResponse<Fornecedor>
-            {
-                Sucesso = true,
-                Mensagem = "fornecedor encontrado.",
-            };
+            return list;
         }
         #endregion
 
@@ -211,6 +200,45 @@ namespace DAO
             };
         }
         #endregion
+
+        #region Delete
+        public DbResponse<int> Delete(int id)
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand(connection.ToString());
+
+            command.CommandText = @"UPDATE FORNECEDORES SET EHATIVO = @EHATIVO WHERE  ID = " + id;
+            command.Parameters.AddWithValue("@EHATIVO", false);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<int>
+                {
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível",
+                    Sucesso = false,
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<int>
+            {
+                Dados = id,
+                Mensagem = "Fornecedor desligado com sucesso",
+                Sucesso = true,
+            };
+        }
+        #endregion
+
 
     }
 }

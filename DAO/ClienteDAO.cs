@@ -108,57 +108,49 @@ namespace DAO
         #endregion
 
         #region LerPorID
-        public DbResponse<Cliente> LerPorID(int ID)
+        public List<Cliente> LerPorID(int ID)
         {
+            string connectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.ConnectionString = connectionString;
 
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE ID = @ID";
-
+            SqlCommand command = new SqlCommand();
+            command.CommandText = @"SELECT * FROM CLIENTES WHERE ID = @ID";
             command.Parameters.AddWithValue("@ID", ID);
 
-            Cliente cli = new Cliente();
+            command.Connection = connection;
+
+            List<Cliente> list = new List<Cliente>();
+
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                while (reader.Read())
                 {
-                    cli.ID = (int)reader["ID"];
-                    cli.Nome = (string)reader["NOME"];
-                    cli.CPF = (string)reader["CPF"];
-                    cli.RG = (string)reader["RG"];
-                    cli.Telefone1 = (string)reader["TELEFONE1"];
-                    cli.Telefone2 = (string)reader["TELEFONE2"];
-                    cli.Email = (string)reader["EMAIL"];
-                    return new DbResponse<Cliente>
-                    {
-                        Sucesso = true,
-                        Mensagem = "Cliente encontrado",
-                        Dados = cli
-                    };
+                    int id = (int)reader["ID"];
+                    string Nome = (string)reader["NOME"];
+                    string CPF = (string)reader["CPF"];
+                    string RG = (string)reader["RG"];
+                    string Endereco = (string)reader["ENDERECO"];
+                    string Telefone1 = (string)reader["TELEFONE1"];
+                    string Telefone2 = (string)reader["TELEFONE2"];
+                    string Email = (string)reader["EMAIL"];
+                    bool EhAtivo = (bool)reader["EHADMIN"];
+
+                    Cliente cliente = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email);
+                    list.Add(cliente);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return new DbResponse<Cliente>
-                {
-                    Sucesso = false,
-                    Mensagem = "Banco de dados indisponível",
-                    Excessao = ex
-                };
+                throw new Exception("Erro no banco de dados, favor contate o admin.");
             }
             finally
             {
                 connection.Dispose();
             }
-            return new DbResponse<Cliente>
-            {
-                Sucesso = false,
-                Mensagem = "Cliente não encontrado",
-            };
+            return list;
         }
         #endregion
 
@@ -267,7 +259,7 @@ namespace DAO
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
-            SqlCommand command = new SqlCommand("", connection);
+            SqlCommand command = new SqlCommand(connection.ToString());
 
             command.CommandText = @"UPDATE CLIENTES SET EHATIVO = @EHATIVO WHERE  ID = " + id;
             command.Parameters.AddWithValue("@EHATIVO", false);
@@ -294,7 +286,7 @@ namespace DAO
             return new DbResponse<int>
             {
                 Dados = id,
-                Mensagem = "Cliente removido com sucesso",
+                Mensagem = "Cliente desligado com sucesso",
                 Sucesso = true,
             };
         }
