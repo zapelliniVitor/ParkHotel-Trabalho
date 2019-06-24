@@ -69,7 +69,7 @@ namespace BLL
                 {
                     for (int i = 0; i < f.RazaoSocial.Length; i++)
                     {
-                        if (char.IsNumber(f.RazaoSocial[i]) && f.RazaoSocial[i] != ' ');
+                        if (char.IsNumber(f.RazaoSocial[i]) && f.RazaoSocial[i] != ' ')
                         {
                             char c = f.RazaoSocial[i];
                             erros.Add("Razão social inválido.");
