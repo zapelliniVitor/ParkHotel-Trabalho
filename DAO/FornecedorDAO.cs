@@ -20,8 +20,8 @@ namespace DAO
 
             SqlCommand command = new SqlCommand(connectionString);
 
-            command.CommandText = @"INSERT INTO FUNCIONARIOS (RAZAOSOCIAL, CNPJ, NOMECONTATO, TELEFONE, EMAIL) VALUES
-                                  (@RAZAOSOCIAL, @CNPJ, @NOMECONTATO, @TELEFONE, @EMAIL);";
+            command.CommandText = @"INSERT INTO FORNECEDORES (RAZAOSOCIAL, CNPJ, NOMECONTATO, TELEFONE, EMAIL) VALUES
+                                  (@RAZAOSOCIAL, @CNPJ, @NOMECONTATO, @TELEFONE, @EMAIL); select scope_identity()";
             command.Parameters.AddWithValue("@RAZAOSOCIAL", f.RazaoSocial);
             command.Parameters.AddWithValue("@CNPJ", f.CNPJ);
             command.Parameters.AddWithValue("@NOMECONTATO", f.NomeContato);
@@ -33,7 +33,7 @@ namespace DAO
             try
             {
                 connection.Open();
-                idInserida = Convert.ToInt32(command.ExecuteNonQuery());
+                idInserida = command.ExecuteNonQuery();
 
             }
             catch (Exception EX)
