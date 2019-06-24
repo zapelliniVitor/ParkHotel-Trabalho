@@ -108,7 +108,7 @@ namespace DAO
         #endregion
 
         #region LerPorID
-        public List<Cliente> LerPorID(int ID)
+        public DbResponse<Cliente> LerPorID(int ID)
         {
             string connectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection(connectionString);
@@ -118,15 +118,12 @@ namespace DAO
             command.CommandText = @"SELECT * FROM CLIENTES WHERE ID = @ID";
             command.Parameters.AddWithValue("@ID", ID);
 
-            command.Connection = connection;
-
-            List<Cliente> list = new List<Cliente>();
-
+            
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                if(reader.Read())
                 {
                     int id = (int)reader["ID"];
                     string Nome = (string)reader["NOME"];
@@ -138,19 +135,37 @@ namespace DAO
                     string Email = (string)reader["EMAIL"];
                     bool EhAtivo = (bool)reader["EHADMIN"];
 
-                    Cliente cliente = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email);
-                    list.Add(cliente);
+                    return new DbResponse<Cliente>
+                    {
+                        Mensagem = "Cliente encontrado",
+                        Sucesso = true,
+                        Dados = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email)
+                    };
+                        
+                }
+                else
+                {
+                    return new DbResponse<Cliente>
+                    {
+                        Mensagem = "Cliente inexistente",
+                        Sucesso = true,
+                    };
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Erro no banco de dados, favor contate o admin.");
+                return new DbResponse<Cliente>
+                {
+                    Mensagem = "Banco de dados indisponível",
+                    Sucesso = false,
+                    Excessao = ex
+                };
             }
             finally
             {
                 connection.Dispose();
             }
-            return list;
+            
         }
         #endregion
 
