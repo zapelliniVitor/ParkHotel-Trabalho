@@ -72,7 +72,7 @@ namespace DAO
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
-            SqlCommand command = new SqlCommand(connection.ToString());
+            SqlCommand command = new SqlCommand("",connection);
             command.CommandText = "SELECT * FROM FORNECEDORES";
 
             List<Fornecedor> listF = new List<Fornecedor>();

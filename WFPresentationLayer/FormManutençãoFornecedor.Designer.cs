@@ -34,9 +34,9 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textEmail = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textContato = new System.Windows.Forms.TextBox();
+            this.txtContato = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtRSocial = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -61,8 +61,11 @@
             this.dgvFornecedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFornecedores.Location = new System.Drawing.Point(288, 12);
             this.dgvFornecedores.Name = "dgvFornecedores";
+            this.dgvFornecedores.ReadOnly = true;
+            this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFornecedores.Size = new System.Drawing.Size(358, 173);
             this.dgvFornecedores.TabIndex = 3;
+            this.dgvFornecedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFornecedores_CellDoubleClick);
             // 
             // label1
             // 
@@ -99,12 +102,12 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Telefone";
             // 
-            // textEmail
+            // txtEmail
             // 
-            this.textEmail.Location = new System.Drawing.Point(118, 107);
-            this.textEmail.Name = "textEmail";
-            this.textEmail.Size = new System.Drawing.Size(164, 20);
-            this.textEmail.TabIndex = 15;
+            this.txtEmail.Location = new System.Drawing.Point(118, 107);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(164, 20);
+            this.txtEmail.TabIndex = 15;
             // 
             // label4
             // 
@@ -115,12 +118,12 @@
             this.label4.TabIndex = 14;
             this.label4.Text = "E-mail";
             // 
-            // textContato
+            // txtContato
             // 
-            this.textContato.Location = new System.Drawing.Point(118, 65);
-            this.textContato.Name = "textContato";
-            this.textContato.Size = new System.Drawing.Size(164, 20);
-            this.textContato.TabIndex = 13;
+            this.txtContato.Location = new System.Drawing.Point(118, 65);
+            this.txtContato.Name = "txtContato";
+            this.txtContato.Size = new System.Drawing.Size(164, 20);
+            this.txtContato.TabIndex = 13;
             // 
             // label5
             // 
@@ -181,9 +184,9 @@
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.mtxtTelefone);
             this.Controls.Add(this.mtxtCnpj);
-            this.Controls.Add(this.textEmail);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textContato);
+            this.Controls.Add(this.txtContato);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtRSocial);
             this.Controls.Add(this.label6);
@@ -209,9 +212,9 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textEmail;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textContato;
+        private System.Windows.Forms.TextBox txtContato;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRSocial;
         private System.Windows.Forms.Label label6;
