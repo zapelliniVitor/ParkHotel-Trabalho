@@ -294,11 +294,7 @@ namespace BLL
         #region LerPorID
         public string LerPorID(int ID)
         {
-            if(ID < 0)
-            {
-                return "ID Inválido";
-            }
-            return new ClienteDAO().LerPorID(ID).Mensagem;
+            throw new NotImplementedException();
         }
         #endregion
 
@@ -348,9 +344,9 @@ namespace BLL
         #endregion
 
         #region Excluir
-        public string Excluir(int id)
+        public List<Cliente> Excluir(int id)
         {
-            return new ClienteDAO().Excluir(id).Mensagem;
+            return new ClienteDAO().LerPorID(id);
         }
         #endregion
     }
