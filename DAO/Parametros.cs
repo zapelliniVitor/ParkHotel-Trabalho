@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metadata;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +16,9 @@ namespace DAO
 
             //return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\ParkHotelHomeEdition.mdf;Integrated Security=True;Connect Timeout=30";
         }
+
+        
+            public static FuncionarioLogado Funcionario { get; set; }
+        
     }
 }
