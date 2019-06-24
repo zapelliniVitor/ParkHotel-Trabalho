@@ -162,8 +162,8 @@ namespace WFPresentationLayer
             Funcionario f = new Funcionario(Convert.ToInt32(txtID.Text),txtNomeFuncionario.Text, mtxtCPFFuncionario.Text, mtxtRGFuncionario.Text,
                                         endereco, mtxtTelefoneFuncionario.Text, txtEmailFuncionario.Text, txtSenhaFuncionario.Text,
                                         ehAdmin, ehAtivo);
-            string menssagem = new FuncionarioBLL().atualizarFuncionario(f);
-            MessageBox.Show(menssagem);
+             ;
+            MessageBox.Show(new FuncionarioBLL().atualizarFuncionario(f));
             dgvFuncionarios.DataSource = null;
             dgvFuncionarios.DataSource = bll.LerTodos();
             FormCleaner.Clear(this);

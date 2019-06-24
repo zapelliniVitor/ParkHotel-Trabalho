@@ -57,5 +57,21 @@ namespace WFPresentationLayer
             frm.ShowDialog();
             this.Show();
         }
+
+        private void quartosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormManutençãoQuarto frm = new FormManutençãoQuarto();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void fornecedorToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormManutençãoFornecedor frm = new FormManutençãoFornecedor();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
     }
 }

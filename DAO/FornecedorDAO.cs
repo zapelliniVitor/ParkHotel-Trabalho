@@ -21,12 +21,14 @@ namespace DAO
             SqlCommand command = new SqlCommand(connectionString);
 
             command.CommandText = @"INSERT INTO FUNCIONARIOS (RAZAOSOCIAL, CNPJ, NOMECONTATO, TELEFONE, EMAIL) VALUES
-                                  (@RAZAOSOCIAL, @CNPJ, @NOMECONTATO, @TELEFONE, @EMAIL); select scope_identity()";
+                                  (@RAZAOSOCIAL, @CNPJ, @NOMECONTATO, @TELEFONE, @EMAIL);";
             command.Parameters.AddWithValue("@RAZAOSOCIAL", f.RazaoSocial);
             command.Parameters.AddWithValue("@CNPJ", f.CNPJ);
             command.Parameters.AddWithValue("@NOMECONTATO", f.NomeContato);
             command.Parameters.AddWithValue("@TELEFONE", f.Telefone);
             command.Parameters.AddWithValue("@EMAIL", f.Email);
+
+            command.Connection = connection;
 
             try
             {

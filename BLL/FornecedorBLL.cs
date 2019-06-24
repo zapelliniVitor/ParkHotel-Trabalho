@@ -48,7 +48,7 @@ namespace BLL
             return cnpj.EndsWith(digito);
         }
 
-        //Cadastrar novo ornecedor
+        //Cadastrar novo fornecedor
         public string cadastrarFornecedor(Fornecedor f)
         {
             List<string> erros = new List<string>();
@@ -69,8 +69,9 @@ namespace BLL
                 {
                     for (int i = 0; i < f.RazaoSocial.Length; i++)
                     {
-                        if (!char.IsLetter(f.RazaoSocial[i]) && f.RazaoSocial[i] != ' ')
+                        if (char.IsNumber(f.RazaoSocial[i]) && f.RazaoSocial[i] != ' ');
                         {
+                            char c = f.RazaoSocial[i];
                             erros.Add("Razão social inválido.");
                             break;
                         }
