@@ -61,7 +61,7 @@ namespace BLL
             else
             {
                 f.RazaoSocial = f.RazaoSocial.Trim();
-                if (f.RazaoSocial.Length < 3 || f.RazaoSocial.Length > 60)
+                if (f.RazaoSocial.Length < 5 || f.RazaoSocial.Length > 50)
                 {
                     erros.Add("Razão social deve conter entre 5 e 50 caracteres.");
                 }
@@ -69,7 +69,7 @@ namespace BLL
                 {
                     for (int i = 0; i < f.RazaoSocial.Length; i++)
                     {
-                        if (char.IsNumber(f.RazaoSocial[i]) && f.RazaoSocial[i] != ' ')
+                        if (!char.IsLetter(f.RazaoSocial[i]) && f.RazaoSocial[i] != ' ')
                         {
                             char c = f.RazaoSocial[i];
                             erros.Add("Razão social inválido.");

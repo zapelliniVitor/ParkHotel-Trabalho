@@ -20,13 +20,16 @@ namespace DAO
 
             SqlCommand command = new SqlCommand(connectionString);
 
-            command.CommandText = @"INSERT INTO QUARTOS (TIPO_QUARTO, PRECO, STATUSQUARTO, DESCRICAO_QUARTO) VALUES
-                                  (@TIPO_QUARTO, @PRECO, @STATUSQUARTO, @DESCRICAO_QUARTO); select scope_identity()";
+            command.CommandText = @"INSERT INTO QUARTOS (TIPO_QUARTO, PRECO, STATUSQUARTO, DESCRICAO_QUARTO, N_QUARTO) VALUES
+                                  (@TIPO_QUARTO, @PRECO, @STATUSQUARTO, @DESCRICAO_QUARTO, @N_QUARTO); select scope_identity()";
             command.Parameters.AddWithValue("@TIPO_QUARTO", q.TipoQuarto);
             command.Parameters.AddWithValue("@PRECO", q.PrecoQuarto);
             command.Parameters.AddWithValue("@STATUSQUARTO", q.StatusQuarto);
             command.Parameters.AddWithValue("@DESCRICAO_QUARTO", q.DescriçãoQuarto);
+            command.Parameters.AddWithValue("@N_QUARTO", q.n_Quarto);
 
+
+            command.Connection = connection;
 
             try
             {
@@ -71,9 +74,10 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand(connection.ToString());
-            command.CommandText = "SELECT * FROM QUARTOS WHERE";
+            command.CommandText = "SELECT * FROM QUARTOS";
 
             List<Quarto> listQua = new List<Quarto>();
+            command.Connection = connection;
             try
             {
                 connection.Open();
@@ -159,15 +163,19 @@ namespace DAO
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
-            SqlCommand command = new SqlCommand("", connection);
+            SqlCommand command = new SqlCommand(connection.ToString());
 
-            command.CommandText = @"UPDATE CLIENTES SET TIPO_QUARTO = @TIPO_QUARTO, PRECO = @PRECO, STATUSQUARTO = @STATUSQUARTO, DESCRICAO_QUARTO = @DESCRICAO_QUARTO WHERE  ID = " + q.ID;
-            command.Parameters.AddWithValue("@", q.TipoQuarto);
-            command.Parameters.AddWithValue("@", q.PrecoQuarto);
-            command.Parameters.AddWithValue("@", q.StatusQuarto);
-            command.Parameters.AddWithValue("@", q.DescriçãoQuarto);
+            command.CommandText = @"UPDATE QUARTOS SET TIPO_QUARTO = @TIPO_QUARTO, PRECO = @PRECO, STATUSQUARTO = @STATUSQUARTO, 
+                                   DESCRICAO_QUARTO = @DESCRICAO_QUARTO, N_QUARTO = @N_QUARTO WHERE ID = @ID";
+            command.Parameters.AddWithValue("@TIPO_QUARTO", q.TipoQuarto);
+            command.Parameters.AddWithValue("@PRECO", q.PrecoQuarto);
+            command.Parameters.AddWithValue("@STATUSQUARTO", q.StatusQuarto);
+            command.Parameters.AddWithValue("@DESCRICAO_QUARTO", q.DescriçãoQuarto);
+            command.Parameters.AddWithValue("@N_QUARTO", q.n_Quarto);
+            command.Parameters.AddWithValue("@ID", q.ID);
 
 
+            command.Connection = connection;
             try
             {
                 connection.Open();

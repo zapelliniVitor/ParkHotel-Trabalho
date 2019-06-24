@@ -108,7 +108,7 @@ namespace DAO
         #endregion
 
         #region LerPorID
-        public DbResponse<Cliente> LerPorID(int ID)
+        public List<Cliente> LerPorID(int ID)
         {
             string connectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection(connectionString);
@@ -118,12 +118,15 @@ namespace DAO
             command.CommandText = @"SELECT * FROM CLIENTES WHERE ID = @ID";
             command.Parameters.AddWithValue("@ID", ID);
 
-            
+            command.Connection = connection;
+
+            List<Cliente> list = new List<Cliente>();
+
             try
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader();
-                if(reader.Read())
+                while (reader.Read())
                 {
                     int id = (int)reader["ID"];
                     string Nome = (string)reader["NOME"];
@@ -135,37 +138,19 @@ namespace DAO
                     string Email = (string)reader["EMAIL"];
                     bool EhAtivo = (bool)reader["EHADMIN"];
 
-                    return new DbResponse<Cliente>
-                    {
-                        Mensagem = "Cliente encontrado",
-                        Sucesso = true,
-                        Dados = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email)
-                    };
-                        
-                }
-                else
-                {
-                    return new DbResponse<Cliente>
-                    {
-                        Mensagem = "Cliente inexistente",
-                        Sucesso = true,
-                    };
+                    Cliente cliente = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email);
+                    list.Add(cliente);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                return new DbResponse<Cliente>
-                {
-                    Mensagem = "Banco de dados indisponível",
-                    Sucesso = false,
-                    Excessao = ex
-                };
+                throw new Exception("Erro no banco de dados, favor contate o admin.");
             }
             finally
             {
                 connection.Dispose();
             }
-            
+            return list;
         }
         #endregion
 
