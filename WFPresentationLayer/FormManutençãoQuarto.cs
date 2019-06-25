@@ -75,10 +75,7 @@ namespace WFPresentationLayer
             }
             #endregion
 
-            double preco = 0;
-           
-
-            Quarto quarto = new Quarto(tipoQuarto, preco, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
+            Quarto quarto = new Quarto(tipoQuarto, txtPreco.Text, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
             MessageBox.Show(bll.CadastrarQuarto(quarto));
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
@@ -140,17 +137,18 @@ namespace WFPresentationLayer
                 }
             }
 
-            Quarto quarto = new Quarto(tipoQuarto, preco, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
+            Quarto quarto = new Quarto(tipoQuarto, txtPreco.Text, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
             MessageBox.Show(bll.AtualizarQuarto(quarto));
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
+            FormCleaner.Clear(this);
         }
 
         private void dgvQuartos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = (int)dgvQuartos.Rows[e.RowIndex].Cells[0].Value;
             int tipoQuarto = (int)dgvQuartos.Rows[e.RowIndex].Cells[1].Value;
-            double preco = (double)dgvQuartos.Rows[e.RowIndex].Cells[2].Value;
+            string preco = (string)dgvQuartos.Rows[e.RowIndex].Cells[2].Value;
             int status = (int)dgvQuartos.Rows[e.RowIndex].Cells[3].Value;
             string descricao = (string)dgvQuartos.Rows[e.RowIndex].Cells[4].Value;
             int nQuarto = (int)dgvQuartos.Rows[e.RowIndex].Cells[5].Value;
@@ -176,7 +174,7 @@ namespace WFPresentationLayer
             {
                 cmbTipoQuarto.Text = "5 - Quarto Com Beliche";
             }
-            txtPreco.Text = Convert.ToString(preco);
+            txtPreco.Text = preco;
             if (status == 1)
             {
                 cmbStatusQuarto.Text = "1 - Livre";

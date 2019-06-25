@@ -86,7 +86,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
@@ -197,9 +197,9 @@ namespace DAO
             }
             return new DbResponse<int>
             {
-                Dados = q.ID,
-                Mensagem = "Quarto atualizado com sucesso",
                 Sucesso = true,
+                Mensagem = "Quarto atualizado com sucesso",
+                Dados = q.ID,
             };
         }
         #endregion
@@ -227,7 +227,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
