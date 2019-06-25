@@ -35,25 +35,27 @@ namespace DAO
                     bool EhAdmin = (bool)reader["EHADMIN"];
                     bool EhAtivo = (bool)reader["EHADMIN"];
 
+                    FuncionarioLogado funclog = new FuncionarioLogado();
 
-                    Parametros.Funcionario.id = id;
-                    Parametros.Funcionario.nome = Nome;
-                    Parametros.Funcionario.email = Email;
+                    funclog.id = id;
+                    funclog.nome = Nome;
+                    funclog.email = Email;
                     if (!EhAtivo)
                     {
-                        Parametros.Funcionario.level = -1;
+                        funclog.level = -1;
                     }
                     else
                     {
                         if (!EhAdmin)
                         {
-                            Parametros.Funcionario.level = 0;
+                            funclog.level = 0;
                         }
                         else
                         {
-                            Parametros.Funcionario.level = 1;
+                            funclog.level = 1;
                         }
                     }
+                    Parametros.Funcionario = funclog;
                     return new DbResponse<FuncionarioLogado>
                     {
                         Sucesso = true,
