@@ -66,6 +66,7 @@
             this.DGVProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVProdutos.Size = new System.Drawing.Size(561, 287);
             this.DGVProdutos.TabIndex = 53;
+            this.DGVProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVProdutos_CellDoubleClick);
             // 
             // label7
             // 
@@ -190,6 +191,7 @@
             this.Controls.Add(this.txtNome);
             this.Name = "FormManutençãoProduto";
             this.Text = "FormManutençãoProduto";
+            this.Load += new System.EventHandler(this.FormManutençãoProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProdutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
