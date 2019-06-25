@@ -179,7 +179,7 @@ namespace DAO
                     string Telefone1 = (string)reader["TELEFONE1"];
                     string Telefone2 = (string)reader["TELEFONE2"];
                     string Email = (string)reader["EMAIL"];
-                    bool EhAtivo = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHADMIN"];//conserta aqui no banco de dados
 
                     Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
                     listCli.Add(cli);
