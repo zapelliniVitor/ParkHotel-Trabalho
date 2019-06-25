@@ -204,6 +204,7 @@ namespace DAO
             command.CommandText = @"DELETE FROM PRODUTOS WHERE ID = @ID";
             command.Parameters.AddWithValue("@ID", id);
 
+            command.Connection = connection;
             try
             {
                 connection.Open();
