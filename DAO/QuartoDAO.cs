@@ -86,7 +86,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
@@ -141,7 +141,7 @@ namespace DAO
                 return new DbResponse<int>
                 {
                     Sucesso = false,
-                    Mensagem = "Banco de dados indisponível, favor contatar o admin",
+                    Mensagem = "Banco de dados indisponível, favor contatar suporte",
                     Excessao = ex
                 };
             }
@@ -227,7 +227,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];

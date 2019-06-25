@@ -61,7 +61,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
             SqlCommand command = new SqlCommand("", connection);
             command.CommandText = @"INSERT INTO CLIENTES (NOME, CPF, RG, TELEFONE1, TELEFONE2, EMAIL, EHATIVO) VALUES
-                                  (@NOME, @CPF, @RG,  @TELEFONE1, @TELEFONE2, @EMAIL, @EHATIVO); select scope_identity()" ;
+                                  (@NOME, @CPF, @RG,  @TELEFONE1, @TELEFONE2, @EMAIL, @EHATIVO); select scope_identity()";
             command.Parameters.AddWithValue("@NOME", cli.Nome);
             command.Parameters.AddWithValue("@CPF", cli.CPF);
             command.Parameters.AddWithValue("@RG", cli.RG);
@@ -69,6 +69,8 @@ namespace DAO
             command.Parameters.AddWithValue("@TELEFONE2", cli.Telefone2);
             command.Parameters.AddWithValue("@EMAIL", cli.Email);
             command.Parameters.AddWithValue("@EHATIVO", cli.EhAtivo);
+
+            command.Connection = connection;
 
             try
             {
@@ -138,7 +140,7 @@ namespace DAO
                     string Email = (string)reader["EMAIL"];
                     bool EhAtivo = (bool)reader["EHADMIN"];
 
-                    Cliente cliente = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email);
+                    Cliente cliente = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
                     list.Add(cliente);
                 }
             }
@@ -163,6 +165,7 @@ namespace DAO
             command.CommandText = "SELECT * FROM CLIENTES WHERE EHATIVO = 0";
 
             List<Cliente> listCli = new List<Cliente>();
+            command.Connection = connection;
             try
             {
                 connection.Open();
@@ -176,8 +179,9 @@ namespace DAO
                     string Telefone1 = (string)reader["TELEFONE1"];
                     string Telefone2 = (string)reader["TELEFONE2"];
                     string Email = (string)reader["EMAIL"];
+                    bool EhAtivo = (bool)reader["EHADMIN"];
 
-                    Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email);
+                    Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
                     listCli.Add(cli);
                 }
 
@@ -205,7 +209,7 @@ namespace DAO
         #endregion
 
         #region LerTodos
-        public DbResponse<List<Cliente>> LerTodos()
+        public List<Cliente> LerTodos()
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
@@ -213,6 +217,7 @@ namespace DAO
             command.CommandText = "SELECT * FROM CLIENTES WHERE EHATIVO = 1";
 
             List<Cliente> listCli = new List<Cliente>();
+            command.Connection = connection;
             try
             {
                 connection.Open();
@@ -226,31 +231,22 @@ namespace DAO
                     string Telefone1 = (string)reader["TELEFONE1"];
                     string Telefone2 = (string)reader["TELEFONE2"];
                     string Email = (string)reader["EMAIL"];
-                    
-                    Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email);
+                    bool EhAtivo = (bool)reader["EHATIVO"];
+
+                    Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
                     listCli.Add(cli);
                 }
 
             }
             catch (Exception ex)
             {
-                return new DbResponse<List<Cliente>>
-                {
-                    Sucesso = false,
-                    Mensagem = "Banco de dados indisponível",
-                    Excessao = ex
-                };
+              
             }
             finally
             {
                 connection.Dispose();
             }
-            return new DbResponse<List<Cliente>>
-            {
-                Sucesso = true,
-                Mensagem = "Clientes recebidos",
-                Dados = listCli
-            };
+            return listCli;
         }
         #endregion
 
@@ -262,8 +258,9 @@ namespace DAO
             SqlCommand command = new SqlCommand(connection.ToString());
 
             command.CommandText = @"UPDATE CLIENTES SET EHATIVO = @EHATIVO WHERE  ID = " + id;
-            command.Parameters.AddWithValue("@EHATIVO", false);
+            command.Parameters.AddWithValue("@EHATIVO", 0);
 
+            command.Connection = connection;
             try
             {
                 connection.Open();

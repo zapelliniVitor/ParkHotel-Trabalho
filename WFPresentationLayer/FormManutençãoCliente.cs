@@ -17,7 +17,6 @@ namespace WFPresentationLayer
         public FormManutençãoCliente()
         {
             InitializeComponent();
-            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
         }
 
         #region Cadastro
@@ -29,7 +28,12 @@ namespace WFPresentationLayer
             string Email = txtEmail.Text;
             string Fone1 = mtxtFone1.Text;
             string Fone2 = mtxtFone2.Text;
-            Cliente cli = new Cliente(nome, CPF, RG, Fone1, Fone2, Email);
+            bool ativo = false;
+            if (chkAtivo.Checked)
+            {
+                ativo = true;
+            }
+            Cliente cli = new Cliente(nome, CPF, RG, Fone1, Fone2, Email, ativo);
             cli = new ClienteBLL().ProcurarCPF(cli);
             if(cli.ID == -1)
             {
@@ -43,14 +47,12 @@ namespace WFPresentationLayer
                 {
                     MessageBox.Show(new ClienteBLL().Atualizar(cli));
                 }
-                Resetar();
+                FormCleaner.Clear(this);;
                 return;
             }
-            
-
 
             MessageBox.Show(new ClienteBLL().Inserir(cli));
-            Resetar();
+            FormCleaner.Clear(this);
         }
         #endregion
 
@@ -64,27 +66,17 @@ namespace WFPresentationLayer
             string Email = txtEmail.Text;
             string Fone1 = mtxtFone1.Text;
             string Fone2 = mtxtFone2.Text;
+            bool ativo = false;
+            if (chkAtivo.Checked)
+            {
+                ativo = true;
+            }
 
-
-            Cliente cli = new Cliente(id, nome, CPF, RG, Fone1, Fone2, Email);
+            Cliente cli = new Cliente(id, nome, CPF, RG, Fone1, Fone2, Email, ativo);
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
             txtID.Text = null;
-            Resetar();
-        }
-        #endregion
+            FormCleaner.Clear(this);
 
-        #region ResetarTextBoxes
-        private void Resetar()
-        {
-            txtID.Text = null;
-            txtNome.Text = null;
-            mtxtCPF.Text = null;
-            mtxtRG.Text = null;
-            txtEmail.Text = null;
-            mtxtFone1.Text = null;
-            mtxtFone2.Text = null;
-            DataGridViewClientes.DataSource = null;
-            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
         }
         #endregion
 
@@ -122,8 +114,16 @@ namespace WFPresentationLayer
             {
                 new ClienteBLL().Excluir(id);
             }
-            Resetar();
+            FormCleaner.Clear(this);
+            DataGridViewClientes.DataSource = null;
+            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
         }
         #endregion
+
+        private void FormManutençãoCliente_Load(object sender, EventArgs e)
+        {
+            DataGridViewClientes.DataSource = null;
+            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
+        }
     }
 }

@@ -301,7 +301,7 @@ namespace BLL
         #region LerTodos
         public List<Cliente> LerTodos()
         {
-            return new ClienteDAO().LerTodos().Dados;
+            return new ClienteDAO().LerTodos();
         }
         #endregion
 
@@ -344,9 +344,9 @@ namespace BLL
         #endregion
 
         #region Excluir
-        public List<Cliente> Excluir(int id)
+        public string Excluir(int id)
         {
-            return new ClienteDAO().LerPorID(id);
+            return new ClienteDAO().Excluir(id).Mensagem;
         }
         #endregion
     }

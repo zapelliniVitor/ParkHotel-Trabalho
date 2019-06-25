@@ -46,6 +46,7 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.DataGridViewClientes = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.chkAtivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,7 +173,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(79, 165);
+            this.label7.Location = new System.Drawing.Point(12, 165);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 13);
             this.label7.TabIndex = 34;
@@ -180,7 +181,7 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(74, 181);
+            this.txtID.Location = new System.Drawing.Point(12, 181);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 20);
@@ -205,15 +206,26 @@
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(230, 42);
             this.btnExcluir.TabIndex = 36;
-            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.Text = "Desativar";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // FormCadastroCliente
+            // chkAtivo
+            // 
+            this.chkAtivo.AutoSize = true;
+            this.chkAtivo.Location = new System.Drawing.Point(142, 181);
+            this.chkAtivo.Name = "chkAtivo";
+            this.chkAtivo.Size = new System.Drawing.Size(50, 17);
+            this.chkAtivo.TabIndex = 37;
+            this.chkAtivo.Text = "Ativo";
+            this.chkAtivo.UseVisualStyleBackColor = true;
+            // 
+            // FormManutençãoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 358);
+            this.Controls.Add(this.chkAtivo);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.DataGridViewClientes);
             this.Controls.Add(this.label7);
@@ -232,8 +244,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
-            this.Name = "FormCadastroCliente";
+            this.Name = "FormManutençãoCliente";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormManutençãoCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -260,6 +273,7 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.DataGridView DataGridViewClientes;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.CheckBox chkAtivo;
     }
 }
 

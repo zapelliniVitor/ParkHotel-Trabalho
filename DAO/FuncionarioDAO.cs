@@ -248,7 +248,7 @@ namespace DAO
         	}
 	        catch (Exception)
 	        {
-                
+                throw new Exception("Banco de dados indisponivel.");
 	        }
             finally
             {

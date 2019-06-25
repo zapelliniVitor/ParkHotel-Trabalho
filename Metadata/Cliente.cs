@@ -17,7 +17,7 @@ namespace Metadata
         public string Email { get; set; }
         public bool EhAtivo { get; set; }
 
-        public Cliente(string nome, string cpf, string rg, string telefone1, string telefone2, string email)
+        public Cliente(string nome, string cpf, string rg, string telefone1, string telefone2, string email, bool ativo)
         {
             this.Nome = nome;
             this.CPF = cpf;
@@ -25,9 +25,10 @@ namespace Metadata
             this.Telefone1 = telefone1;
             this.Telefone2 = telefone2;
             this.Email = email;
+            this.EhAtivo = ativo;
         }
 
-        public Cliente(int id,string nome, string cpf, string rg, string telefone1, string telefone2, string email)
+        public Cliente(int id,string nome, string cpf, string rg, string telefone1, string telefone2, string email, bool ativo)
         {
             this.ID = id;
             this.Nome = nome;
@@ -36,6 +37,7 @@ namespace Metadata
             this.Telefone1 = telefone1;
             this.Telefone2 = telefone2;
             this.Email = email;
+            this.EhAtivo = ativo;
         }
 
         public Cliente()

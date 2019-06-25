@@ -36,6 +36,7 @@ namespace WFPresentationLayer
                 frm.ShowDialog();
                 this.Show();
             }
+            FormCleaner.Clear(this);
         }
     }
 }
