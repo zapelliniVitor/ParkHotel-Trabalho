@@ -349,5 +349,20 @@ namespace BLL
             return new ClienteDAO().Excluir(id).Mensagem;
         }
         #endregion
+
+        #region Ler Pesquisa
+        public List<Cliente> LerPesquisa (string pesquisa, string dado)
+        {
+            if(dado == "ID")
+            {
+                if(!int.TryParse(pesquisa, out int id))
+                {
+                    return new List<Cliente>();
+                }
+                return LerPorID(id);
+            }
+            return new List<Cliente>();
+        }
+        #endregion
     }
 }

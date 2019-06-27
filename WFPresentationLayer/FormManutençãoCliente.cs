@@ -17,6 +17,7 @@ namespace WFPresentationLayer
         public FormManutençãoCliente()
         {
             InitializeComponent();
+            this.cboxDadosPesquisa.SelectedIndex = 0;
         }
 
         #region Cadastro
@@ -55,6 +56,8 @@ namespace WFPresentationLayer
 
             MessageBox.Show(new ClienteBLL().Inserir(cli));
             FormCleaner.Clear(this);
+            DataGridViewClientes.DataSource = null;
+            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
         }
         #endregion
 
@@ -75,6 +78,8 @@ namespace WFPresentationLayer
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
             txtID.Text = null;
             FormCleaner.Clear(this);
+            DataGridViewClientes.DataSource = null;
+            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
 
         }
         #endregion
@@ -119,10 +124,20 @@ namespace WFPresentationLayer
         }
         #endregion
 
+        #region Grid
         private void FormManutençãoCliente_Load(object sender, EventArgs e)
         {
             DataGridViewClientes.DataSource = null;
             DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
+        }
+        #endregion
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            string pesquisa = txtPesquisa.Text;
+            string dado = cboxDadosPesquisa.Text;
+            DataGridViewClientes.DataSource = null;
+            DataGridViewClientes.DataSource = new ClienteBLL().LerPesquisa(pesquisa, dado);
         }
     }
 }
