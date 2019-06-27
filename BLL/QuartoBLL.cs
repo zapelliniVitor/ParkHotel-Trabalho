@@ -25,16 +25,9 @@ namespace BLL
             #endregion
 
             #region Preco
-            if (string.IsNullOrWhiteSpace(q.PrecoQuarto))
+            if(q.PrecoQuarto < 0)
             {
-                erros.Add("Adicione um preço para o quarto");
-            }
-            else 
-            {
-                if (double.Parse(q.PrecoQuarto) < 0)
-                {
-                    erros.Add("Valor da diaria deve ser positivo");
-                }
+                erros.Add("Preço de quarto inválido");
             }
             #endregion
 
@@ -81,16 +74,9 @@ namespace BLL
             #endregion
 
             #region Preco
-            if (string.IsNullOrWhiteSpace(q.PrecoQuarto))
+            if (q.PrecoQuarto < 0)
             {
-                erros.Add("Adicione um preço válido para o quarto");
-            }
-            else
-            {
-                if (double.Parse(q.PrecoQuarto) < 0)
-                {
-                    erros.Add("Valor da diária deve ser positivo");
-                }
+                erros.Add("Preço de quarto inválido");
             }
             #endregion
 

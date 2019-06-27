@@ -75,7 +75,16 @@ namespace WFPresentationLayer
             }
             #endregion
 
-            Quarto quarto = new Quarto(tipoQuarto, txtPreco.Text, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
+            #region PrecoQuarto
+            double preco = 0;
+            if(!double.TryParse(mtxtPreco.Text.Replace("R","").Replace("$","").Replace(",","").Replace(".",""), out preco))
+            {
+                MessageBox.Show("Insira um preço válido");
+                return;
+            }
+            #endregion
+
+            Quarto quarto = new Quarto(tipoQuarto, preco, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
             MessageBox.Show(bll.CadastrarQuarto(quarto));
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
@@ -128,16 +137,20 @@ namespace WFPresentationLayer
             #endregion
 
             double preco = 0;
-            for (int i = 0; i < txtPreco.Text.Length; i++)
+            if (!double.TryParse(mtxtPreco.Text.Replace("R", "").Replace("$", "").Replace(",", "").Replace(".", ""), out preco))
             {
-                if (!double.IsNaN(Convert.ToDouble(txtPreco.Text)))
-                {
-                    int I = Convert.ToInt32(txtPreco.Text[i]);
-                    preco += I;
-                }
+                MessageBox.Show("Insira um preço válido");
+                return;
             }
 
-            Quarto quarto = new Quarto(tipoQuarto, txtPreco.Text, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
+            int id = 0;
+            if(!int.TryParse(txtID.Text, out id))
+            {
+                MessageBox.Show("ID do quarto inválida");
+                return;
+            }
+
+            Quarto quarto = new Quarto(id, tipoQuarto, preco, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
             MessageBox.Show(bll.AtualizarQuarto(quarto));
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
@@ -148,7 +161,7 @@ namespace WFPresentationLayer
         {
             int id = (int)dgvQuartos.Rows[e.RowIndex].Cells[0].Value;
             int tipoQuarto = (int)dgvQuartos.Rows[e.RowIndex].Cells[1].Value;
-            string preco = (string)dgvQuartos.Rows[e.RowIndex].Cells[2].Value;
+            double preco = (double)dgvQuartos.Rows[e.RowIndex].Cells[2].Value;
             int status = (int)dgvQuartos.Rows[e.RowIndex].Cells[3].Value;
             string descricao = (string)dgvQuartos.Rows[e.RowIndex].Cells[4].Value;
             int nQuarto = (int)dgvQuartos.Rows[e.RowIndex].Cells[5].Value;
@@ -174,7 +187,7 @@ namespace WFPresentationLayer
             {
                 cmbTipoQuarto.Text = "5 - Quarto Com Beliche";
             }
-            txtPreco.Text = preco;
+            mtxtPreco.Text = preco.ToString();
             if (status == 1)
             {
                 cmbStatusQuarto.Text = "1 - Livre";
