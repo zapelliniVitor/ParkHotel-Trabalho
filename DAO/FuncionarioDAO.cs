@@ -166,7 +166,7 @@ namespace DAO
         #endregion
 
         #region lerPorID
-        public List<Funcionario> LerPorID(int ID)
+        public DbResponse<List<Funcionario>> LerPorID(int ID)
         {
             string connectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection(connectionString);
@@ -200,15 +200,25 @@ namespace DAO
                     listF.Add(funcionar);
                 }
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-                
+                return new DbResponse<List<Funcionario>>
+                {
+                    Sucesso = false,
+                    Mensagem = "Erro no banco de dados, favor contatar o suporte.",
+                    Excessao = ex
+                };
             }
             finally
             {
                 connection.Dispose();
             }
-            return listF;
+            return new DbResponse<List<Funcionario>>
+            {
+                Sucesso = true,
+                Mensagem = "Funcionario encontrado.",
+                Dados = listF
+            };
         }
         #endregion
 
@@ -220,7 +230,7 @@ namespace DAO
             connection.ConnectionString = ConnectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = "SELECT * FROM FUNCIONARIOS";
+            command.CommandText = "SELECT * FROM FUNCIONARIOS WHERE EHATIVO = 1";
 
             command.Connection = connection;
             List<Funcionario> listFunc = new List<Funcionario>();
@@ -238,7 +248,7 @@ namespace DAO
                     string Telefone = (string)reader["TELEFONE"];
                     string Email = (string)reader["EMAIL"];
                     bool EhAdmin = (bool)reader["EHADMIN"];
-                    bool EhAtivo = (bool)reader["EHATIVO"];
+                    bool EhAtivo = (bool)reader["EHADMIN"];
 
                     //Utilizado construtor SEM senha do Funcionario
                     Funcionario funcionar = new Funcionario(id ,nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);

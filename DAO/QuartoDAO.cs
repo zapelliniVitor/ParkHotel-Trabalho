@@ -86,7 +86,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
@@ -205,7 +205,7 @@ namespace DAO
         #endregion
 
         #region Read ID
-        public List<Quarto> LerPorID(int ID)
+        public DbResponse<List<Quarto>> LerPorID(int ID)
         {
             string connectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection(connectionString);
@@ -227,7 +227,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
@@ -236,16 +236,26 @@ namespace DAO
                     list.Add(quarto);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                return new DbResponse<List<Quarto>>
+                {
+                    Sucesso = false,
+                    Mensagem = "Erro no banco de dados, favor contatar o suporte.",
+                    Excessao = ex
+                };
             }
             finally
             {
                 connection.Dispose();
             }
 
-            return list;
+            return new DbResponse<List<Quarto>>
+            {
+                Sucesso = true,
+                Mensagem = "Quarto localizado.",
+                Dados = list
+            };
         }
         #endregion
 

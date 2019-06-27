@@ -89,7 +89,7 @@ namespace DAO
                     string Telefone = (string)reader["TELEFONE"];
                     string Email = (string)reader["EMAIL"];
 
-                    Fornecedor f = new Fornecedor(id,nomeContato, razaoSocial, cnpj,  Telefone, Email);
+                    Fornecedor f = new Fornecedor(id, razaoSocial, cnpj, nomeContato, Telefone, Email);
                     listF.Add(f);
                 }
 
@@ -165,13 +165,13 @@ namespace DAO
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
-            SqlCommand command = new SqlCommand("", connection);
+            SqlCommand command = new SqlCommand(connection.ToString());
 
-            command.CommandText = @"UPDATE FORNECEDORES SET RAZAOSOCIAL = @RAZAOSOCIAL, CNPJ = @CNPJ, NOMECONTATO = @NOMECONTATO ,TELEFONE = @TELEFONE, EMAIL = @EMAIL WHERE  ID = " + f.ID;
-            command.Parameters.AddWithValue("@RAZAOSOCIAL", f.RazaoSocial);
-            command.Parameters.AddWithValue("@CNPJ", f.CNPJ);
+            command.CommandText = @"UPDATE FORNECEDORES SET RAZAOSOCIAL = @RAZAOSOCIAL, CNPJ = @CNPJ, NOMECONTATO = @NOMECONTATO ,TELEFONE = @TELEFONE1, EMAIL = @EMAIL WHERE  ID = " + f.ID;
+            command.Parameters.AddWithValue("@NOME", f.RazaoSocial);
+            command.Parameters.AddWithValue("@CPF", f.CNPJ);
             command.Parameters.AddWithValue("@NOMECONTATO", f.NomeContato);
-            command.Parameters.AddWithValue("@TELEFONE", f.Telefone);
+            command.Parameters.AddWithValue("@TELEFONE1", f.Telefone);
             command.Parameters.AddWithValue("@EMAIL", f.Email);
 
             try

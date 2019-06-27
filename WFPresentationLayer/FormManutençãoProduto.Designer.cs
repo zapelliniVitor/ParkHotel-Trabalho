@@ -190,7 +190,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
             this.Name = "FormManutençãoProduto";
-            this.Text = "Manutenção Produtos";
+            this.Text = "FormManutençãoProduto";
             this.Load += new System.EventHandler(this.FormManutençãoProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DGVProdutos)).EndInit();
             this.ResumeLayout(false);

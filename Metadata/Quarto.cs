@@ -10,14 +10,14 @@ namespace Metadata
     {
         public int ID { get; set; }
         public int TipoQuarto { get; set; }
-        public double PrecoQuarto { get; set; }
+        public string PrecoQuarto { get; set; }
         public int StatusQuarto { get; set; }
         public string DescriçãoQuarto { get; set; }
         public int n_Quarto { get; set; }
 
 
         //Com ID
-        public Quarto(int id, int tipoQuarto, double precoQuarto, int statusQuarto, string descricaoQuarto, int nQuarto)
+        public Quarto(int id, int tipoQuarto, string precoQuarto, int statusQuarto, string descricaoQuarto, int nQuarto)
         {
             this.ID = id;
             this.TipoQuarto = tipoQuarto;
@@ -28,7 +28,7 @@ namespace Metadata
         }
 
         //Sem ID
-        public Quarto(int tipoQuarto, double precoQuarto, int statusQuarto, string descricaoQuarto, int nQuarto)
+        public Quarto(int tipoQuarto, string precoQuarto, int statusQuarto, string descricaoQuarto, int nQuarto)
         {
             this.TipoQuarto = tipoQuarto;
             this.PrecoQuarto = precoQuarto;
