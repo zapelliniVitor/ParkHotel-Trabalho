@@ -134,6 +134,11 @@ namespace WFPresentationLayer
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtPesquisa.Text))
+            {
+                DataGridViewClientes.DataSource = null;
+                DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
+            }
             string pesquisa = txtPesquisa.Text;
             string dado = cboxDadosPesquisa.Text;
             DataGridViewClientes.DataSource = null;
