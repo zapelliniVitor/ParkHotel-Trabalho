@@ -86,12 +86,13 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    string preco = (string)reader["PRECO"];
+                    double preco = (double)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
 
-                    Quarto qua = new Quarto(id, tipoQuarto, preco, statusQuarto, descricaoQuarto, nQuarto);
+                    string precoS = Convert.ToString(preco);
+                    Quarto qua = new Quarto(id, tipoQuarto, precoS, statusQuarto, descricaoQuarto, nQuarto);
                     listQua.Add(qua);
                 }
 

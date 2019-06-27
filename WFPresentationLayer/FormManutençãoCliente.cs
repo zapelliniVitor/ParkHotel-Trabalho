@@ -17,25 +17,22 @@ namespace WFPresentationLayer
         public FormManutençãoCliente()
         {
             InitializeComponent();
-            this.cboxDadosPesquisa.SelectedIndex = 0;
         }
 
         #region Cadastro
         private void btnCadastro_Click(object sender, EventArgs e)
         {
-            DialogResult resposta1 = MessageBox.Show("Cadastrar novo cliente?", "Cadastro Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(resposta1 != DialogResult.Yes)
-            {
-                return;
-            }
             string nome = txtNome.Text;
             string CPF = mtxtCPF.Text;
             string RG = mtxtRG.Text;
             string Email = txtEmail.Text;
             string Fone1 = mtxtFone1.Text;
             string Fone2 = mtxtFone2.Text;
-            bool ativo = true;
-            
+            bool ativo = false;
+            if (chkAtivo.Checked)
+            {
+                ativo = true;
+            }
             Cliente cli = new Cliente(nome, CPF, RG, Fone1, Fone2, Email, ativo);
             cli = new ClienteBLL().ProcurarCPF(cli);
             if(cli.ID == -1)
@@ -45,8 +42,8 @@ namespace WFPresentationLayer
             }
             if (cli.ID > -1)
             {
-                DialogResult resposta2 = MessageBox.Show("Cliente já cadastrado, porém inativo\r\nDeseja ativá-lo?", "Cliente inativo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (resposta2 == DialogResult.Yes)
+                DialogResult resposta = MessageBox.Show("Cliente já cadastrado, porém inativo\r\nDeseja ativá-lo?", "Cliente inativo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (resposta == DialogResult.Yes)
                 {
                     MessageBox.Show(new ClienteBLL().Atualizar(cli));
                 }
@@ -56,8 +53,6 @@ namespace WFPresentationLayer
 
             MessageBox.Show(new ClienteBLL().Inserir(cli));
             FormCleaner.Clear(this);
-            DataGridViewClientes.DataSource = null;
-            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
         }
         #endregion
 
@@ -71,15 +66,16 @@ namespace WFPresentationLayer
             string Email = txtEmail.Text;
             string Fone1 = mtxtFone1.Text;
             string Fone2 = mtxtFone2.Text;
-            bool ativo = true;
-            
+            bool ativo = false;
+            if (chkAtivo.Checked)
+            {
+                ativo = true;
+            }
 
             Cliente cli = new Cliente(id, nome, CPF, RG, Fone1, Fone2, Email, ativo);
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
             txtID.Text = null;
             FormCleaner.Clear(this);
-            DataGridViewClientes.DataSource = null;
-            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
 
         }
         #endregion
@@ -124,25 +120,10 @@ namespace WFPresentationLayer
         }
         #endregion
 
-        #region Grid
         private void FormManutençãoCliente_Load(object sender, EventArgs e)
         {
             DataGridViewClientes.DataSource = null;
             DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
-        }
-        #endregion
-
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPesquisa.Text))
-            {
-                DataGridViewClientes.DataSource = null;
-                DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
-            }
-            string pesquisa = txtPesquisa.Text;
-            string dado = cboxDadosPesquisa.Text;
-            DataGridViewClientes.DataSource = null;
-            DataGridViewClientes.DataSource = new ClienteBLL().LerPesquisa(pesquisa, dado);
         }
     }
 }

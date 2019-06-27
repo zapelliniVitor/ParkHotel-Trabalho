@@ -133,10 +133,11 @@ namespace DAO
                     string Nome = (string)reader["NOME"];
                     string CPF = (string)reader["CPF"];
                     string RG = (string)reader["RG"];
+                    string Endereco = (string)reader["ENDERECO"];
                     string Telefone1 = (string)reader["TELEFONE1"];
                     string Telefone2 = (string)reader["TELEFONE2"];
                     string Email = (string)reader["EMAIL"];
-                    bool EhAtivo = (bool)reader["EHATIVO"];
+                    bool EhAtivo = (bool)reader["EHADMIN"];
 
                     Cliente cliente = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
                     listCli.Add(cliente);

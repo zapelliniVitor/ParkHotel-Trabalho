@@ -57,6 +57,45 @@ namespace WFPresentationLayer
             this.Show();
         }
 
+        private void PesquisaFuncionarioItem_Click(object sender, EventArgs e)
+        {
+            FormPesquisaFuncionario frm = new FormPesquisaFuncionario();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void PesquisaClienteItem_Click(object sender, EventArgs e)
+        {
+            FormPesquisaCliente frm = new FormPesquisaCliente();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void PesquisaQuartoItem_Click(object sender, EventArgs e)
+        {
+            FormPesquisaQuarto frm = new FormPesquisaQuarto();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void PesquisaProduto_Click(object sender, EventArgs e)
+        {
+            FormPesquisaProduto frm = new FormPesquisaProduto();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
+
+        private void PesquisaFornecedorItem_Click(object sender, EventArgs e)
+        {
+            FormPesquisaFornecedor frm = new FormPesquisaFornecedor();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
 
         private void checkInToolStripMenuItem_Click(object sender, EventArgs e)
         {
