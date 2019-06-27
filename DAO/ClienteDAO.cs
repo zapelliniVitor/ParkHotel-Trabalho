@@ -110,7 +110,7 @@ namespace DAO
         #endregion
 
         #region LerPorID
-        public List<Cliente> LerPorID(int ID)
+        public DbResponse<List<Cliente>> LerPorID(int ID)
         {
             string connectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection(connectionString);
@@ -122,8 +122,7 @@ namespace DAO
 
             command.Connection = connection;
 
-            List<Cliente> list = new List<Cliente>();
-
+            List<Cliente> listCli = new List<Cliente>();
             try
             {
                 connection.Open();
@@ -141,18 +140,28 @@ namespace DAO
                     bool EhAtivo = (bool)reader["EHADMIN"];
 
                     Cliente cliente = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
-                    list.Add(cliente);
+                    listCli.Add(cliente);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new Exception("Erro no banco de dados, favor contate o admin.");
+                return new DbResponse<List<Cliente>>
+                {
+                    Sucesso = false,
+                    Excessao = ex,
+                    Mensagem = "Cliente não encontrado"
+                };
             }
             finally
             {
                 connection.Dispose();
             }
-            return list;
+            return new DbResponse<List<Cliente>>
+            {
+                Sucesso = true,
+                Mensagem = "Cliente encontrado",
+                Dados = listCli
+            };
         }
         #endregion
 
@@ -179,7 +188,7 @@ namespace DAO
                     string Telefone1 = (string)reader["TELEFONE1"];
                     string Telefone2 = (string)reader["TELEFONE2"];
                     string Email = (string)reader["EMAIL"];
-                    bool EhAtivo = (bool)reader["EHADMIN"];//conserta aqui no banco de dados
+                    bool EhAtivo = (bool)reader["EHADMIN"];
 
                     Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
                     listCli.Add(cli);
@@ -238,7 +247,7 @@ namespace DAO
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
               
             }

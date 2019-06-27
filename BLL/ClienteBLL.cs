@@ -9,7 +9,7 @@ using Metadata;
 
 namespace BLL
 {
-    public class ClienteBLL : IEntityCRUD<Cliente>
+    public class ClienteBLL
     {
         #region Atualizar
         public string Atualizar(Cliente cli)
@@ -292,9 +292,9 @@ namespace BLL
         #endregion
 
         #region LerPorID
-        public string LerPorID(int ID)
+        public List<Cliente> LerPorID(int ID)
         {
-            throw new NotImplementedException();
+            return new ClienteDAO().LerPorID(ID).Dados;
         }
         #endregion
 

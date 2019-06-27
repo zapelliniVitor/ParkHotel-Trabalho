@@ -53,8 +53,6 @@ namespace WFPresentationLayer
 
             MessageBox.Show(new ClienteBLL().Inserir(cli));
             FormCleaner.Clear(this);
-            DataGridViewClientes.DataSource = null;
-            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
         }
         #endregion
 
@@ -78,8 +76,6 @@ namespace WFPresentationLayer
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
             txtID.Text = null;
             FormCleaner.Clear(this);
-            DataGridViewClientes.DataSource = null;
-            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
 
         }
         #endregion
@@ -121,7 +117,6 @@ namespace WFPresentationLayer
             FormCleaner.Clear(this);
             DataGridViewClientes.DataSource = null;
             DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
-
         }
         #endregion
 
