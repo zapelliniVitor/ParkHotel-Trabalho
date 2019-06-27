@@ -10,6 +10,7 @@ namespace BLL
 {
     public class LoginBLL
     {
+        #region Autenticar
         public LoginResponse Autenticar(string email, string senha)
         {
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha))
@@ -36,5 +37,6 @@ namespace BLL
             };
 
         }
+        #endregion
     }
 }

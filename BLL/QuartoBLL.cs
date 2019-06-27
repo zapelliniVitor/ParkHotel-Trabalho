@@ -49,6 +49,7 @@ namespace BLL
             }
             #endregion
 
+            #region erros
             StringBuilder sb = new StringBuilder();
             if (erros.Count != 0)
             {
@@ -58,6 +59,8 @@ namespace BLL
                 }
                 return sb.ToString();
             }
+            #endregion
+
             return dao.Inserir(q).Mensagem;
         }
         #endregion
@@ -98,6 +101,7 @@ namespace BLL
             }
             #endregion
 
+            #region Erros
             StringBuilder sb = new StringBuilder();
             if (erros.Count != 0)
             {
@@ -107,6 +111,8 @@ namespace BLL
                 }
                 return sb.ToString();
             }
+            #endregion
+
             return dao.Atualizar(q).Mensagem;
         }
 
@@ -117,8 +123,6 @@ namespace BLL
         {
             return dao.LerTodos().Dados;
         }
-
-
         #endregion
 
         #region Ler por ID

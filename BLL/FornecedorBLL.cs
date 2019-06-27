@@ -12,7 +12,8 @@ namespace BLL
     public class FornecedorBLL
     {
         FornecedorDAO dao = new FornecedorDAO();
-        
+
+        #region Validar CNPJ
         public static bool validaCNPJ(string cnpj)
         {
             int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -47,8 +48,9 @@ namespace BLL
             digito = digito + resto.ToString();
             return cnpj.EndsWith(digito);
         }
+        #endregion
 
-        //Cadastrar novo fornecedor
+        #region Cadastrar
         public string cadastrarFornecedor(Fornecedor f)
         {
             List<string> erros = new List<string>();
@@ -162,8 +164,9 @@ namespace BLL
 
             return dao.Inserir(f).Mensagem;
         }
+        #endregion
 
-        //Atualizar Fornecedor
+        #region Atualizar
         public string atualizarFornecedor(Fornecedor f)
         {
             List<string> erros = new List<string>();
@@ -264,6 +267,7 @@ namespace BLL
             }
             #endregion
 
+            #region Erros
             StringBuilder sb = new StringBuilder();
             if (erros.Count != 0)
             {
@@ -273,21 +277,24 @@ namespace BLL
                 }
                 return sb.ToString();
             }
-
+            #endregion
             return dao.Atualizar(f).Mensagem;
 ;
         }
+        #endregion
 
-        //Ler Todos
+        #region Ler Todos
         public List<Fornecedor> lerTodos()
         {
             return dao.LerTodos().Dados;
         }
+        #endregion
 
-        //Ler por ID
+        #region Ler Por ID
         public List<Fornecedor> lerPorId(int id)
         {
             return dao.LerPorID(id);
         }
+        #endregion
     }
 }
