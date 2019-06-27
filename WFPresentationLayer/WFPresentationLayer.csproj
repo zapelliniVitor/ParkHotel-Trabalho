@@ -142,11 +142,20 @@
     <EmbeddedResource Include="FormMenu.resx">
       <DependentUpon>FormMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPesquisaCliente.resx">
+      <DependentUpon>FormPesquisaCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPesquisaFornecedor.resx">
+      <DependentUpon>FormPesquisaFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPesquisaFuncionario.resx">
       <DependentUpon>FormPesquisaFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPesquisaProduto.resx">
       <DependentUpon>FormPesquisaProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPesquisaQuarto.resx">
+      <DependentUpon>FormPesquisaQuarto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

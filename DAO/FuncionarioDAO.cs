@@ -220,7 +220,7 @@ namespace DAO
             connection.ConnectionString = ConnectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = "SELECT * FROM FUNCIONARIOS WHERE EHATIVO = 1";
+            command.CommandText = "SELECT * FROM FUNCIONARIOS";
 
             command.Connection = connection;
             List<Funcionario> listFunc = new List<Funcionario>();
@@ -238,7 +238,7 @@ namespace DAO
                     string Telefone = (string)reader["TELEFONE"];
                     string Email = (string)reader["EMAIL"];
                     bool EhAdmin = (bool)reader["EHADMIN"];
-                    bool EhAtivo = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHATIVO"];
 
                     //Utilizado construtor SEM senha do Funcionario
                     Funcionario funcionar = new Funcionario(id ,nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);

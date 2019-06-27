@@ -196,7 +196,6 @@
             // mtxtPreco
             // 
             this.mtxtPreco.Location = new System.Drawing.Point(15, 65);
-            this.mtxtPreco.Mask = "$000.00";
             this.mtxtPreco.Name = "mtxtPreco";
             this.mtxtPreco.Size = new System.Drawing.Size(100, 20);
             this.mtxtPreco.TabIndex = 18;
@@ -223,7 +222,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rtxtDescricao);
             this.Name = "FormManutençãoQuarto";
-            this.Text = "FormManutençãoQuarto";
+            this.Text = "Manutenção Quartos";
             this.Load += new System.EventHandler(this.FormManutençãoQuarto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuartos)).EndInit();
             this.ResumeLayout(false);

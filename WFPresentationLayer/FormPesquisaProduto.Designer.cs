@@ -79,7 +79,7 @@
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.btnPesquisar);
             this.Name = "FormPesquisaProduto";
-            this.Text = "FormPesquisaProduto";
+            this.Text = "Pesquisa Produtos";
             this.Load += new System.EventHandler(this.FormPesquisaProduto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
             this.ResumeLayout(false);

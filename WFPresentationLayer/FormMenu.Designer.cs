@@ -70,35 +70,35 @@
             // ManutencaoQuartosItem
             // 
             this.ManutencaoQuartosItem.Name = "ManutencaoQuartosItem";
-            this.ManutencaoQuartosItem.Size = new System.Drawing.Size(180, 22);
+            this.ManutencaoQuartosItem.Size = new System.Drawing.Size(145, 22);
             this.ManutencaoQuartosItem.Text = "Quartos";
             this.ManutencaoQuartosItem.Click += new System.EventHandler(this.ManutencaoQuartosItem_Click);
             // 
             // ManutencaoClientesItem
             // 
             this.ManutencaoClientesItem.Name = "ManutencaoClientesItem";
-            this.ManutencaoClientesItem.Size = new System.Drawing.Size(180, 22);
+            this.ManutencaoClientesItem.Size = new System.Drawing.Size(145, 22);
             this.ManutencaoClientesItem.Text = "Clientes";
             this.ManutencaoClientesItem.Click += new System.EventHandler(this.ManutencaoClientesItem_Click);
             // 
             // ManutencaoProdutosItem
             // 
             this.ManutencaoProdutosItem.Name = "ManutencaoProdutosItem";
-            this.ManutencaoProdutosItem.Size = new System.Drawing.Size(180, 22);
+            this.ManutencaoProdutosItem.Size = new System.Drawing.Size(145, 22);
             this.ManutencaoProdutosItem.Text = "Produtos";
             this.ManutencaoProdutosItem.Click += new System.EventHandler(this.ManutencaoProdutosItem_Click);
             // 
             // ManutencaoFuncionariosItem
             // 
             this.ManutencaoFuncionariosItem.Name = "ManutencaoFuncionariosItem";
-            this.ManutencaoFuncionariosItem.Size = new System.Drawing.Size(180, 22);
+            this.ManutencaoFuncionariosItem.Size = new System.Drawing.Size(145, 22);
             this.ManutencaoFuncionariosItem.Text = "Funcionários";
             this.ManutencaoFuncionariosItem.Click += new System.EventHandler(this.ManutencaoFuncionariosItem_Click);
             // 
             // ManutencaoFornecedoresItem
             // 
             this.ManutencaoFornecedoresItem.Name = "ManutencaoFornecedoresItem";
-            this.ManutencaoFornecedoresItem.Size = new System.Drawing.Size(180, 22);
+            this.ManutencaoFornecedoresItem.Size = new System.Drawing.Size(145, 22);
             this.ManutencaoFornecedoresItem.Text = "Fornecedores";
             this.ManutencaoFornecedoresItem.Click += new System.EventHandler(this.ManutencaoFornecedoresItem_Click);
             // 
@@ -117,35 +117,35 @@
             // PesquisaFuncionarioItem
             // 
             this.PesquisaFuncionarioItem.Name = "PesquisaFuncionarioItem";
-            this.PesquisaFuncionarioItem.Size = new System.Drawing.Size(180, 22);
+            this.PesquisaFuncionarioItem.Size = new System.Drawing.Size(137, 22);
             this.PesquisaFuncionarioItem.Text = "Funcionario";
             this.PesquisaFuncionarioItem.Click += new System.EventHandler(this.PesquisaFuncionarioItem_Click);
             // 
             // PesquisaClienteItem
             // 
             this.PesquisaClienteItem.Name = "PesquisaClienteItem";
-            this.PesquisaClienteItem.Size = new System.Drawing.Size(180, 22);
+            this.PesquisaClienteItem.Size = new System.Drawing.Size(137, 22);
             this.PesquisaClienteItem.Text = "Cliente";
             this.PesquisaClienteItem.Click += new System.EventHandler(this.PesquisaClienteItem_Click);
             // 
             // PesquisaQuartoItem
             // 
             this.PesquisaQuartoItem.Name = "PesquisaQuartoItem";
-            this.PesquisaQuartoItem.Size = new System.Drawing.Size(180, 22);
+            this.PesquisaQuartoItem.Size = new System.Drawing.Size(137, 22);
             this.PesquisaQuartoItem.Text = "Quarto";
             this.PesquisaQuartoItem.Click += new System.EventHandler(this.PesquisaQuartoItem_Click);
             // 
             // PesquisaProduto
             // 
             this.PesquisaProduto.Name = "PesquisaProduto";
-            this.PesquisaProduto.Size = new System.Drawing.Size(180, 22);
+            this.PesquisaProduto.Size = new System.Drawing.Size(137, 22);
             this.PesquisaProduto.Text = "Produto";
             this.PesquisaProduto.Click += new System.EventHandler(this.PesquisaProduto_Click);
             // 
             // PesquisaFornecedorItem
             // 
             this.PesquisaFornecedorItem.Name = "PesquisaFornecedorItem";
-            this.PesquisaFornecedorItem.Size = new System.Drawing.Size(180, 22);
+            this.PesquisaFornecedorItem.Size = new System.Drawing.Size(137, 22);
             this.PesquisaFornecedorItem.Text = "Fornecedor";
             this.PesquisaFornecedorItem.Click += new System.EventHandler(this.PesquisaFornecedorItem_Click);
             // 
@@ -157,7 +157,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMenu";
-            this.Text = "FormMenu";
+            this.Text = "Menu inicial";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

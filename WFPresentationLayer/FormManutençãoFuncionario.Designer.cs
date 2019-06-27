@@ -111,7 +111,6 @@
             // 
             this.txtSenhaFuncionario.Location = new System.Drawing.Point(139, 185);
             this.txtSenhaFuncionario.Name = "txtSenhaFuncionario";
-            this.txtSenhaFuncionario.PasswordChar = '*';
             this.txtSenhaFuncionario.Size = new System.Drawing.Size(121, 20);
             this.txtSenhaFuncionario.TabIndex = 11;
             // 
@@ -231,6 +230,7 @@
             this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFuncionarios.Location = new System.Drawing.Point(287, 9);
             this.dgvFuncionarios.Name = "dgvFuncionarios";
+            this.dgvFuncionarios.ReadOnly = true;
             this.dgvFuncionarios.RowHeadersVisible = false;
             this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFuncionarios.Size = new System.Drawing.Size(513, 297);
@@ -274,7 +274,7 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // FormCadastroFuncionario
+            // FormManutençãoFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -303,8 +303,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNomeFuncionario);
             this.Controls.Add(this.label1);
-            this.Name = "FormCadastroFuncionario";
-            this.Text = "FormCadastroFuncionario";
+            this.Name = "FormManutençãoFuncionario";
+            this.Text = "Manutenção Funcionarios";
             this.Load += new System.EventHandler(this.FormCadastroFuncionario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
             this.ResumeLayout(false);
