@@ -41,6 +41,7 @@
             this.PesquisaQuartoItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PesquisaProduto = new System.Windows.Forms.ToolStripMenuItem();
             this.PesquisaFornecedorItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem,
-            this.pesquisaToolStripMenuItem});
+            this.pesquisaToolStripMenuItem,
+            this.checkInToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -149,6 +151,13 @@
             this.PesquisaFornecedorItem.Text = "Fornecedor";
             this.PesquisaFornecedorItem.Click += new System.EventHandler(this.PesquisaFornecedorItem_Click);
             // 
+            // checkInToolStripMenuItem
+            // 
+            this.checkInToolStripMenuItem.Name = "checkInToolStripMenuItem";
+            this.checkInToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.checkInToolStripMenuItem.Text = "Check- in";
+            this.checkInToolStripMenuItem.Click += new System.EventHandler(this.checkInToolStripMenuItem_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,7 +166,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMenu";
-            this.Text = "Menu inicial";
+            this.Text = "FormMenu";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -180,5 +189,6 @@
         private System.Windows.Forms.ToolStripMenuItem PesquisaFornecedorItem;
         private System.Windows.Forms.ToolStripMenuItem ManutencaoQuartosItem;
         private System.Windows.Forms.ToolStripMenuItem ManutencaoFornecedoresItem;
+        private System.Windows.Forms.ToolStripMenuItem checkInToolStripMenuItem;
     }
 }

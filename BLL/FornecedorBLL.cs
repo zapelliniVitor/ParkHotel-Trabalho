@@ -201,7 +201,7 @@ namespace BLL
             }
             else
             {
-                f.CNPJ = f.CNPJ.Trim().Replace(".", "").Replace("-", "").Replace(",", "").Replace("/","");
+                f.CNPJ = f.CNPJ.Trim().Replace(".", "").Replace("-", "").Replace(",", "");
                 if (!validaCNPJ(f.CNPJ))
                 {
                     erros.Add("CNPJ inválido." +
@@ -274,7 +274,7 @@ namespace BLL
                 return sb.ToString();
             }
 
-            return dao.Atualizar(f).Mensagem;
+            return dao.Atualizar(f).ToString();
 ;
         }
 

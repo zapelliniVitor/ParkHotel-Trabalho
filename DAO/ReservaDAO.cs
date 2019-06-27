@@ -17,12 +17,14 @@ namespace DAO
 
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
             SqlCommand command = new SqlCommand(connection.ToString());
-            command.CommandText = @"INSERT INTO RESERVAS (ID_CLIENTE, DATA_ENTRADA, DATA_SAIDA_PREVISTA, ID_FUNCIONARIO) VALUES
-                                  (@ID_CLIENTE, @DATA_ENTRADA, @DATA_SAIDA_PREVISTA, @ID_FUNCIONARIO); select scope_identity()";
+            command.CommandText = @"INSERT INTO RESERVAS (ID_CLIENTE, DATA_ENTRADA, DATA_SAIDA_PREVISTA, ID_FUNCIONARIO, ID_QUARTO) VALUES
+                                  (@ID_CLIENTE, @DATA_ENTRADA, @DATA_SAIDA_PREVISTA, @ID_FUNCIONARIO, @ID_QUARTO); select scope_identity()";
             command.Parameters.AddWithValue("ID_CLIENTE", reserva.IdCliente);
             command.Parameters.AddWithValue("DATA_ENTRADA", reserva.dataEntrada);
             command.Parameters.AddWithValue("DATA_SAIDA_PREVISTA", reserva.dataSaidaPrevista);
             command.Parameters.AddWithValue("ID_FUNCIONARIO", reserva.IdFuncionario);
+            command.Parameters.AddWithValue("ID_QUARTO", reserva.IdQuarto);
+
 
             command.Connection = connection;
 

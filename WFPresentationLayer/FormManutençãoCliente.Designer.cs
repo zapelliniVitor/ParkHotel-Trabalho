@@ -46,6 +46,7 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.DataGridViewClientes = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.chkAtivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,11 +210,22 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // chkAtivo
+            // 
+            this.chkAtivo.AutoSize = true;
+            this.chkAtivo.Location = new System.Drawing.Point(142, 181);
+            this.chkAtivo.Name = "chkAtivo";
+            this.chkAtivo.Size = new System.Drawing.Size(50, 17);
+            this.chkAtivo.TabIndex = 37;
+            this.chkAtivo.Text = "Ativo";
+            this.chkAtivo.UseVisualStyleBackColor = true;
+            // 
             // FormManutençãoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(862, 358);
+            this.Controls.Add(this.chkAtivo);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.DataGridViewClientes);
             this.Controls.Add(this.label7);
@@ -233,7 +245,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNome);
             this.Name = "FormManutençãoCliente";
-            this.Text = "Manutenção Clientes";
+            this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormManutençãoCliente_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).EndInit();
             this.ResumeLayout(false);
@@ -261,6 +273,7 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.DataGridView DataGridViewClientes;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.CheckBox chkAtivo;
     }
 }
 

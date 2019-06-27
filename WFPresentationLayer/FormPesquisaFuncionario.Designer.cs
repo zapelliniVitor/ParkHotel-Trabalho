@@ -80,7 +80,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvFuncionario);
             this.Name = "FormPesquisaFuncionario";
-            this.Text = "Pesquisa Funcionarios";
+            this.Text = "FormPesquisaFuncionario";
             this.Load += new System.EventHandler(this.FormPesquisaFuncionario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionario)).EndInit();
             this.ResumeLayout(false);

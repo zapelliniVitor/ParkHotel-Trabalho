@@ -96,5 +96,13 @@ namespace WFPresentationLayer
             frm.ShowDialog();
             this.Show();
         }
+
+        private void checkInToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReservas frm = new FormReservas();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
     }
 }

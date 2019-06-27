@@ -180,7 +180,7 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            return dao.Inserir(func).Mensagem;
+            return dao.Inserir(func).ToString();
 
         }
         #endregion
@@ -322,7 +322,7 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            return dao.Atualizar(func).Mensagem;
+            return dao.Atualizar(func).ToString();
 
         }
         #endregion
@@ -337,7 +337,7 @@ namespace BLL
         #region ler por ID
         public List<Funcionario> lerPorId(int id)
         {
-            return dao.LerPorID(id);
+            return dao.LerPorID(id).Dados;
         }
         #endregion
     }

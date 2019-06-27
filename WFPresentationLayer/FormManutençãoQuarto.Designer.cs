@@ -43,7 +43,7 @@
             this.btnDeletar = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNQuarto = new System.Windows.Forms.TextBox();
-            this.mtxtPreco = new System.Windows.Forms.MaskedTextBox();
+            this.txtPreco = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuartos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +69,6 @@
             this.dgvQuartos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvQuartos.Location = new System.Drawing.Point(224, 20);
             this.dgvQuartos.Name = "dgvQuartos";
-            this.dgvQuartos.ReadOnly = true;
             this.dgvQuartos.RowHeadersVisible = false;
             this.dgvQuartos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvQuartos.Size = new System.Drawing.Size(403, 272);
@@ -193,19 +192,19 @@
             this.txtNQuarto.Size = new System.Drawing.Size(100, 20);
             this.txtNQuarto.TabIndex = 16;
             // 
-            // mtxtPreco
+            // txtPreco
             // 
-            this.mtxtPreco.Location = new System.Drawing.Point(15, 65);
-            this.mtxtPreco.Name = "mtxtPreco";
-            this.mtxtPreco.Size = new System.Drawing.Size(100, 20);
-            this.mtxtPreco.TabIndex = 18;
+            this.txtPreco.Location = new System.Drawing.Point(15, 65);
+            this.txtPreco.Name = "txtPreco";
+            this.txtPreco.Size = new System.Drawing.Size(100, 20);
+            this.txtPreco.TabIndex = 17;
             // 
             // FormManutençãoQuarto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 304);
-            this.Controls.Add(this.mtxtPreco);
+            this.Controls.Add(this.txtPreco);
             this.Controls.Add(this.txtNQuarto);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnDeletar);
@@ -222,7 +221,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rtxtDescricao);
             this.Name = "FormManutençãoQuarto";
-            this.Text = "Manutenção Quartos";
+            this.Text = "FormManutençãoQuarto";
             this.Load += new System.EventHandler(this.FormManutençãoQuarto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuartos)).EndInit();
             this.ResumeLayout(false);
@@ -246,6 +245,6 @@
         private System.Windows.Forms.Button btnDeletar;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNQuarto;
-        private System.Windows.Forms.MaskedTextBox mtxtPreco;
+        private System.Windows.Forms.TextBox txtPreco;
     }
 }

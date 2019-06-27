@@ -44,7 +44,7 @@
             this.gbLogin.Controls.Add(this.lblUsuario);
             this.gbLogin.Controls.Add(this.lblSenha);
             this.gbLogin.Controls.Add(this.txtUsuario);
-            this.gbLogin.Location = new System.Drawing.Point(248, 132);
+            this.gbLogin.Location = new System.Drawing.Point(12, 12);
             this.gbLogin.Name = "gbLogin";
             this.gbLogin.Size = new System.Drawing.Size(288, 215);
             this.gbLogin.TabIndex = 0;
@@ -98,10 +98,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(321, 238);
             this.Controls.Add(this.gbLogin);
             this.Name = "FormLogin";
-            this.Text = "Entrar no sistema";
+            this.Text = "FormLogin";
             this.gbLogin.ResumeLayout(false);
             this.gbLogin.PerformLayout();
             this.ResumeLayout(false);
