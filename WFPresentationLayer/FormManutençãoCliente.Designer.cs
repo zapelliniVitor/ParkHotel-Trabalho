@@ -46,13 +46,12 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.DataGridViewClientes = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.chkAtivo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(12, 40);
+            this.txtNome.Location = new System.Drawing.Point(13, 106);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
             this.txtNome.TabIndex = 0;
@@ -60,7 +59,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(13, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -69,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 68);
+            this.label2.Location = new System.Drawing.Point(13, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 13);
             this.label2.TabIndex = 3;
@@ -78,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 117);
+            this.label3.Location = new System.Drawing.Point(13, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 5;
@@ -87,7 +86,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(142, 117);
+            this.label4.Location = new System.Drawing.Point(143, 183);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 11;
@@ -96,7 +95,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(142, 68);
+            this.label5.Location = new System.Drawing.Point(143, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 9;
@@ -104,7 +103,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(142, 89);
+            this.txtEmail.Location = new System.Drawing.Point(143, 155);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 8;
@@ -112,7 +111,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(142, 19);
+            this.label6.Location = new System.Drawing.Point(143, 85);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 13);
             this.label6.TabIndex = 7;
@@ -120,7 +119,7 @@
             // 
             // mtxtCPF
             // 
-            this.mtxtCPF.Location = new System.Drawing.Point(142, 40);
+            this.mtxtCPF.Location = new System.Drawing.Point(143, 106);
             this.mtxtCPF.Mask = "000.000.000-00";
             this.mtxtCPF.Name = "mtxtCPF";
             this.mtxtCPF.Size = new System.Drawing.Size(100, 20);
@@ -128,7 +127,7 @@
             // 
             // mtxtRG
             // 
-            this.mtxtRG.Location = new System.Drawing.Point(12, 89);
+            this.mtxtRG.Location = new System.Drawing.Point(13, 155);
             this.mtxtRG.Mask = "0,000,000";
             this.mtxtRG.Name = "mtxtRG";
             this.mtxtRG.Size = new System.Drawing.Size(100, 20);
@@ -136,7 +135,7 @@
             // 
             // mtxtFone2
             // 
-            this.mtxtFone2.Location = new System.Drawing.Point(142, 138);
+            this.mtxtFone2.Location = new System.Drawing.Point(143, 204);
             this.mtxtFone2.Mask = "(00)00000-0000";
             this.mtxtFone2.Name = "mtxtFone2";
             this.mtxtFone2.Size = new System.Drawing.Size(100, 20);
@@ -144,7 +143,7 @@
             // 
             // mtxtFone1
             // 
-            this.mtxtFone1.Location = new System.Drawing.Point(12, 138);
+            this.mtxtFone1.Location = new System.Drawing.Point(13, 204);
             this.mtxtFone1.Mask = "(00)00000-0000";
             this.mtxtFone1.Name = "mtxtFone1";
             this.mtxtFone1.Size = new System.Drawing.Size(100, 20);
@@ -152,7 +151,7 @@
             // 
             // btnCadastro
             // 
-            this.btnCadastro.Location = new System.Drawing.Point(12, 207);
+            this.btnCadastro.Location = new System.Drawing.Point(13, 273);
             this.btnCadastro.Name = "btnCadastro";
             this.btnCadastro.Size = new System.Drawing.Size(230, 42);
             this.btnCadastro.TabIndex = 31;
@@ -162,7 +161,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(12, 255);
+            this.btnAtualizar.Location = new System.Drawing.Point(13, 321);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(230, 42);
             this.btnAtualizar.TabIndex = 32;
@@ -173,7 +172,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 165);
+            this.label7.Location = new System.Drawing.Point(13, 231);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 13);
             this.label7.TabIndex = 34;
@@ -181,7 +180,7 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(12, 181);
+            this.txtID.Location = new System.Drawing.Point(13, 247);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 20);
@@ -191,7 +190,7 @@
             // 
             this.DataGridViewClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewClientes.Location = new System.Drawing.Point(275, 19);
+            this.DataGridViewClientes.Location = new System.Drawing.Point(276, 85);
             this.DataGridViewClientes.Name = "DataGridViewClientes";
             this.DataGridViewClientes.ReadOnly = true;
             this.DataGridViewClientes.RowHeadersVisible = false;
@@ -202,7 +201,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(12, 303);
+            this.btnExcluir.Location = new System.Drawing.Point(13, 369);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(230, 42);
             this.btnExcluir.TabIndex = 36;
@@ -210,22 +209,11 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // chkAtivo
-            // 
-            this.chkAtivo.AutoSize = true;
-            this.chkAtivo.Location = new System.Drawing.Point(142, 181);
-            this.chkAtivo.Name = "chkAtivo";
-            this.chkAtivo.Size = new System.Drawing.Size(50, 17);
-            this.chkAtivo.TabIndex = 37;
-            this.chkAtivo.Text = "Ativo";
-            this.chkAtivo.UseVisualStyleBackColor = true;
-            // 
             // FormManutençãoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 358);
-            this.Controls.Add(this.chkAtivo);
+            this.ClientSize = new System.Drawing.Size(862, 455);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.DataGridViewClientes);
             this.Controls.Add(this.label7);
@@ -273,7 +261,6 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.DataGridView DataGridViewClientes;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.CheckBox chkAtivo;
     }
 }
 

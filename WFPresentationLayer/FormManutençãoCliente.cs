@@ -22,17 +22,19 @@ namespace WFPresentationLayer
         #region Cadastro
         private void btnCadastro_Click(object sender, EventArgs e)
         {
+            DialogResult resposta1 = MessageBox.Show("Cadastrar novo cliente?", "Cadastro Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(resposta1 != DialogResult.Yes)
+            {
+                return;
+            }
             string nome = txtNome.Text;
             string CPF = mtxtCPF.Text;
             string RG = mtxtRG.Text;
             string Email = txtEmail.Text;
             string Fone1 = mtxtFone1.Text;
             string Fone2 = mtxtFone2.Text;
-            bool ativo = false;
-            if (chkAtivo.Checked)
-            {
-                ativo = true;
-            }
+            bool ativo = true;
+            
             Cliente cli = new Cliente(nome, CPF, RG, Fone1, Fone2, Email, ativo);
             cli = new ClienteBLL().ProcurarCPF(cli);
             if(cli.ID == -1)
@@ -42,8 +44,8 @@ namespace WFPresentationLayer
             }
             if (cli.ID > -1)
             {
-                DialogResult resposta = MessageBox.Show("Cliente já cadastrado, porém inativo\r\nDeseja ativá-lo?", "Cliente inativo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (resposta == DialogResult.Yes)
+                DialogResult resposta2 = MessageBox.Show("Cliente já cadastrado, porém inativo\r\nDeseja ativá-lo?", "Cliente inativo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (resposta2 == DialogResult.Yes)
                 {
                     MessageBox.Show(new ClienteBLL().Atualizar(cli));
                 }
@@ -66,11 +68,8 @@ namespace WFPresentationLayer
             string Email = txtEmail.Text;
             string Fone1 = mtxtFone1.Text;
             string Fone2 = mtxtFone2.Text;
-            bool ativo = false;
-            if (chkAtivo.Checked)
-            {
-                ativo = true;
-            }
+            bool ativo = true;
+            
 
             Cliente cli = new Cliente(id, nome, CPF, RG, Fone1, Fone2, Email, ativo);
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
