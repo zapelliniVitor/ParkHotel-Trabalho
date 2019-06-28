@@ -79,6 +79,7 @@
             // 
             // txtID
             // 
+            this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(133, 111);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
@@ -157,7 +158,7 @@
             // 
             // txtPreco
             // 
-            this.txtPreco.Location = new System.Drawing.Point(138, 72);
+            this.txtPreco.Location = new System.Drawing.Point(133, 72);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(100, 20);
             this.txtPreco.TabIndex = 59;
