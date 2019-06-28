@@ -44,14 +44,12 @@ namespace WFPresentationLayer
                 {
                     MessageBox.Show(new ClienteBLL().Atualizar(cli));
                 }
-                FormCleaner.Clear(this);
-                AtualizarGrid();
+                FormCleaner.Clear(this);;
                 return;
             }
 
             MessageBox.Show(new ClienteBLL().Inserir(cli));
             FormCleaner.Clear(this);
-            AtualizarGrid();
         }
         #endregion
 
@@ -72,7 +70,7 @@ namespace WFPresentationLayer
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
             txtID.Text = null;
             FormCleaner.Clear(this);
-            AtualizarGrid();
+
         }
         #endregion
 
@@ -117,12 +115,6 @@ namespace WFPresentationLayer
         #endregion
 
         private void FormManutençãoCliente_Load(object sender, EventArgs e)
-        {
-            DataGridViewClientes.DataSource = null;
-            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
-        }
-
-        private void AtualizarGrid()
         {
             DataGridViewClientes.DataSource = null;
             DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();

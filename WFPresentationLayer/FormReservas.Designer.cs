@@ -43,6 +43,8 @@
             this.txtIDQuarto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnPesquisarQuarto = new System.Windows.Forms.Button();
+            this.btnPesquisaCliente = new System.Windows.Forms.Button();
+            this.btnPesquisaFuncionario = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,9 +61,9 @@
             // dgvReservas
             // 
             this.dgvReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReservas.Location = new System.Drawing.Point(243, 12);
+            this.dgvReservas.Location = new System.Drawing.Point(237, 13);
             this.dgvReservas.Name = "dgvReservas";
-            this.dgvReservas.Size = new System.Drawing.Size(319, 150);
+            this.dgvReservas.Size = new System.Drawing.Size(377, 150);
             this.dgvReservas.TabIndex = 1;
             // 
             // dtpSaidaPrevista
@@ -163,19 +165,41 @@
             // 
             // btnPesquisarQuarto
             // 
-            this.btnPesquisarQuarto.Location = new System.Drawing.Point(174, 3);
+            this.btnPesquisarQuarto.Location = new System.Drawing.Point(197, 6);
             this.btnPesquisarQuarto.Name = "btnPesquisarQuarto";
-            this.btnPesquisarQuarto.Size = new System.Drawing.Size(44, 19);
+            this.btnPesquisarQuarto.Size = new System.Drawing.Size(21, 19);
             this.btnPesquisarQuarto.TabIndex = 18;
             this.btnPesquisarQuarto.Text = "...";
             this.btnPesquisarQuarto.UseVisualStyleBackColor = true;
             this.btnPesquisarQuarto.Click += new System.EventHandler(this.btnPesquisarQuarto_Click);
             // 
+            // btnPesquisaCliente
+            // 
+            this.btnPesquisaCliente.Location = new System.Drawing.Point(91, 45);
+            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
+            this.btnPesquisaCliente.Size = new System.Drawing.Size(21, 19);
+            this.btnPesquisaCliente.TabIndex = 19;
+            this.btnPesquisaCliente.Text = "...";
+            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
+            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
+            // 
+            // btnPesquisaFuncionario
+            // 
+            this.btnPesquisaFuncionario.Location = new System.Drawing.Point(91, 84);
+            this.btnPesquisaFuncionario.Name = "btnPesquisaFuncionario";
+            this.btnPesquisaFuncionario.Size = new System.Drawing.Size(21, 19);
+            this.btnPesquisaFuncionario.TabIndex = 20;
+            this.btnPesquisaFuncionario.Text = "...";
+            this.btnPesquisaFuncionario.UseVisualStyleBackColor = true;
+            this.btnPesquisaFuncionario.Click += new System.EventHandler(this.btnPesquisaFuncionario_Click);
+            // 
             // FormReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 175);
+            this.ClientSize = new System.Drawing.Size(630, 175);
+            this.Controls.Add(this.btnPesquisaFuncionario);
+            this.Controls.Add(this.btnPesquisaCliente);
             this.Controls.Add(this.btnPesquisarQuarto);
             this.Controls.Add(this.txtIDQuarto);
             this.Controls.Add(this.label6);
@@ -217,5 +241,7 @@
         private System.Windows.Forms.TextBox txtIDQuarto;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnPesquisarQuarto;
+        private System.Windows.Forms.Button btnPesquisaCliente;
+        private System.Windows.Forms.Button btnPesquisaFuncionario;
     }
 }

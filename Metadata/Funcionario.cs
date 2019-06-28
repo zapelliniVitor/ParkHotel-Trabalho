@@ -63,9 +63,9 @@ namespace Metadata
             this.EhAtivo = ehAtivo;
         }
 
-        public Funcionario()
+        public Funcionario(int id)
         {
-            
+            this.ID = id;
         }
 
     }
