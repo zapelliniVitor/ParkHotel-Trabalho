@@ -28,12 +28,102 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dgvQuartos = new System.Windows.Forms.DataGridView();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.cmbOption = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtItemPesquisado = new System.Windows.Forms.TextBox();
+            this.labelTextoPesuisa = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuartos)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dgvQuartos
+            // 
+            this.dgvQuartos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvQuartos.Location = new System.Drawing.Point(12, 52);
+            this.dgvQuartos.Name = "dgvQuartos";
+            this.dgvQuartos.RowHeadersVisible = false;
+            this.dgvQuartos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvQuartos.Size = new System.Drawing.Size(552, 239);
+            this.dgvQuartos.TabIndex = 0;
+            this.dgvQuartos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQuartos_CellDoubleClick);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(489, 10);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 39);
+            this.btnPesquisar.TabIndex = 1;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // cmbOption
+            // 
+            this.cmbOption.FormattingEnabled = true;
+            this.cmbOption.Items.AddRange(new object[] {
+            "ID",
+            "Nº QUARTO",
+            "LIVRES",
+            "TODOS"});
+            this.cmbOption.Location = new System.Drawing.Point(12, 25);
+            this.cmbOption.Name = "cmbOption";
+            this.cmbOption.Size = new System.Drawing.Size(121, 21);
+            this.cmbOption.TabIndex = 2;
+            this.cmbOption.SelectedIndexChanged += new System.EventHandler(this.cmbOption_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(74, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Pesquisar por:";
+            // 
+            // txtItemPesquisado
+            // 
+            this.txtItemPesquisado.Location = new System.Drawing.Point(157, 26);
+            this.txtItemPesquisado.Name = "txtItemPesquisado";
+            this.txtItemPesquisado.Size = new System.Drawing.Size(100, 20);
+            this.txtItemPesquisado.TabIndex = 4;
+            // 
+            // labelTextoPesuisa
+            // 
+            this.labelTextoPesuisa.AutoSize = true;
+            this.labelTextoPesuisa.Location = new System.Drawing.Point(154, 10);
+            this.labelTextoPesuisa.Name = "labelTextoPesuisa";
+            this.labelTextoPesuisa.Size = new System.Drawing.Size(43, 13);
+            this.labelTextoPesuisa.TabIndex = 5;
+            this.labelTextoPesuisa.Text = "Digite o";
+            // 
+            // FormPesquisaQuarto
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(576, 303);
+            this.Controls.Add(this.labelTextoPesuisa);
+            this.Controls.Add(this.txtItemPesquisado);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmbOption);
+            this.Controls.Add(this.btnPesquisar);
+            this.Controls.Add(this.dgvQuartos);
+            this.Name = "FormPesquisaQuarto";
             this.Text = "FormPesquisaQuarto";
+            this.Load += new System.EventHandler(this.FormPesquisaQuarto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvQuartos)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dgvQuartos;
+        private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.ComboBox cmbOption;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtItemPesquisado;
+        private System.Windows.Forms.Label labelTextoPesuisa;
     }
 }

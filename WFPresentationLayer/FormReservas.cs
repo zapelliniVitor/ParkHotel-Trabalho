@@ -55,5 +55,15 @@ namespace WFPresentationLayer
             MessageBox.Show(new ReservaBLL().Cadastro(rsv));
             
         }
+
+        private void btnPesquisarQuarto_Click(object sender, EventArgs e)
+        {
+            FormPesquisaQuarto frm = new FormPesquisaQuarto();
+            frm.ShowDialog();
+            if (frm.QuartoSelecionado != null)
+            {
+                this.txtIDQuarto.Text = frm.QuartoSelecionado.ID.ToString();
+            }
+        }
     }
 }

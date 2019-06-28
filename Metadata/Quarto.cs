@@ -36,5 +36,10 @@ namespace Metadata
             this.DescriçãoQuarto = descricaoQuarto;
             this.n_Quarto = nQuarto;
         }
+
+        public Quarto(int id)
+        {
+            this.ID = id;
+        }
     }
 }

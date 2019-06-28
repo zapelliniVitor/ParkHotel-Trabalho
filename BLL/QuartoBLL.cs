@@ -129,5 +129,19 @@ namespace BLL
         }
         #endregion
 
+        #region Ler por Num
+        public List<Quarto> lerPorNum(int nQ)
+        {
+            return dao.LerPorNum(nQ).Dados;
+        }
+        #endregion
+
+        #region Ler Livres
+        public List<Quarto> lerLivres()
+        {
+            return dao.LerLivres().Dados;
+        }
+        #endregion
+
     }
 }
