@@ -221,7 +221,6 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(337, 20);
             this.txtPesquisa.TabIndex = 37;
-            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // lblPesquisar
             // 
