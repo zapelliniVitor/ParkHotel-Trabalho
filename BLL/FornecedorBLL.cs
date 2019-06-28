@@ -12,8 +12,7 @@ namespace BLL
     public class FornecedorBLL
     {
         FornecedorDAO dao = new FornecedorDAO();
-
-        #region Validar CNPJ
+        
         public static bool validaCNPJ(string cnpj)
         {
             int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
@@ -48,9 +47,8 @@ namespace BLL
             digito = digito + resto.ToString();
             return cnpj.EndsWith(digito);
         }
-        #endregion
 
-        #region Cadastrar
+        //Cadastrar novo fornecedor
         public string cadastrarFornecedor(Fornecedor f)
         {
             List<string> erros = new List<string>();
@@ -164,9 +162,8 @@ namespace BLL
 
             return dao.Inserir(f).Mensagem;
         }
-        #endregion
 
-        #region Atualizar
+        //Atualizar Fornecedor
         public string atualizarFornecedor(Fornecedor f)
         {
             List<string> erros = new List<string>();
@@ -204,7 +201,7 @@ namespace BLL
             }
             else
             {
-                f.CNPJ = f.CNPJ.Trim().Replace(".", "").Replace("-", "").Replace(",", "").Replace("/","");
+                f.CNPJ = f.CNPJ.Trim().Replace(".", "").Replace("-", "").Replace(",", "");
                 if (!validaCNPJ(f.CNPJ))
                 {
                     erros.Add("CNPJ inválido." +
@@ -267,7 +264,6 @@ namespace BLL
             }
             #endregion
 
-            #region Erros
             StringBuilder sb = new StringBuilder();
             if (erros.Count != 0)
             {
@@ -277,24 +273,21 @@ namespace BLL
                 }
                 return sb.ToString();
             }
-            #endregion
-            return dao.Atualizar(f).Mensagem;
+
+            return dao.Atualizar(f).ToString();
 ;
         }
-        #endregion
 
-        #region Ler Todos
+        //Ler Todos
         public List<Fornecedor> lerTodos()
         {
             return dao.LerTodos().Dados;
         }
-        #endregion
 
-        #region Ler Por ID
+        //Ler por ID
         public List<Fornecedor> lerPorId(int id)
         {
             return dao.LerPorID(id);
         }
-        #endregion
     }
 }

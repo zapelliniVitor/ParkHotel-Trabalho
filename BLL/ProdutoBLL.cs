@@ -139,12 +139,10 @@ namespace BLL
         }
         #endregion
 
-        #region Excluir
         public string delete(int id)
         {
             return dao.Delete(id).Mensagem;
         }
-        #endregion
 
         #region LerPorID
         public List<Produto> LerPorID(int ID)

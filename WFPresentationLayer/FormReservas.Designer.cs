@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnReserva = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvReservas = new System.Windows.Forms.DataGridView();
             this.dtpSaidaPrevista = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.txtIDReserva = new System.Windows.Forms.TextBox();
@@ -42,7 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtIDQuarto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReserva
@@ -53,14 +53,15 @@
             this.btnReserva.TabIndex = 0;
             this.btnReserva.Text = "Reservar";
             this.btnReserva.UseVisualStyleBackColor = true;
+            this.btnReserva.Click += new System.EventHandler(this.btnReserva_Click);
             // 
-            // dataGridView1
+            // dgvReservas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(243, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(319, 150);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReservas.Location = new System.Drawing.Point(243, 12);
+            this.dgvReservas.Name = "dgvReservas";
+            this.dgvReservas.Size = new System.Drawing.Size(319, 150);
+            this.dgvReservas.TabIndex = 1;
             // 
             // dtpSaidaPrevista
             // 
@@ -176,11 +177,12 @@
             this.Controls.Add(this.txtIDReserva);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpSaidaPrevista);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvReservas);
             this.Controls.Add(this.btnReserva);
             this.Name = "FormReservas";
             this.Text = "FormCheckin";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.FormReservas_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,7 +191,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnReserva;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvReservas;
         private System.Windows.Forms.DateTimePicker dtpSaidaPrevista;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIDReserva;
