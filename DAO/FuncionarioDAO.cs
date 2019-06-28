@@ -276,8 +276,7 @@ namespace DAO
             connection.ConnectionString = connectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE NOME LIKE '%@NOME%'";
-            command.Parameters.AddWithValue("@NOME", nome);
+            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE NOME LIKE '% "+ nome +"%'";
 
             command.Connection = connection;
 
