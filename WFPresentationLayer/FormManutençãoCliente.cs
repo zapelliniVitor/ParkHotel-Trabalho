@@ -28,11 +28,8 @@ namespace WFPresentationLayer
             string Email = txtEmail.Text;
             string Fone1 = mtxtFone1.Text;
             string Fone2 = mtxtFone2.Text;
-            bool ativo = false;
-            if (chkAtivo.Checked)
-            {
-                ativo = true;
-            }
+            bool ativo = true;
+           
             Cliente cli = new Cliente(nome, CPF, RG, Fone1, Fone2, Email, ativo);
             cli = new ClienteBLL().ProcurarCPF(cli);
             if(cli.ID == -1)
@@ -66,11 +63,8 @@ namespace WFPresentationLayer
             string Email = txtEmail.Text;
             string Fone1 = mtxtFone1.Text;
             string Fone2 = mtxtFone2.Text;
-            bool ativo = false;
-            if (chkAtivo.Checked)
-            {
-                ativo = true;
-            }
+            bool ativo = true;
+            
 
             Cliente cli = new Cliente(id, nome, CPF, RG, Fone1, Fone2, Email, ativo);
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
