@@ -352,12 +352,32 @@ namespace BLL
 
         public List<Cliente> PesquisarID(int id)
         {
-            return new ClienteDAO().PesqusiarID(id).Dados;
+            return new ClienteDAO().PesquisarID(id).Dados;
         }
 
         public List<Cliente> PesquisarNome(string nome)
         {
-            return new ClienteDAO().PesqusiarNome(nome).Dados;
+            return new ClienteDAO().PesquisarNome(nome).Dados;
+        }
+
+        public List<Cliente> PesquisarCPF(string cpf)
+        {
+            return new ClienteDAO().PesquisarCPF(cpf).Dados;
+        }
+
+        public List<Cliente> PesquisarRG(string rg)
+        {
+            return new ClienteDAO().PesquisarRG(rg).Dados;
+        }
+
+        public List<Cliente> PesquisarEmail(string email)
+        {
+            return new ClienteDAO().PesquisarEmail(email).Dados;
+        }
+
+        public List<Cliente> PesquisarTelefone(string tel)
+        {
+            return new ClienteDAO().PesquisarTel(tel).Dados;
         }
 
     }

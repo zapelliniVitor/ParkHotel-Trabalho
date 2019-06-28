@@ -39,7 +39,7 @@ namespace WFPresentationLayer
             if(cboxDadoPesquisa.SelectedIndex == 0)
             {
                 if(int.TryParse(txtPesquisa.Text, out int id))
-                {
+                {//id
                     dgvClientes.DataSource = null;
                     dgvClientes.DataSource = bll.PesquisarID(id);
                         return;
@@ -47,11 +47,39 @@ namespace WFPresentationLayer
             }
 
             if (cboxDadoPesquisa.SelectedIndex == 1)
-            {
+            {//nome
                     dgvClientes.DataSource = null;
                     dgvClientes.DataSource = bll.PesquisarNome(txtPesquisa.Text);
                     return;
                 
+            }
+
+            if (cboxDadoPesquisa.SelectedIndex == 2)
+            {//cpf
+                dgvClientes.DataSource = null;
+                dgvClientes.DataSource = bll.PesquisarCPF(txtPesquisa.Text);
+                return;
+            }
+
+            if (cboxDadoPesquisa.SelectedIndex == 3)
+            {//rg
+                dgvClientes.DataSource = null;
+                dgvClientes.DataSource = bll.PesquisarRG(txtPesquisa.Text);
+                return;
+            }
+
+            if (cboxDadoPesquisa.SelectedIndex == 4)
+            {//email
+                dgvClientes.DataSource = null;
+                dgvClientes.DataSource = bll.PesquisarEmail(txtPesquisa.Text);
+                return;
+            }
+
+            if (cboxDadoPesquisa.SelectedIndex == 5)
+            {//telefone
+                dgvClientes.DataSource = null;
+                dgvClientes.DataSource = bll.PesquisarTelefone(txtPesquisa.Text);
+                return;
             }
         }
     }
