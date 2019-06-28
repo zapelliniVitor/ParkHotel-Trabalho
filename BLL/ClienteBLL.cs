@@ -349,16 +349,5 @@ namespace BLL
             return new ClienteDAO().Excluir(id).Mensagem;
         }
         #endregion
-
-        public List<Cliente> PesquisarID(int id)
-        {
-            return new ClienteDAO().PesqusiarID(id).Dados;
-        }
-
-        public List<Cliente> PesquisarNome(string nome)
-        {
-            return new ClienteDAO().PesqusiarNome(nome).Dados;
-        }
-
     }
 }

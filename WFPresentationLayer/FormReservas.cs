@@ -65,5 +65,22 @@ namespace WFPresentationLayer
                 this.txtIDQuarto.Text = frm.QuartoSelecionado.ID.ToString();
             }
         }
+        
+        private void btnPesquisaCliente_Click(object sender, EventArgs e)
+        {
+            FormPesquisaCliente frm = new FormPesquisaCliente();
+            frm.ShowDialog();
+        }
+
+        private void btnPesquisaFuncionario_Click(object sender, EventArgs e)
+        {
+            FormPesquisaFuncionario frm = new FormPesquisaFuncionario();
+            frm.ShowDialog();
+            if (frm.funcionarioSelecionado != null)
+            {
+                this.txtIDCliente.Text = frm.funcionarioSelecionado.ID.ToString();
+            }
+
+        }
     }
 }

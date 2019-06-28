@@ -268,5 +268,119 @@ namespace DAO
         }
         #endregion
 
+        #region lerPorNome
+        public DbResponse<List<Funcionario>> LerPorNome(string nome)
+        {
+            string connectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.ConnectionString = connectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE NOME LIKE '%@NOME%'";
+            command.Parameters.AddWithValue("@NOME", nome);
+
+            command.Connection = connection;
+
+            List<Funcionario> listF = new List<Funcionario>();
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string Nome = (string)reader["NOME"];
+                    string CPF = (string)reader["CPF"];
+                    string RG = (string)reader["RG"];
+                    string Endereco = (string)reader["ENDERECO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+                    bool EhAdmin = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHATIVO"];
+
+                    Funcionario funcionar = new Funcionario(id, Nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
+                    listF.Add(funcionar);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Funcionario>>
+                {
+                    Sucesso = false,
+                    Mensagem = "Erro no banco de dados, favor contatar o suporte.",
+                    Excessao = ex
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Funcionario>>
+            {
+                Sucesso = true,
+                Mensagem = "Funcionario encontrado.",
+                Dados = listF
+            };
+        }
+        #endregion
+
+        #region lerPorCpf
+        public DbResponse<List<Funcionario>> LerPorCPF(string cpf)
+        {
+            string connectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.ConnectionString = connectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE CPF = @CPF";
+            command.Parameters.AddWithValue("@CPF", cpf);
+
+            command.Connection = connection;
+
+            List<Funcionario> listF = new List<Funcionario>();
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string Nome = (string)reader["NOME"];
+                    string CPF = (string)reader["CPF"];
+                    string RG = (string)reader["RG"];
+                    string Endereco = (string)reader["ENDERECO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+                    bool EhAdmin = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHATIVO"];
+
+                    Funcionario funcionar = new Funcionario(id, Nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
+                    listF.Add(funcionar);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Funcionario>>
+                {
+                    Sucesso = false,
+                    Mensagem = "Erro no banco de dados, favor contatar o suporte.",
+                    Excessao = ex
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Funcionario>>
+            {
+                Sucesso = true,
+                Mensagem = "Funcionario encontrado.",
+                Dados = listF
+            };
+        }
+        #endregion
+
     }
 }

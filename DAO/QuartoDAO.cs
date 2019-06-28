@@ -92,7 +92,7 @@ namespace DAO
                     int nQuarto = (int)reader["N_QUARTO"];
 
                     string precoS = Convert.ToString(preco);
-                    Quarto qua = new Quarto(id, tipoQuarto, preco, statusQuarto, descricaoQuarto, nQuarto);
+                    Quarto qua = new Quarto(id, tipoQuarto, precoS, statusQuarto, descricaoQuarto, nQuarto);
                     listQua.Add(qua);
                 }
 
@@ -233,7 +233,8 @@ namespace DAO
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
 
-                    Quarto quarto = new Quarto(id, tipoQuarto, preco, statusQuarto, descricaoQuarto, nQuarto);
+                    string preco2 = preco.ToString();
+                    Quarto quarto = new Quarto(id, tipoQuarto, preco2, statusQuarto, descricaoQuarto, nQuarto);
                     list.Add(quarto);
                 }
             }
@@ -288,7 +289,8 @@ namespace DAO
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
 
-                    Quarto quarto = new Quarto(id, tipoQuarto, preco, statusQuarto, descricaoQuarto, nQuarto);
+                    string preco2 = preco.ToString();
+                    Quarto quarto = new Quarto(id, tipoQuarto, preco2, statusQuarto, descricaoQuarto, nQuarto);
                     list.Add(quarto);
                 }
             }
@@ -343,7 +345,8 @@ namespace DAO
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
 
-                    Quarto quarto = new Quarto(id, tipoQuarto, preco, statusQuarto, descricaoQuarto, nQuarto);
+                    string preco2 = preco.ToString();
+                    Quarto quarto = new Quarto(id, tipoQuarto, preco2, statusQuarto, descricaoQuarto, nQuarto);
                     list.Add(quarto);
                 }
             }

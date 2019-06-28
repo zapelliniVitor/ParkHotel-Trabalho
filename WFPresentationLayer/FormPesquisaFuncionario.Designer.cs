@@ -29,55 +29,106 @@
         private void InitializeComponent()
         {
             this.dgvFuncionario = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
+            this.lblPesquisa = new System.Windows.Forms.Label();
+            this.txtItemPesquisado = new System.Windows.Forms.TextBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
+            this.cmbOption = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.mtxtCPF = new System.Windows.Forms.MaskedTextBox();
+            this.lblCpf = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionario)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvFuncionario
             // 
             this.dgvFuncionario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFuncionario.Location = new System.Drawing.Point(152, 12);
+            this.dgvFuncionario.Location = new System.Drawing.Point(12, 51);
             this.dgvFuncionario.Name = "dgvFuncionario";
             this.dgvFuncionario.RowHeadersVisible = false;
-            this.dgvFuncionario.Size = new System.Drawing.Size(474, 150);
+            this.dgvFuncionario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFuncionario.Size = new System.Drawing.Size(614, 150);
             this.dgvFuncionario.TabIndex = 0;
+            this.dgvFuncionario.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFuncionario_CellDoubleClick);
             // 
-            // label1
+            // lblPesquisa
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "ID do funcionario desejado";
+            this.lblPesquisa.AutoSize = true;
+            this.lblPesquisa.Location = new System.Drawing.Point(159, 9);
+            this.lblPesquisa.Name = "lblPesquisa";
+            this.lblPesquisa.Size = new System.Drawing.Size(34, 13);
+            this.lblPesquisa.TabIndex = 1;
+            this.lblPesquisa.Text = "Digite";
             // 
-            // txtID
+            // txtItemPesquisado
             // 
-            this.txtID.Location = new System.Drawing.Point(12, 25);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(134, 20);
-            this.txtID.TabIndex = 2;
+            this.txtItemPesquisado.Location = new System.Drawing.Point(162, 26);
+            this.txtItemPesquisado.Name = "txtItemPesquisado";
+            this.txtItemPesquisado.Size = new System.Drawing.Size(100, 20);
+            this.txtItemPesquisado.TabIndex = 2;
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(12, 52);
+            this.btnPesquisar.Location = new System.Drawing.Point(492, 12);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(134, 110);
+            this.btnPesquisar.Size = new System.Drawing.Size(134, 30);
             this.btnPesquisar.TabIndex = 3;
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.UseVisualStyleBackColor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
+            // cmbOption
+            // 
+            this.cmbOption.FormattingEnabled = true;
+            this.cmbOption.Items.AddRange(new object[] {
+            "ID",
+            "NOME",
+            "CPF",
+            "TODOS"});
+            this.cmbOption.Location = new System.Drawing.Point(13, 25);
+            this.cmbOption.Name = "cmbOption";
+            this.cmbOption.Size = new System.Drawing.Size(121, 21);
+            this.cmbOption.TabIndex = 4;
+            this.cmbOption.SelectedIndexChanged += new System.EventHandler(this.cmbOption_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Pesquisar por:";
+            // 
+            // mtxtCPF
+            // 
+            this.mtxtCPF.Enabled = false;
+            this.mtxtCPF.Location = new System.Drawing.Point(287, 25);
+            this.mtxtCPF.Mask = "000,000,000-00";
+            this.mtxtCPF.Name = "mtxtCPF";
+            this.mtxtCPF.Size = new System.Drawing.Size(100, 20);
+            this.mtxtCPF.TabIndex = 6;
+            // 
+            // lblCpf
+            // 
+            this.lblCpf.AutoSize = true;
+            this.lblCpf.Location = new System.Drawing.Point(284, 9);
+            this.lblCpf.Name = "lblCpf";
+            this.lblCpf.Size = new System.Drawing.Size(66, 13);
+            this.lblCpf.TabIndex = 7;
+            this.lblCpf.Text = "Digite o CPF";
+            // 
             // FormPesquisaFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(638, 179);
+            this.ClientSize = new System.Drawing.Size(638, 213);
+            this.Controls.Add(this.lblCpf);
+            this.Controls.Add(this.mtxtCPF);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbOption);
             this.Controls.Add(this.btnPesquisar);
-            this.Controls.Add(this.txtID);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtItemPesquisado);
+            this.Controls.Add(this.lblPesquisa);
             this.Controls.Add(this.dgvFuncionario);
             this.Name = "FormPesquisaFuncionario";
             this.Text = "FormPesquisaFuncionario";
@@ -91,8 +142,12 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvFuncionario;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Label lblPesquisa;
+        private System.Windows.Forms.TextBox txtItemPesquisado;
         private System.Windows.Forms.Button btnPesquisar;
+        private System.Windows.Forms.ComboBox cmbOption;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MaskedTextBox mtxtCPF;
+        private System.Windows.Forms.Label lblCpf;
     }
 }

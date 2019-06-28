@@ -188,7 +188,7 @@ namespace DAO
                     string Telefone1 = (string)reader["TELEFONE1"];
                     string Telefone2 = (string)reader["TELEFONE2"];
                     string Email = (string)reader["EMAIL"];
-                    bool EhAtivo = (bool)reader["EHATIVO"];
+                    bool EhAtivo = (bool)reader["EHADMIN"];
 
                     Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
                     listCli.Add(cli);
@@ -297,111 +297,5 @@ namespace DAO
             };
         }
         #endregion
-
-        #region PesqsuiarID
-        public DbResponse<List<Cliente>> PesqusiarID(int idPesquisa)
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE ID LIKE '%" + idPesquisa.ToString() + "%'";
-
-            List<Cliente> listCli = new List<Cliente>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    int id = (int)reader["ID"];
-                    string nome = (string)reader["NOME"];
-                    string CPF = (string)reader["CPF"];
-                    string RG = (string)reader["RG"];
-                    string Telefone1 = (string)reader["TELEFONE1"];
-                    string Telefone2 = (string)reader["TELEFONE2"];
-                    string Email = (string)reader["EMAIL"];
-                    bool EhAtivo = (bool)reader["EHATIVO"];
-
-                    Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
-                    listCli.Add(cli);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return new DbResponse<List<Cliente>>
-                {
-                    Sucesso = false,
-                    Excessao = ex,
-                    Mensagem = "Banco de dados indisponível"
-                };
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return new DbResponse<List<Cliente>>
-            {
-                Sucesso = true,
-                Dados = listCli,
-                Mensagem = "Clientes encontrados"
-            };
-        }
-        #endregion
-
-        #region PesqsuiarNome
-        public DbResponse<List<Cliente>> PesqusiarNome(string nomeP)
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" + nomeP + "%'";
-
-            List<Cliente> listCli = new List<Cliente>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    int id = (int)reader["ID"];
-                    string nome = (string)reader["NOME"];
-                    string CPF = (string)reader["CPF"];
-                    string RG = (string)reader["RG"];
-                    string Telefone1 = (string)reader["TELEFONE1"];
-                    string Telefone2 = (string)reader["TELEFONE2"];
-                    string Email = (string)reader["EMAIL"];
-                    bool EhAtivo = (bool)reader["EHATIVO"];
-
-                    Cliente cli = new Cliente(id, nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
-                    listCli.Add(cli);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return new DbResponse<List<Cliente>>
-                {
-                    Sucesso = false,
-                    Excessao = ex,
-                    Mensagem = "Banco de dados indisponível"
-                };
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return new DbResponse<List<Cliente>>
-            {
-                Sucesso = true,
-                Dados = listCli,
-                Mensagem = "Clientes encontrados"
-            };
-        }
-        #endregion
-
-
     }
 }

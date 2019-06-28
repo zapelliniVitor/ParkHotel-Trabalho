@@ -154,8 +154,8 @@
             // checkInToolStripMenuItem
             // 
             this.checkInToolStripMenuItem.Name = "checkInToolStripMenuItem";
-            this.checkInToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.checkInToolStripMenuItem.Text = "Check- in";
+            this.checkInToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.checkInToolStripMenuItem.Text = "Reservas";
             this.checkInToolStripMenuItem.Click += new System.EventHandler(this.checkInToolStripMenuItem_Click);
             // 
             // FormMenu
