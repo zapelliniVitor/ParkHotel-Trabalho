@@ -42,6 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtIDQuarto = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnPesquisarQuarto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,11 +161,22 @@
             this.label6.TabIndex = 16;
             this.label6.Text = "ID Quarto";
             // 
+            // btnPesquisarQuarto
+            // 
+            this.btnPesquisarQuarto.Location = new System.Drawing.Point(174, 3);
+            this.btnPesquisarQuarto.Name = "btnPesquisarQuarto";
+            this.btnPesquisarQuarto.Size = new System.Drawing.Size(44, 19);
+            this.btnPesquisarQuarto.TabIndex = 18;
+            this.btnPesquisarQuarto.Text = "...";
+            this.btnPesquisarQuarto.UseVisualStyleBackColor = true;
+            this.btnPesquisarQuarto.Click += new System.EventHandler(this.btnPesquisarQuarto_Click);
+            // 
             // FormReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(573, 175);
+            this.Controls.Add(this.btnPesquisarQuarto);
             this.Controls.Add(this.txtIDQuarto);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -204,5 +216,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtIDQuarto;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnPesquisarQuarto;
     }
 }
