@@ -42,6 +42,7 @@
             this.PesquisaProduto = new System.Windows.Forms.ToolStripMenuItem();
             this.PesquisaFornecedorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,7 +112,8 @@
             this.PesquisaClienteItem,
             this.PesquisaQuartoItem,
             this.PesquisaProduto,
-            this.PesquisaFornecedorItem});
+            this.PesquisaFornecedorItem,
+            this.reservasToolStripMenuItem});
             this.pesquisaToolStripMenuItem.Name = "pesquisaToolStripMenuItem";
             this.pesquisaToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
             this.pesquisaToolStripMenuItem.Text = "Pesquisa";
@@ -119,35 +121,35 @@
             // PesquisaFuncionarioItem
             // 
             this.PesquisaFuncionarioItem.Name = "PesquisaFuncionarioItem";
-            this.PesquisaFuncionarioItem.Size = new System.Drawing.Size(137, 22);
+            this.PesquisaFuncionarioItem.Size = new System.Drawing.Size(180, 22);
             this.PesquisaFuncionarioItem.Text = "Funcionario";
             this.PesquisaFuncionarioItem.Click += new System.EventHandler(this.PesquisaFuncionarioItem_Click);
             // 
             // PesquisaClienteItem
             // 
             this.PesquisaClienteItem.Name = "PesquisaClienteItem";
-            this.PesquisaClienteItem.Size = new System.Drawing.Size(137, 22);
+            this.PesquisaClienteItem.Size = new System.Drawing.Size(180, 22);
             this.PesquisaClienteItem.Text = "Cliente";
             this.PesquisaClienteItem.Click += new System.EventHandler(this.PesquisaClienteItem_Click);
             // 
             // PesquisaQuartoItem
             // 
             this.PesquisaQuartoItem.Name = "PesquisaQuartoItem";
-            this.PesquisaQuartoItem.Size = new System.Drawing.Size(137, 22);
+            this.PesquisaQuartoItem.Size = new System.Drawing.Size(180, 22);
             this.PesquisaQuartoItem.Text = "Quarto";
             this.PesquisaQuartoItem.Click += new System.EventHandler(this.PesquisaQuartoItem_Click);
             // 
             // PesquisaProduto
             // 
             this.PesquisaProduto.Name = "PesquisaProduto";
-            this.PesquisaProduto.Size = new System.Drawing.Size(137, 22);
+            this.PesquisaProduto.Size = new System.Drawing.Size(180, 22);
             this.PesquisaProduto.Text = "Produto";
             this.PesquisaProduto.Click += new System.EventHandler(this.PesquisaProduto_Click);
             // 
             // PesquisaFornecedorItem
             // 
             this.PesquisaFornecedorItem.Name = "PesquisaFornecedorItem";
-            this.PesquisaFornecedorItem.Size = new System.Drawing.Size(137, 22);
+            this.PesquisaFornecedorItem.Size = new System.Drawing.Size(180, 22);
             this.PesquisaFornecedorItem.Text = "Fornecedor";
             this.PesquisaFornecedorItem.Click += new System.EventHandler(this.PesquisaFornecedorItem_Click);
             // 
@@ -157,6 +159,13 @@
             this.checkInToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.checkInToolStripMenuItem.Text = "Reservas";
             this.checkInToolStripMenuItem.Click += new System.EventHandler(this.checkInToolStripMenuItem_Click);
+            // 
+            // reservasToolStripMenuItem
+            // 
+            this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
+            this.reservasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reservasToolStripMenuItem.Text = "Reservas";
+            this.reservasToolStripMenuItem.Click += new System.EventHandler(this.reservasToolStripMenuItem_Click);
             // 
             // FormMenu
             // 
@@ -190,5 +199,6 @@
         private System.Windows.Forms.ToolStripMenuItem ManutencaoQuartosItem;
         private System.Windows.Forms.ToolStripMenuItem ManutencaoFornecedoresItem;
         private System.Windows.Forms.ToolStripMenuItem checkInToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reservasToolStripMenuItem;
     }
 }
