@@ -15,7 +15,7 @@ namespace BLL
         public string Cadastro(Reserva r)
         {
             List<string> erros = new List<string>();
-            
+
             #region ID Cliente
             if (r.IdCliente < 0)
             {
@@ -43,7 +43,7 @@ namespace BLL
             #endregion
 
             #region Saida Prevista
-           if (r.dataSaidaPrevista <= r.dataEntrada)
+            if (r.dataSaidaPrevista <= r.dataEntrada)
             {
                 erros.Add("Data prevista de saida não pode ser menor do que a data de entrada.");
             }
@@ -88,6 +88,16 @@ namespace BLL
             }
 
             return dao.Inserir(r).Mensagem;
+
+
+
         }
+
+        #region LerTodos
+        public List<Reserva> LerTodos()
+        {
+            return new ReservaDAO().LerTodos();
+        }
+        #endregion
     }
 }

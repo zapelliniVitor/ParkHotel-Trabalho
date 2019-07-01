@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,18 @@ namespace WFPresentationLayer
         public FormPesquisaReservas()
         {
             InitializeComponent();
+        }
+
+        ReservaBLL bll = new ReservaBLL();
+
+        private void FormPesquisaReservas_Load(object sender, EventArgs e)
+        {
+            dgvReservas.DataSource = bll.LerTodos();
+        }
+
+        private void cboxPesqusia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

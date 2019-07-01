@@ -65,6 +65,44 @@ namespace DAO
         }
         #endregion
 
+        #region LerTodos
+        public List<Reserva> LerTodos()
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = "SELECT * FROM RESERVAS";
+
+            List<Reserva> listCli = new List<Reserva>();
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    int cliente = (int)reader["ID_CLIENTES"];
+                    DateTime dataEntrada = (DateTime)reader["DATA_ENTRADA"];
+                    DateTime dataSaida = (DateTime)reader["DATA_SAIDA_PREVISTA"];
+                    int funcionario = (int)reader["ID_FUNCIONARIO"];
+
+                    Reserva cli = new Reserva(id, cliente, dataEntrada, dataSaida, funcionario, 0);
+                    listCli.Add(cli);
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return listCli;
+        }
+        #endregion
 
     }
 }
