@@ -63,7 +63,7 @@
             // 
             this.txtItemPesquisado.Location = new System.Drawing.Point(162, 26);
             this.txtItemPesquisado.Name = "txtItemPesquisado";
-            this.txtItemPesquisado.Size = new System.Drawing.Size(100, 20);
+            this.txtItemPesquisado.Size = new System.Drawing.Size(117, 20);
             this.txtItemPesquisado.TabIndex = 2;
             // 
             // btnPesquisar
@@ -102,16 +102,16 @@
             // mtxtCPF
             // 
             this.mtxtCPF.Enabled = false;
-            this.mtxtCPF.Location = new System.Drawing.Point(287, 25);
+            this.mtxtCPF.Location = new System.Drawing.Point(315, 25);
             this.mtxtCPF.Mask = "000,000,000-00";
             this.mtxtCPF.Name = "mtxtCPF";
-            this.mtxtCPF.Size = new System.Drawing.Size(100, 20);
+            this.mtxtCPF.Size = new System.Drawing.Size(128, 20);
             this.mtxtCPF.TabIndex = 6;
             // 
             // lblCpf
             // 
             this.lblCpf.AutoSize = true;
-            this.lblCpf.Location = new System.Drawing.Point(284, 9);
+            this.lblCpf.Location = new System.Drawing.Point(312, 9);
             this.lblCpf.Name = "lblCpf";
             this.lblCpf.Size = new System.Drawing.Size(66, 13);
             this.lblCpf.TabIndex = 7;

@@ -35,21 +35,25 @@ namespace WFPresentationLayer
             {
                 dgvFuncionario.DataSource = null;
                 dgvFuncionario.DataSource = bll.lerPorId(Convert.ToInt32(txtItemPesquisado.Text));
+                txtItemPesquisado.Text = null;
             }
             else if (cmbOption.Text == "NOME")
             {
                 dgvFuncionario.DataSource = null;
                 dgvFuncionario.DataSource = bll.lerPorNome(txtItemPesquisado.Text);
+                txtItemPesquisado.Text = null;
             }
             else if (cmbOption.Text == "CPF")
             {
                 dgvFuncionario.DataSource = null;
                 dgvFuncionario.DataSource = bll.lerPorCPF(mtxtCPF.Text);
+                mtxtCPF.Text = null;
             }
             else if (cmbOption.Text == "TODOS")
             {
                 dgvFuncionario.DataSource = null;
                 dgvFuncionario.DataSource = bll.LerTodos();
+                txtItemPesquisado.Text = null;
             }
         }
 
