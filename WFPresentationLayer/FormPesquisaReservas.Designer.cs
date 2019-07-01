@@ -68,7 +68,8 @@
             "Cliente",
             "Data de Entrada",
             "Data Prevista de Saída",
-            "Funcionário"});
+            "Funcionário",
+            "Quarto"});
             this.cboxPesqusia.Location = new System.Drawing.Point(12, 22);
             this.cboxPesqusia.Name = "cboxPesqusia";
             this.cboxPesqusia.Size = new System.Drawing.Size(121, 21);
