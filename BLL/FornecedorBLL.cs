@@ -279,7 +279,7 @@ namespace BLL
         }
 
         //Ler Todos
-        public List<Fornecedor> lerTodos()
+        public List<Fornecedor> LerTodos()
         {
             return dao.LerTodos().Dados;
         }
@@ -288,6 +288,21 @@ namespace BLL
         public List<Fornecedor> lerPorId(int id)
         {
             return dao.LerPorID(id);
+        }
+
+        public List<Fornecedor> PesquisarID(int id)
+        {
+            return new FornecedorDAO().PesquisarID(id).Dados;
+        }
+
+        public List<Fornecedor> PesquisarNome(string nome)
+        {
+            return new FornecedorDAO().PesquisarNome(nome).Dados;
+        }
+
+        public List<Fornecedor> PesquisarEmail(string email)
+        {
+            return new FornecedorDAO().PesquisarEmail(email).Dados;
         }
     }
 }
