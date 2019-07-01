@@ -27,58 +27,31 @@ namespace WFPresentationLayer
         {
             dgvFuncionario.DataSource = null;
             dgvFuncionario.DataSource = bll.LerTodos();
-        }
-
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            if (cmbOption.Text == "ID")
-            {
-                dgvFuncionario.DataSource = null;
-                dgvFuncionario.DataSource = bll.lerPorId(Convert.ToInt32(txtItemPesquisado.Text));
-                txtItemPesquisado.Text = null;
-            }
-            else if (cmbOption.Text == "NOME")
-            {
-                dgvFuncionario.DataSource = null;
-                dgvFuncionario.DataSource = bll.lerPorNome(txtItemPesquisado.Text);
-                txtItemPesquisado.Text = null;
-            }
-            else if (cmbOption.Text == "CPF")
-            {
-                dgvFuncionario.DataSource = null;
-                dgvFuncionario.DataSource = bll.lerPorCPF(mtxtCPF.Text);
-                mtxtCPF.Text = null;
-            }
-            else if (cmbOption.Text == "TODOS")
-            {
-                dgvFuncionario.DataSource = null;
-                dgvFuncionario.DataSource = bll.LerTodos();
-                txtItemPesquisado.Text = null;
-            }
+            cmbOption.SelectedIndex = 0;
+            mtxtCPF.Enabled = false;
         }
 
         private void cmbOption_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbOption.Text == "ID")
+            if (cmbOption.SelectedIndex == 0)
             {
                 lblPesquisa.Text = "Digite o ID";
                 txtItemPesquisado.Enabled = true;
                 mtxtCPF.Enabled = false;
             }
-            else if (cmbOption.Text == "NOME")
+            else if (cmbOption.SelectedIndex == 1)
             {
                 lblPesquisa.Text = "Digite o Nome";
                 txtItemPesquisado.Enabled = true;
                 mtxtCPF.Enabled = false;
             }
-            else if (cmbOption.Text == "CPF")
+            else if (cmbOption.SelectedIndex == 2)
             {
                 txtItemPesquisado.Enabled = false;
                 mtxtCPF.Enabled = true;
             }
-            else if (cmbOption.Text == "TODOS")
+            else if (cmbOption.SelectedIndex == 3)
             {
-                lblPesquisa.Text = "Clique em pesquisar";
                 txtItemPesquisado.Enabled = false;
                 mtxtCPF.Enabled = false;
             }
@@ -88,6 +61,42 @@ namespace WFPresentationLayer
         {
             this.funcionarioSelecionado = new Funcionario((int)this.dgvFuncionario.Rows[e.RowIndex].Cells[0].Value);
             this.Close();
+        }
+
+        private void txtItemPesquisado_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtItemPesquisado.Text))
+            {
+                dgvFuncionario.DataSource = null;
+                dgvFuncionario.DataSource = bll.LerTodos();
+                return;
+            }
+
+            if (cmbOption.SelectedIndex == 0)
+            {
+                dgvFuncionario.DataSource = null;
+                int id = -1;
+                if (int.TryParse(txtItemPesquisado.Text, out id))
+                {
+                    dgvFuncionario.DataSource = bll.lerPorId(id);
+                }
+                
+            }
+            else if (cmbOption.SelectedIndex == 1)
+            {
+                dgvFuncionario.DataSource = null;
+                dgvFuncionario.DataSource = bll.lerPorNome(txtItemPesquisado.Text);
+            }
+            else if (cmbOption.SelectedIndex == 2)
+            {
+                dgvFuncionario.DataSource = null;
+                dgvFuncionario.DataSource = bll.lerPorCPF(mtxtCPF.Text);
+            }
+            else if (cmbOption.SelectedIndex == 3)
+            {
+                dgvFuncionario.DataSource = null;
+                dgvFuncionario.DataSource = bll.LerTodos();
+            }
         }
     }
 }

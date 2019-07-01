@@ -31,7 +31,6 @@
             this.dgvFuncionario = new System.Windows.Forms.DataGridView();
             this.lblPesquisa = new System.Windows.Forms.Label();
             this.txtItemPesquisado = new System.Windows.Forms.TextBox();
-            this.btnPesquisar = new System.Windows.Forms.Button();
             this.cmbOption = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.mtxtCPF = new System.Windows.Forms.MaskedTextBox();
@@ -65,19 +64,11 @@
             this.txtItemPesquisado.Name = "txtItemPesquisado";
             this.txtItemPesquisado.Size = new System.Drawing.Size(117, 20);
             this.txtItemPesquisado.TabIndex = 2;
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Location = new System.Drawing.Point(492, 12);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(134, 30);
-            this.btnPesquisar.TabIndex = 3;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            this.txtItemPesquisado.TextChanged += new System.EventHandler(this.txtItemPesquisado_TextChanged);
             // 
             // cmbOption
             // 
+            this.cmbOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOption.FormattingEnabled = true;
             this.cmbOption.Items.AddRange(new object[] {
             "ID",
@@ -126,7 +117,6 @@
             this.Controls.Add(this.mtxtCPF);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbOption);
-            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.txtItemPesquisado);
             this.Controls.Add(this.lblPesquisa);
             this.Controls.Add(this.dgvFuncionario);
@@ -144,7 +134,6 @@
         private System.Windows.Forms.DataGridView dgvFuncionario;
         private System.Windows.Forms.Label lblPesquisa;
         private System.Windows.Forms.TextBox txtItemPesquisado;
-        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.ComboBox cmbOption;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox mtxtCPF;
