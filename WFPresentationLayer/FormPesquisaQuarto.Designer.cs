@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dgvQuartos = new System.Windows.Forms.DataGridView();
+            this.btnPesquisar = new System.Windows.Forms.Button();
             this.cmbOption = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtItemPesquisado = new System.Windows.Forms.TextBox();
@@ -47,9 +48,18 @@
             this.dgvQuartos.TabIndex = 0;
             this.dgvQuartos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvQuartos_CellDoubleClick);
             // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(489, 10);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 39);
+            this.btnPesquisar.TabIndex = 1;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
             // cmbOption
             // 
-            this.cmbOption.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOption.FormattingEnabled = true;
             this.cmbOption.Items.AddRange(new object[] {
             "ID",
@@ -75,9 +85,8 @@
             // 
             this.txtItemPesquisado.Location = new System.Drawing.Point(157, 26);
             this.txtItemPesquisado.Name = "txtItemPesquisado";
-            this.txtItemPesquisado.Size = new System.Drawing.Size(407, 20);
+            this.txtItemPesquisado.Size = new System.Drawing.Size(100, 20);
             this.txtItemPesquisado.TabIndex = 4;
-            this.txtItemPesquisado.TextChanged += new System.EventHandler(this.txtItemPesquisado_TextChanged);
             // 
             // labelTextoPesuisa
             // 
@@ -97,6 +106,7 @@
             this.Controls.Add(this.txtItemPesquisado);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbOption);
+            this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.dgvQuartos);
             this.Name = "FormPesquisaQuarto";
             this.Text = "FormPesquisaQuarto";
@@ -110,6 +120,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvQuartos;
+        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.ComboBox cmbOption;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtItemPesquisado;

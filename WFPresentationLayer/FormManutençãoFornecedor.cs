@@ -18,7 +18,7 @@ namespace WFPresentationLayer
         {
             InitializeComponent();
             dgvFornecedores.DataSource = null;
-            dgvFornecedores.DataSource = bll.LerTodos();
+            dgvFornecedores.DataSource = bll.lerTodos();
         }
 
         FornecedorBLL bll = new FornecedorBLL();
@@ -28,7 +28,7 @@ namespace WFPresentationLayer
             Fornecedor fornecedor = new Fornecedor(txtContato.Text, txtRSocial.Text, mtxtCnpj.Text, mtxtTelefone.Text, txtEmail.Text);
             MessageBox.Show(bll.cadastrarFornecedor(fornecedor));
             dgvFornecedores.DataSource = null;
-            dgvFornecedores.DataSource = bll.LerTodos();
+            dgvFornecedores.DataSource = bll.lerTodos();
             FormCleaner.Clear(this);
         }
 

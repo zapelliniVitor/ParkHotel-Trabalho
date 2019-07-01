@@ -24,42 +24,19 @@ namespace WFPresentationLayer
         {
             dgvProdutos.DataSource = null;
             dgvProdutos.DataSource = bll.LerTodos();
-            cboxDadoPesquisa.SelectedIndex = 0;
         }
 
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPesquisa.Text))
+            if (txtID.Text == null)
             {
-                dgvProdutos.DataSource = null;
-                dgvProdutos.DataSource = bll.LerTodos();
+                MessageBox.Show("Informe um ID a ser pesquisado.");
                 return;
             }
 
-            if (cboxDadoPesquisa.SelectedIndex == 0)
-            {
-                if (int.TryParse(txtPesquisa.Text, out int id))
-                {//id
-                    dgvProdutos.DataSource = null;
-                    dgvProdutos.DataSource = bll.PesquisarID(id);
-                    return;
-                }
-            }
-
-            if (cboxDadoPesquisa.SelectedIndex == 1)
-            {//nome
-                dgvProdutos.DataSource = null;
-                dgvProdutos.DataSource = bll.PesquisarNome(txtPesquisa.Text);
-                return;
-
-            }
-
-            if (cboxDadoPesquisa.SelectedIndex == 2)
-            {//descricao
-                dgvProdutos.DataSource = null;
-                dgvProdutos.DataSource = bll.PesquisarDescricao(txtPesquisa.Text);
-                return;
-            }
+            FormCleaner.Clear(this);
+            dgvProdutos.DataSource = null;
+            dgvProdutos.DataSource = bll.LerPorID(Convert.ToInt32(txtID.Text));
         }
     }
 }

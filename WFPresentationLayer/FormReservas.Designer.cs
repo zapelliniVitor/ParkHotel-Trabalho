@@ -45,14 +45,16 @@
             this.btnPesquisarQuarto = new System.Windows.Forms.Button();
             this.btnPesquisaCliente = new System.Windows.Forms.Button();
             this.btnPesquisaFuncionario = new System.Windows.Forms.Button();
+            this.btnAtualizar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReserva
             // 
-            this.btnReserva.Location = new System.Drawing.Point(12, 129);
+            this.btnReserva.Location = new System.Drawing.Point(12, 158);
             this.btnReserva.Name = "btnReserva";
-            this.btnReserva.Size = new System.Drawing.Size(100, 23);
+            this.btnReserva.Size = new System.Drawing.Size(206, 23);
             this.btnReserva.TabIndex = 0;
             this.btnReserva.Text = "Reservar";
             this.btnReserva.UseVisualStyleBackColor = true;
@@ -63,8 +65,11 @@
             this.dgvReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReservas.Location = new System.Drawing.Point(237, 13);
             this.dgvReservas.Name = "dgvReservas";
-            this.dgvReservas.Size = new System.Drawing.Size(377, 150);
+            this.dgvReservas.RowHeadersVisible = false;
+            this.dgvReservas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReservas.Size = new System.Drawing.Size(377, 160);
             this.dgvReservas.TabIndex = 1;
+            this.dgvReservas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservas_CellDoubleClick);
             // 
             // dtpSaidaPrevista
             // 
@@ -193,11 +198,33 @@
             this.btnPesquisaFuncionario.UseVisualStyleBackColor = true;
             this.btnPesquisaFuncionario.Click += new System.EventHandler(this.btnPesquisaFuncionario_Click);
             // 
+            // btnAtualizar
+            // 
+            this.btnAtualizar.Location = new System.Drawing.Point(118, 129);
+            this.btnAtualizar.Name = "btnAtualizar";
+            this.btnAtualizar.Size = new System.Drawing.Size(100, 23);
+            this.btnAtualizar.TabIndex = 21;
+            this.btnAtualizar.Text = "Alterar";
+            this.btnAtualizar.UseVisualStyleBackColor = true;
+            this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(12, 129);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(100, 23);
+            this.btnExcluir.TabIndex = 22;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // FormReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 175);
+            this.ClientSize = new System.Drawing.Size(630, 185);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.btnPesquisaFuncionario);
             this.Controls.Add(this.btnPesquisaCliente);
             this.Controls.Add(this.btnPesquisarQuarto);
@@ -243,5 +270,7 @@
         private System.Windows.Forms.Button btnPesquisarQuarto;
         private System.Windows.Forms.Button btnPesquisaCliente;
         private System.Windows.Forms.Button btnPesquisaFuncionario;
+        private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }

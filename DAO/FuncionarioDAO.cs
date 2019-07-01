@@ -276,8 +276,8 @@ namespace DAO
             connection.ConnectionString = connectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE NOME LIKE @NOME";
-            command.Parameters.AddWithValue("@NOME", "%" + nome + "%");
+            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE NOME LIKE '%@NOME%'";
+            command.Parameters.AddWithValue("@NOME", nome);
 
             command.Connection = connection;
 
@@ -333,8 +333,8 @@ namespace DAO
             connection.ConnectionString = connectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE CPF LIKE @CPF";
-            command.Parameters.AddWithValue("@CPF", "%" + cpf.Trim() + "%");
+            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE CPF = @CPF";
+            command.Parameters.AddWithValue("@CPF", cpf);
 
             command.Connection = connection;
 
