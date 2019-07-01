@@ -98,6 +98,7 @@
             this.mtxtCPF.Name = "mtxtCPF";
             this.mtxtCPF.Size = new System.Drawing.Size(128, 20);
             this.mtxtCPF.TabIndex = 6;
+            this.mtxtCPF.TextChanged += new System.EventHandler(this.mtxtCPF_TextChanged);
             // 
             // lblCpf
             // 

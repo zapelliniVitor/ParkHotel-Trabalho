@@ -80,6 +80,7 @@ namespace WFPresentationLayer
                 {
                     dgvFuncionario.DataSource = bll.lerPorId(id);
                 }
+                return;
                 
             }
             else if (cmbOption.SelectedIndex == 1)
@@ -96,6 +97,15 @@ namespace WFPresentationLayer
             {
                 dgvFuncionario.DataSource = null;
                 dgvFuncionario.DataSource = bll.LerTodos();
+            }
+        }
+
+        private void mtxtCPF_TextChanged(object sender, EventArgs e)
+        {
+            if (cmbOption.SelectedIndex == 2)
+            {
+                dgvFuncionario.DataSource = null;
+                dgvFuncionario.DataSource = bll.lerPorCPF(mtxtCPF.Text);
             }
         }
     }
