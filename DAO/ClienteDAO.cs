@@ -408,7 +408,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE CPF LIKE '%" + CPF1 + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE CPF LIKE '" + CPF1 + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -460,7 +460,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE RG LIKE '%" + RG1 + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE RG LIKE '" + RG1 + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -564,7 +564,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE TELEFONE1 LIKE '%" + tel + "%' OR TELEFONE2 LIKE '%" + tel + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE TELEFONE1 LIKE '" + tel + "%' OR TELEFONE2 LIKE '%" + tel + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
