@@ -31,7 +31,7 @@ namespace Metadata
             this.IdCliente = idCliente;
             this.dataEntrada = entrada;
             this.dataSaidaPrevista = saidaPrevista;
-            this.IdFuncionario = IdFuncionario;
+            this.IdFuncionario = idFuncionario;
             this.IdQuarto = idQuarto;
         }
     }

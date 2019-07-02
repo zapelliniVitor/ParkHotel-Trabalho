@@ -33,8 +33,5 @@ namespace Metadata
             this.id_cliente = idCliente;
             this.id_func = idFunc;
         }
-
-
-
     }
 }

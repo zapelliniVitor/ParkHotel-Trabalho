@@ -19,10 +19,12 @@ namespace WFPresentationLayer
             InitializeComponent();
         }
 
+        ReservaBLL bll = new ReservaBLL();
+
         private void FormReservas_Load(object sender, EventArgs e)
         {
             dgvReservas.DataSource = null;
-            dgvReservas.DataSource = new ReservaBLL().LerTodos(); 
+            dgvReservas.DataSource = bll.LerTodos(); 
         }
 
         private void btnReserva_Click(object sender, EventArgs e)
@@ -50,10 +52,11 @@ namespace WFPresentationLayer
             int idF = Convert.ToInt32(txtIDFuncionario.Text);
             int idQ = Convert.ToInt32(txtIDQuarto.Text);
 
-            
             Reserva rsv = new Reserva(idC, dtpEntrada.Value, dtpSaidaPrevista.Value, idF, idQ);
-            MessageBox.Show(new ReservaBLL().Cadastro(rsv));
-            
+            MessageBox.Show(bll.Cadastro(rsv));
+
+            dgvReservas.DataSource = null;
+            dgvReservas.DataSource = bll.LerTodos();
         }
 
         private void btnPesquisarQuarto_Click(object sender, EventArgs e)
@@ -84,7 +87,6 @@ namespace WFPresentationLayer
             {
                 this.txtIDFuncionario.Text = frm.funcionarioSelecionado.ID.ToString();
             }
-
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -113,7 +115,7 @@ namespace WFPresentationLayer
             int idQ = Convert.ToInt32(txtIDQuarto.Text);
 
             Reserva rsv = new Reserva(idC, dtpEntrada.Value, dtpSaidaPrevista.Value, idF, idQ);
-            MessageBox.Show(new ReservaBLL().Atualizar(rsv));
+            MessageBox.Show(bll.Atualizar(rsv));
 
         }
 
@@ -137,6 +139,12 @@ namespace WFPresentationLayer
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtIDCliente.Text))
+            {
+                MessageBox.Show("Informar ID");
+                return;
+            }
+
             DialogResult result = MessageBox.Show("Deseja cancelar essa reserva?", "ATENÇÂO", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (result == DialogResult.OK)
             {
@@ -144,7 +152,7 @@ namespace WFPresentationLayer
             }
             FormCleaner.Clear(this);
             dgvReservas.DataSource = null;
-            dgvReservas.DataSource = new ReservaBLL().LerTodos();
+            dgvReservas.DataSource = bll.LerTodos();
         }
     }
 }

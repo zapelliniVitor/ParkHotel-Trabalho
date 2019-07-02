@@ -18,7 +18,7 @@ namespace BLL
             List<string> erros = new List<string>();
             
             #region ID Cliente
-            if (r.IdCliente < 0)
+            if (r.IdCliente <= 0)
             {
                 erros.Add("ID do Cliente inválido.");
             }
@@ -51,7 +51,7 @@ namespace BLL
             #endregion
 
             #region ID Funcionario
-            if (r.IdFuncionario < 0)
+            if (r.IdFuncionario <= 0)
             {
                 erros.Add("ID do Funcionário inválido.");
             }
@@ -65,7 +65,7 @@ namespace BLL
             #endregion
 
             #region ID Quarto
-            if (r.IdQuarto < 0)
+            if (r.IdQuarto <= 0)
             {
                 erros.Add("ID Quarto inválido");
             }
