@@ -15,6 +15,7 @@ namespace Metadata
         public int IdFuncionario { get; set; }
         public int IdQuarto { get; set; }
 
+
         public Reserva(int id, int idCliente, DateTime entrada, DateTime saidaPrevista, int idFuncionario, int idQuarto)
         {
             this.ID = id;

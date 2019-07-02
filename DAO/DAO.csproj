@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckInDAO.cs" />
+    <Compile Include="Check_inDAO.cs" />
     <Compile Include="IEntityCRUD.cs" />
     <Compile Include="LoginDAO.cs" />
     <Compile Include="ClienteDAO.cs" />

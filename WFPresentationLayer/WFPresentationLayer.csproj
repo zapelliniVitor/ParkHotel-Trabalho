@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormManutençãoCheck_In.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManutençãoCheck_In.Designer.cs">
+      <DependentUpon>FormManutençãoCheck_In.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReservas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormManutençãoCheck_In.resx">
+      <DependentUpon>FormManutençãoCheck_In.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPesquisaCliente.resx">
       <DependentUpon>FormPesquisaCliente.cs</DependentUpon>
     </EmbeddedResource>

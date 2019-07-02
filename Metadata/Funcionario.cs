@@ -18,11 +18,7 @@ namespace Metadata
         public string Senha { get; set; }
         public bool EhAdmin { get; set; }
         public bool EhAtivo { get; set; }
-
-        public override string ToString()
-        {
-            return ID.ToString() + "-" + Nome;
-        }
+        
 
         //Construtor COM senha
         public Funcionario(string nome, string cpf, string rg, string endereco, string telefone, string email, string senha, bool ehAdmin, bool ehAtivo)

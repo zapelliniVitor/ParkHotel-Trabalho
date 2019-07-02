@@ -1,5 +1,4 @@
 ﻿using Metadata;
-using Metadata.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -66,8 +65,8 @@ namespace DAO
         }
         #endregion
 
-        #region LerTodos
-        public DbResponse<int> LerTodos(Reserva r)
+        #region UPDATE 
+        public DbResponse<int> Atualizar(Reserva r)
         {
             string ConnectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection();
@@ -92,7 +91,7 @@ namespace DAO
             }
             catch (Exception ex)
             {
-                return new DbResponse<int>()
+                return new DbResponse<int>
                 {
                     Excessao = ex,
                     Mensagem = "Banco de dados indisponivel.",
@@ -152,7 +151,7 @@ namespace DAO
         #endregion
 
         #region ReadAll
-        public List<Reserva> LerTodos2()
+        public List<Reserva> LerTodos()
         {
             string ConnectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection();
@@ -193,74 +192,5 @@ namespace DAO
         }
         #endregion
 
-        #region LerReservaViewModel
-        public List<ReservaViewModel> LerViewModels()
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = @"
-                        SELECT R.ID 'Reserva',
-                               C.ID 'IDCliente',
-                               C.Nome 'NomeCliente',
-                               F.ID 'Funcionario',
-                               F.Nome 'NomeFuncionario',
-                               R.Data_ENTRADA 'DataEntrada',
-                               R.DATA_SAIDA_PREVISTA 'DataSaidaPrevista',
-                               Q.ID 'IDQuarto',
-                               Q.N_QUARTO 'Quarto',
-                        FROM RESERVAS R INNER JOIN CLIENTES C ON 
-                                            R.ID_CLIENTES = C.ID
-                                        INNER JOIN FUNCIONARIOS F ON
-                                            F.ID = R.ID_FUNCIONARIO, 
-                                        INNER JOIN RESERVAS_QUARTOS RQ ON
-                                            RQ.ID_RESERVAS = R.ID
-                                        INNER JOIN QUARTOS Q ON
-                                            Q.ID = RQ.ID+QUARTO";
-            List<ReservaViewModel> listReserva = new List<ReservaViewModel>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    ReservaViewModel viewModel = new ReservaViewModel();
-                    Cliente c = new Cliente()
-                    {
-                        ID = (int)reader["IDCliente"],
-                        Nome = (string)reader["NomeCliente"]
-                    };
-
-                    Funcionario f = new Funcionario((int)reader["Funcionario"]);
-                    f.Nome = (string)reader["NomeFuncionario"];
-                    viewModel.ID = (int)reader["Reserva"];
-                    viewModel.DataPrevistaEntrada = (DateTime)reader["DataEntrada"];
-                    viewModel.DataPrevistaSaida = (DateTime)reader["DataSaidaPrevista"];
-                    viewModel.Cliente = c;
-                    viewModel.Funcionario = f;
-                    Quarto q = new Quarto((int)reader["IDQuarto"]);
-                    q.n_Quarto = (int)reader["Quarto"];
-                    viewModel.Quarto = q;
-
-                    listReserva.Add(viewModel);
-                    
-                    
-                }
-
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return listReserva;
-        }
-        #endregion
-
-        
     }
 }

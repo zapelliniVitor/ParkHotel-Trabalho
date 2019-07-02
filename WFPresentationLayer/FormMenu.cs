@@ -104,5 +104,13 @@ namespace WFPresentationLayer
             frm.ShowDialog();
             this.Show();
         }
+
+        private void checkinToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            FormManutençãoCheck_In frm = new FormManutençãoCheck_In();
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
+        }
     }
 }

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using DAO;
 using Metadata;
-using Metadata.ViewModel;
 
 namespace BLL
 {
@@ -169,8 +168,7 @@ namespace BLL
                 return sb.ToString();
             }
 
-            return dao.Atualizar()
-(r).Mensagem;
+            return dao.Atualizar(r).Mensagem;
         }
         #endregion
 
@@ -182,9 +180,9 @@ namespace BLL
         #endregion
 
         #region Ler Todos
-        public List<ReservaViewModel> LerTodos()
+        public List<Reserva> LerTodos()
         {
-            return new ReservaDAO().LerViewModels();
+            return dao.LerTodos();
         }
         #endregion
 

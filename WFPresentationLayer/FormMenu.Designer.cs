@@ -42,6 +42,7 @@
             this.PesquisaProduto = new System.Windows.Forms.ToolStripMenuItem();
             this.PesquisaFornecedorItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkInToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkinToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrosToolStripMenuItem,
             this.pesquisaToolStripMenuItem,
-            this.checkInToolStripMenuItem});
+            this.checkInToolStripMenuItem,
+            this.checkinToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -158,6 +160,13 @@
             this.checkInToolStripMenuItem.Text = "Reservas";
             this.checkInToolStripMenuItem.Click += new System.EventHandler(this.checkInToolStripMenuItem_Click);
             // 
+            // checkinToolStripMenuItem1
+            // 
+            this.checkinToolStripMenuItem1.Name = "checkinToolStripMenuItem1";
+            this.checkinToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
+            this.checkinToolStripMenuItem1.Text = "Check-in";
+            this.checkinToolStripMenuItem1.Click += new System.EventHandler(this.checkinToolStripMenuItem1_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,5 +199,6 @@
         private System.Windows.Forms.ToolStripMenuItem ManutencaoQuartosItem;
         private System.Windows.Forms.ToolStripMenuItem ManutencaoFornecedoresItem;
         private System.Windows.Forms.ToolStripMenuItem checkInToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkinToolStripMenuItem1;
     }
 }
