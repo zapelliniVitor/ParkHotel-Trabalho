@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Metadata;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +21,13 @@ namespace WFPresentationLayer
             InitializeComponent();
         }
         
+        public Cliente clienteSelecionado { get; set; }
+
         private void FormPesquisaCliente_Load(object sender, EventArgs e)
         {
             cboxDadoPesquisa.SelectedIndex = 1;
             dgvClientes.DataSource = bll.LerTodos();
         }
-
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
@@ -81,6 +83,12 @@ namespace WFPresentationLayer
                 dgvClientes.DataSource = bll.PesquisarTelefone(txtPesquisa.Text);
                 return;
             }
+        }
+
+        private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.clienteSelecionado = new Cliente((int)this.dgvClientes.Rows[e.RowIndex].Cells[0].Value);
+            this.Close();
         }
     }
 }

@@ -104,13 +104,5 @@ namespace WFPresentationLayer
             frm.ShowDialog();
             this.Show();
         }
-
-        private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormPesquisaReservas frm = new FormPesquisaReservas();
-            this.Hide();
-            frm.ShowDialog();
-            this.Show();
-        }
     }
 }

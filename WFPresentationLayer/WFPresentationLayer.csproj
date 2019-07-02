@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormPesquisaReservas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPesquisaReservas.Designer.cs">
-      <DependentUpon>FormPesquisaReservas.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormReservas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,14 +127,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormPesquisaFornecedor.resx">
-      <DependentUpon>FormPesquisaFornecedor.cs</DependentUpon>
+    <EmbeddedResource Include="FormPesquisaCliente.resx">
+      <DependentUpon>FormPesquisaCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPesquisaQuarto.resx">
       <DependentUpon>FormPesquisaQuarto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPesquisaReservas.resx">
-      <DependentUpon>FormPesquisaReservas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReservas.resx">
       <DependentUpon>FormReservas.cs</DependentUpon>

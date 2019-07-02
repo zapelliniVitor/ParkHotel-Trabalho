@@ -133,11 +133,10 @@ namespace DAO
                     string Nome = (string)reader["NOME"];
                     string CPF = (string)reader["CPF"];
                     string RG = (string)reader["RG"];
-                    string Endereco = (string)reader["ENDERECO"];
                     string Telefone1 = (string)reader["TELEFONE1"];
                     string Telefone2 = (string)reader["TELEFONE2"];
                     string Email = (string)reader["EMAIL"];
-                    bool EhAtivo = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHATIVO"];
 
                     Cliente cliente = new Cliente(id, Nome, CPF, RG, Telefone1, Telefone2, Email, EhAtivo);
                     listCli.Add(cliente);
@@ -304,8 +303,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE ID LIKE @ID";
-            command.Parameters.AddWithValue("@ID", "%" + idPesquisa.ToString() + "%");
+            command.CommandText = "SELECT * FROM CLIENTES WHERE ID LIKE '%" + idPesquisa.ToString() + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -357,8 +355,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE NOME LIKE @NOME";
-            command.Parameters.AddWithValue("@NOME", "%" + nomeP + "%");
+            command.CommandText = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" + nomeP + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -410,8 +407,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE CPF LIKE @CPF";
-            command.Parameters.AddWithValue("@CPF", CPF1 + "%");
+            command.CommandText = "SELECT * FROM CLIENTES WHERE CPF LIKE '" + CPF1 + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -463,8 +459,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE RG LIKE @RG";
-            command.Parameters.AddWithValue("@RG", RG1 + "%");
+            command.CommandText = "SELECT * FROM CLIENTES WHERE RG LIKE '" + RG1 + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -516,8 +511,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE EMAIL LIKE @EMAIL";
-            command.Parameters.AddWithValue("@EMAIL", "%" + Email1 + "%");
+            command.CommandText = "SELECT * FROM CLIENTES WHERE EMAIL LIKE '%" + Email1 + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -569,8 +563,7 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE TELEFONE1 LIKE @TEL OR TELEFONE2 LIKE @TEL";
-            command.Parameters.AddWithValue("@TEL", "%" + tel + "%");
+            command.CommandText = "SELECT * FROM CLIENTES WHERE TELEFONE1 LIKE '" + tel + "%' OR TELEFONE2 LIKE '%" + tel + "%'";
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;

@@ -89,7 +89,7 @@ namespace DAO
                     string Telefone = (string)reader["TELEFONE"];
                     string Email = (string)reader["EMAIL"];
 
-                    Fornecedor f = new Fornecedor(id, nomeContato, razaoSocial, cnpj, Telefone, Email);
+                    Fornecedor f = new Fornecedor(id, razaoSocial, cnpj, nomeContato, Telefone, Email);
                     listF.Add(f);
                 }
 
@@ -196,8 +196,7 @@ namespace DAO
             return new DbResponse<int>
             {
                 Dados = f.ID,
-                Mensagem = "Fornecedor" +
-                " atualizado com sucesso",
+                Mensagem = "Fornecedor atualizado com sucesso",
                 Sucesso = true,
             };
         }
@@ -241,158 +240,6 @@ namespace DAO
         }
         #endregion
 
-        #region PesquisarID
-        public DbResponse<List<Fornecedor>> PesquisarID(int idPesquisa)
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM FORNECEDORES WHERE ID LIKE @ID";
-            command.Parameters.AddWithValue("@ID", "%" + idPesquisa.ToString() + "%");
-
-            List<Fornecedor> listForn = new List<Fornecedor>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    int id = (int)reader["ID"];
-                    string Razao = (string)reader["RAZAOSOCIAL"];
-                    string CNPJ = (string)reader["CNPJ"];
-                    string Nome = (string)reader["NOMECONTATO"];
-                    string Telefone = (string)reader["TELEFONE"];
-                    string Email = (string)reader["EMAIL"];
-
-                    Fornecedor forn = new Fornecedor(id, Nome, Razao, CNPJ, Telefone, Email);
-                    listForn.Add(forn);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return new DbResponse<List<Fornecedor>>
-                {
-                    Sucesso = false,
-                    Excessao = ex,
-                    Mensagem = "Banco de dados indisponível"
-                };
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return new DbResponse<List<Fornecedor>>
-            {
-                Sucesso = true,
-                Dados = listForn,
-                Mensagem = "Fornecedors encontrados"
-            };
-        }
-        #endregion
-
-        #region PesqsuiarNome
-        public DbResponse<List<Fornecedor>> PesquisarNome(string nomeP)
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM FORNECEDORES WHERE NOMECONTATO LIKE @NOME";
-            command.Parameters.AddWithValue("@NOME", "%" + nomeP + "%");
-
-            List<Fornecedor> listForn = new List<Fornecedor>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    int id = (int)reader["ID"];
-                    string Razao = (string)reader["RAZAOSOCIAL"];
-                    string CNPJ = (string)reader["CNPJ"];
-                    string Nome = (string)reader["NOMECONTATO"];
-                    string Telefone = (string)reader["TELEFONE"];
-                    string Email = (string)reader["EMAIL"];
-
-                    Fornecedor forn = new Fornecedor(id, Nome, Razao, CNPJ, Telefone, Email);
-                    listForn.Add(forn);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return new DbResponse<List<Fornecedor>>
-                {
-                    Sucesso = false,
-                    Excessao = ex,
-                    Mensagem = "Banco de dados indisponível"
-                };
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return new DbResponse<List<Fornecedor>>
-            {
-                Sucesso = true,
-                Dados = listForn,
-                Mensagem = "Fornecedors encontrados"
-            };
-        }
-        #endregion
-
-        #region PesqsuiarEmail
-        public DbResponse<List<Fornecedor>> PesquisarEmail(string Email1)
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM FORNECEDORES WHERE EMAIL LIKE @EMAIL";
-            command.Parameters.AddWithValue("@EMAIL", "%" + Email1 + "%");
-
-            List<Fornecedor> listForn = new List<Fornecedor>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    int id = (int)reader["ID"];
-                    string Razao = (string)reader["RAZAOSOCIAL"];
-                    string CNPJ = (string)reader["CNPJ"];
-                    string Nome = (string)reader["NOMECONTATO"];
-                    string Telefone = (string)reader["TELEFONE"];
-                    string Email = (string)reader["EMAIL"];
-
-                    Fornecedor forn = new Fornecedor(id, Nome, Razao, CNPJ, Telefone, Email);
-                    listForn.Add(forn);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                return new DbResponse<List<Fornecedor>>
-                {
-                    Sucesso = false,
-                    Excessao = ex,
-                    Mensagem = "Banco de dados indisponível"
-                };
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return new DbResponse<List<Fornecedor>>
-            {
-                Sucesso = true,
-                Dados = listForn,
-                Mensagem = "Fornecedors encontrados"
-            };
-        }
-        #endregion
 
     }
 }

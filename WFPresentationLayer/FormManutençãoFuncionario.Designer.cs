@@ -95,7 +95,7 @@
             // 
             this.txtEmailFuncionario.Location = new System.Drawing.Point(139, 26);
             this.txtEmailFuncionario.Name = "txtEmailFuncionario";
-            this.txtEmailFuncionario.Size = new System.Drawing.Size(100, 20);
+            this.txtEmailFuncionario.Size = new System.Drawing.Size(121, 20);
             this.txtEmailFuncionario.TabIndex = 9;
             // 
             // label5
@@ -274,7 +274,7 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // FormCadastroFuncionario
+            // FormManutençãoFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -303,7 +303,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNomeFuncionario);
             this.Controls.Add(this.label1);
-            this.Name = "FormCadastroFuncionario";
+            this.Name = "FormManutençãoFuncionario";
             this.Text = "FormCadastroFuncionario";
             this.Load += new System.EventHandler(this.FormCadastroFuncionario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
