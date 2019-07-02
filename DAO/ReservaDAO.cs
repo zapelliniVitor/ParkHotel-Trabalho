@@ -197,7 +197,7 @@ namespace DAO
         }
         #endregion
 
-        public List<ReservaViewModel> LerViewModels()
+        /*public List<ReservaViewModel> LerViewModels()
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
@@ -209,11 +209,15 @@ namespace DAO
                                F.ID 'Funcionario',
                                F.Nome 'NomeFuncionario',
                                R.Data_ENTRADA 'DataEntrada',
-                               R.DATA_SAIDA_PREVISTA 'DataSaidaPrevista'
+                               R.DATA_SAIDA_PREVISTA 'DataSaidaPrevista',
+                               Q.ID 'IDQuarto',
+                               Q.N_QUARTO 'Quarto'
                         FROM RESERVAS R INNER JOIN CLIENTES C ON 
                                             R.ID_CLIENTES = C.ID
                                         INNER JOIN FUNCIONARIOS F ON
-                                            F.ID = R.ID_FUNCIONARIO";
+                                            F.ID = R.ID_FUNCIONARIO
+                                        INNER JOIN QUARTOS Q ON
+                                            Q.ID = R.ID_QUARTO";
             List<ReservaViewModel> listReserva = new List<ReservaViewModel>();
             command.Connection = connection;
             try
@@ -249,6 +253,6 @@ namespace DAO
                 connection.Dispose();
             }
             return listReserva;
-        }
+        }*/
     }
 }
