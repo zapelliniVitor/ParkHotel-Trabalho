@@ -43,29 +43,76 @@ namespace WFPresentationLayer
 
         private void btnCheck_in_Click(object sender, EventArgs e)
         {
+            StringBuilder sb = new StringBuilder();
             if (string.IsNullOrWhiteSpace(txtIdCliente.Text))
             {
-                MessageBox.Show("ID Cliente não informado");
-                return;
+                sb.AppendLine("ID Cliente não informado");
             }
             if (string.IsNullOrWhiteSpace(txtIdFunc.Text))
             {
-                MessageBox.Show("ID Funcionario não informado");
-                return;
+                sb.AppendLine("ID Funcionario não informado");
             }
-            if (string.IsNullOrWhiteSpace(txtIdReserva.Text))
+            if (string.IsNullOrWhiteSpace(txtIdReserva.Text) && rbReserva.Checked == true)
             {
-                MessageBox.Show("ID Reserva não informado");
-                return;
+                sb.AppendLine("ID Reserva não informado");
+            }
+            if (string.IsNullOrWhiteSpace(txtIDQuarto.Text) && rbSemReserva.Checked == true)
+            {
+                sb.AppendLine("ID do quarto não informado");
             }
             if (dtpSaida.Value == DateTime.Now)
             {
-                MessageBox.Show("Data de saida não pode ser a mesma do Check - in");
+                sb.AppendLine("Data de saida não pode ser a mesma do Check - in");
+            }
+            if (sb.Length != 0)
+            {
+                MessageBox.Show(sb.ToString());
                 return;
             }
 
-            Check_in chk = new Check_in(Convert.ToInt32(txtIdReserva.Text), DateTime.Now, dtpSaida.Value, Convert.ToInt32(txtIdCliente.Text), Convert.ToInt32(txtIdFunc.Text));
-            MessageBox.Show(bll.cadastrar(chk));
+            if (rbReserva.Checked == true)
+            {
+                Check_in chk = new Check_in(Convert.ToInt32(txtIdReserva.Text), DateTime.Now, dtpSaida.Value, Convert.ToInt32(txtIdCliente.Text), Convert.ToInt32(txtIdFunc.Text));
+                MessageBox.Show(bll.cadastrar(chk));
+            }
+            if (rbSemReserva.Checked == true)
+            {
+                Check_in chk = new Check_in(DateTime.Now, dtpSaida.Value, Convert.ToInt32(txtIdCliente.Text), Convert.ToInt32(txtIdFunc.Text), Convert.ToInt32(txtIDQuarto.Text));
+                MessageBox.Show(bll.inserir(chk));
+            }
+        }
+
+        private void rbReserva_CheckedChanged(object sender, EventArgs e)
+        {
+            txtIdReserva.Enabled = true;
+            txtIDQuarto.Enabled = false;
+            btnPesquisarReserva.Enabled = true;
+            btnPesquisarQuarto.Enabled = false;
+            txtIDQuarto.Text = null;
+        }
+
+        private void rbSemReserva_CheckedChanged(object sender, EventArgs e)
+        {
+            txtIdReserva.Enabled = false;
+            txtIDQuarto.Enabled = true;
+            btnPesquisarReserva.Enabled = false;
+            btnPesquisarQuarto.Enabled = true;
+            txtIdReserva.Text = null;
+        }
+
+        private void btnPesquisarReserva_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Não funciona ainda.");
+        }
+
+        private void btnPesquisarQuarto_Click(object sender, EventArgs e)
+        {
+            FormPesquisaQuarto frm = new FormPesquisaQuarto();
+            frm.ShowDialog();
+            if (frm.QuartoSelecionado != null)
+            {
+                this.txtIDQuarto.Text = frm.QuartoSelecionado.ID.ToString();
+            }
         }
     }
 }

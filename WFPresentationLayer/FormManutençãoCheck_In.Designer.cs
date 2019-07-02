@@ -168,6 +168,7 @@
             this.btnPesquisarReserva.TabIndex = 22;
             this.btnPesquisarReserva.Text = "...";
             this.btnPesquisarReserva.UseVisualStyleBackColor = true;
+            this.btnPesquisarReserva.Click += new System.EventHandler(this.btnPesquisarReserva_Click);
             // 
             // btnPesquisarQuarto
             // 
@@ -177,9 +178,11 @@
             this.btnPesquisarQuarto.TabIndex = 25;
             this.btnPesquisarQuarto.Text = "...";
             this.btnPesquisarQuarto.UseVisualStyleBackColor = true;
+            this.btnPesquisarQuarto.Click += new System.EventHandler(this.btnPesquisarQuarto_Click);
             // 
             // txtIDQuarto
             // 
+            this.txtIDQuarto.Enabled = false;
             this.txtIDQuarto.Location = new System.Drawing.Point(12, 105);
             this.txtIDQuarto.Name = "txtIDQuarto";
             this.txtIDQuarto.Size = new System.Drawing.Size(100, 20);
@@ -197,6 +200,7 @@
             // rbReserva
             // 
             this.rbReserva.AutoSize = true;
+            this.rbReserva.Checked = true;
             this.rbReserva.Location = new System.Drawing.Point(134, 92);
             this.rbReserva.Name = "rbReserva";
             this.rbReserva.Size = new System.Drawing.Size(84, 17);
@@ -204,6 +208,7 @@
             this.rbReserva.TabStop = true;
             this.rbReserva.Text = "Com reserva";
             this.rbReserva.UseVisualStyleBackColor = true;
+            this.rbReserva.CheckedChanged += new System.EventHandler(this.rbReserva_CheckedChanged);
             // 
             // rbSemReserva
             // 
@@ -212,9 +217,9 @@
             this.rbSemReserva.Name = "rbSemReserva";
             this.rbSemReserva.Size = new System.Drawing.Size(84, 17);
             this.rbSemReserva.TabIndex = 27;
-            this.rbSemReserva.TabStop = true;
             this.rbSemReserva.Text = "Sem reserva";
             this.rbSemReserva.UseVisualStyleBackColor = true;
+            this.rbSemReserva.CheckedChanged += new System.EventHandler(this.rbSemReserva_CheckedChanged);
             // 
             // FormManutençãoCheck_In
             // 
