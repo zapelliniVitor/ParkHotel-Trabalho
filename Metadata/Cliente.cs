@@ -17,6 +17,12 @@ namespace Metadata
         public string Email { get; set; }
         public bool EhAtivo { get; set; }
 
+        public override string ToString()
+        {
+            return this.ID + " - " + this.Nome;
+        }
+
+
         public Cliente(string nome, string cpf, string rg, string telefone1, string telefone2, string email, bool ativo)
         {
             this.Nome = nome;

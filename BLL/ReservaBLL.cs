@@ -96,7 +96,7 @@ namespace BLL
         #region LerTodos
         public List<Reserva> LerTodos()
         {
-            return new ReservaDAO().LerTodos();
+            return new ReservaDAO().LerTodosReservas();
         }
         #endregion
     }
