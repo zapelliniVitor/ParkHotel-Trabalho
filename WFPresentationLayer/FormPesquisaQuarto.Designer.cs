@@ -42,6 +42,7 @@
             this.dgvQuartos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvQuartos.Location = new System.Drawing.Point(12, 52);
             this.dgvQuartos.Name = "dgvQuartos";
+            this.dgvQuartos.ReadOnly = true;
             this.dgvQuartos.RowHeadersVisible = false;
             this.dgvQuartos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvQuartos.Size = new System.Drawing.Size(552, 239);
