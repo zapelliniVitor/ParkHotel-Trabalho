@@ -15,6 +15,10 @@ namespace Metadata
         public string DescriçãoQuarto { get; set; }
         public int n_Quarto { get; set; }
 
+        public override string ToString()
+        {
+            return n_Quarto.ToString();
+        }
 
         //Com ID
         public Quarto(int id, int tipoQuarto, string precoQuarto, int statusQuarto, string descricaoQuarto, int nQuarto)
