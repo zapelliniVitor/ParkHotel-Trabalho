@@ -1,4 +1,5 @@
 ﻿using Metadata;
+using Metadata.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -65,8 +66,8 @@ namespace DAO
         }
         #endregion
 
-        #region UPDATE 
-        public DbResponse<int> Atualizar(Reserva r)
+        #region LerTodos
+        public List<Reserva> LerTodos()
         {
             string ConnectionString = Parametros.GetConnectionString();
             SqlConnection connection = new SqlConnection();
@@ -192,5 +193,116 @@ namespace DAO
         }
         #endregion
 
+        #region reservaViewModel
+        public List<ReservaViewModel> LerViewModels()
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = @"
+                        SELECT R.ID 'Reserva',
+                               C.ID 'IDCliente',
+                               C.Nome 'NomeCliente',
+                               F.ID 'Funcionario',
+                               F.Nome 'NomeFuncionario',
+                               R.Data_ENTRADA 'DataEntrada',
+                               R.DATA_SAIDA_PREVISTA 'DataSaidaPrevista'
+                        FROM RESERVAS R INNER JOIN CLIENTES C ON 
+                                            R.ID_CLIENTES = C.ID
+                                        INNER JOIN FUNCIONARIOS F ON
+                                            F.ID = R.ID_FUNCIONARIO";
+            List<ReservaViewModel> listReserva = new List<ReservaViewModel>();
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    ReservaViewModel viewModel = new ReservaViewModel();
+                    Cliente c = new Cliente()
+                    {
+                        ID = (int)reader["IDCliente"],
+                        Nome = (string)reader["NomeCliente"]
+                    };
+
+                    Funcionario f = new Funcionario((int)reader["Funcionario"]);
+                    f.Nome = (string)reader["NomeFuncionario"];
+                    viewModel.ID = (int)reader["Reserva"];
+                    viewModel.DataPrevistaEntrada = (DateTime)reader["DataEntrada"];
+                    viewModel.DataPrevistaSaida = (DateTime)reader["DataSaidaPrevista"];
+                    viewModel.Cliente = c;
+                    viewModel.Funcionario = f;
+                    listReserva.Add(viewModel);
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return listReserva;
+        }
+        #endregion
+
+        #region MagiaNegra
+        public List<ReservaViewModel> LerTudo()
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = @"
+                        SELECT R.ID 'Reserva',
+                               C.ID 'IDCliente',
+                               C.Nome 'NomeCliente',
+                               F.ID 'Funcionario',
+                               F.Nome 'NomeFuncionario',
+                               R.Data_ENTRADA 'DataEntrada',
+                               R.DATA_SAIDA_PREVISTA 'DataSaidaPrevista'
+                        FROM RESERVAS R INNER JOIN CLIENTES C ON 
+                                            R.ID_CLIENTES = C.ID
+                                        INNER JOIN FUNCIONARIOS F ON
+                                            F.ID = R.ID_FUNCIONARIO";
+            List<ReservaViewModel> listReserva = new List<ReservaViewModel>();
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    ReservaViewModel viewModel = new ReservaViewModel();
+                    Cliente c = new Cliente()
+                    {
+                        ID = (int)reader["IDCliente"],
+                        Nome = (string)reader["NomeCliente"]
+                    };
+
+                    Funcionario f = new Funcionario((int)reader["Funcionario"]);
+                    f.Nome = (string)reader["NomeFuncionario"];
+                    viewModel.ID = (int)reader["Reserva"];
+                    viewModel.DataPrevistaEntrada = (DateTime)reader["DataEntrada"];
+                    viewModel.DataPrevistaSaida = (DateTime)reader["DataSaidaPrevista"];
+                    viewModel.Cliente = c;
+                    viewModel.Funcionario = f;
+                    listReserva.Add(viewModel);
+                }
+
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return listReserva;
+        }
+        #endregion
     }
 }
