@@ -22,6 +22,10 @@ namespace BLL
             {
                 erros.Add("Reserva inexistente.");
             }
+            else
+            {
+                erros.Clear();
+            }
 
             #endregion
 
