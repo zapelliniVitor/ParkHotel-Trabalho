@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Metadata
 {
-    class ReservaViewModel
+    public class ReservaViewModel
     {
         public int ID { get; set; }
         public Cliente Cliente { get; set; }
