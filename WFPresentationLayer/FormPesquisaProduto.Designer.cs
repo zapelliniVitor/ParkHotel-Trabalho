@@ -28,63 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnPesquisar = new System.Windows.Forms.Button();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboxPesquisa = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Location = new System.Drawing.Point(12, 51);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(100, 23);
+            this.btnPesquisar.TabIndex = 0;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // dgvProdutos
             // 
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProdutos.Location = new System.Drawing.Point(12, 52);
+            this.dgvProdutos.Location = new System.Drawing.Point(118, 9);
             this.dgvProdutos.Name = "dgvProdutos";
-            this.dgvProdutos.ReadOnly = true;
-            this.dgvProdutos.RowHeadersVisible = false;
-            this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(551, 251);
+            this.dgvProdutos.Size = new System.Drawing.Size(281, 65);
             this.dgvProdutos.TabIndex = 1;
-            this.dgvProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellDoubleClick);
             // 
-            // txtPesquisa
+            // txtID
             // 
-            this.txtPesquisa.Location = new System.Drawing.Point(12, 25);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(285, 20);
-            this.txtPesquisa.TabIndex = 2;
-            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
+            this.txtID.Location = new System.Drawing.Point(12, 25);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(100, 20);
+            this.txtID.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
+            this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Pesquisar";
-            // 
-            // cboxPesquisa
-            // 
-            this.cboxPesquisa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxPesquisa.FormattingEnabled = true;
-            this.cboxPesquisa.Items.AddRange(new object[] {
-            "Nome",
-            "ID"});
-            this.cboxPesquisa.Location = new System.Drawing.Point(442, 25);
-            this.cboxPesquisa.Name = "cboxPesquisa";
-            this.cboxPesquisa.Size = new System.Drawing.Size(121, 21);
-            this.cboxPesquisa.TabIndex = 4;
+            this.label1.Text = "ID";
             // 
             // FormPesquisaProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 315);
-            this.Controls.Add(this.cboxPesquisa);
+            this.ClientSize = new System.Drawing.Size(415, 91);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtPesquisa);
+            this.Controls.Add(this.txtID);
             this.Controls.Add(this.dgvProdutos);
+            this.Controls.Add(this.btnPesquisar);
             this.Name = "FormPesquisaProduto";
             this.Text = "FormPesquisaProduto";
             this.Load += new System.EventHandler(this.FormPesquisaProduto_Load);
@@ -95,9 +88,10 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.DataGridView dgvProdutos;
-        private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cboxPesquisa;
     }
 }

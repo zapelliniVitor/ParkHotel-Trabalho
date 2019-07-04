@@ -17,8 +17,8 @@ namespace DAO
 
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
             SqlCommand command = new SqlCommand(connection.ToString());
-            command.CommandText = @"INSERT INTO RESERVAS (ID_CLIENTES, DATA_ENTRADA, DATA_SAIDA_PREVISTA, ID_FUNCIONARIO, ID_QUARTO) VALUES
-                                  (@ID_CLIENTE, @DATA_ENTRADA, @DATA_SAIDA_PREVISTA, @ID_FUNCIONARIO, @ID_QUARTO); select scope_identity();";
+            command.CommandText = @"INSERT INTO RESERVAS (ID_CLIENTES, DATA_ENTRADA, DATA_SAIDA_PREVISTA, ID_FUNCIONARIO) VALUES
+                                  (@ID_CLIENTE, @DATA_ENTRADA, @DATA_SAIDA_PREVISTA, @ID_FUNCIONARIO); select scope_identity();";
                                     
             command.Parameters.AddWithValue("@ID_CLIENTE", reserva.IdCliente);
             command.Parameters.AddWithValue("@DATA_ENTRADA", reserva.dataEntrada);
@@ -33,7 +33,10 @@ namespace DAO
             {
                 connection.Open();
                 IdInserida = Convert.ToInt32(command.ExecuteNonQuery());
-                
+                command.CommandText = @"INSERT INTO RESERVAS_QUARTOS (ID_RESERVAS, ID_QUARTO) VALUES
+                                        (@ID_RESERVAS, @ID_QUARTO)";
+                command.Parameters.AddWithValue("@ID_QUARTO", reserva.IdQuarto);
+                command.ExecuteNonQuery();
 
             }
             catch (Exception EX)
@@ -182,9 +185,9 @@ namespace DAO
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                throw new Exception("Banco de dados indisponivel.");
+
             }
             finally
             {
@@ -194,7 +197,7 @@ namespace DAO
         }
         #endregion
 
-        public List<ReservaViewModel> LerViewModels()
+        /*public List<ReservaViewModel> LerViewModels()
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
@@ -235,13 +238,8 @@ namespace DAO
                     viewModel.ID = (int)reader["Reserva"];
                     viewModel.DataPrevistaEntrada = (DateTime)reader["DataEntrada"];
                     viewModel.DataPrevistaSaida = (DateTime)reader["DataSaidaPrevista"];
-                    Quarto q = new Quarto((int)reader["IDQuarto"])
-                    {
-                        n_Quarto = (int)reader["Quarto"]
-                    };
                     viewModel.Cliente = c;
                     viewModel.Funcionario = f;
-                    viewModel.Quarto = q;
                     listReserva.Add(viewModel);
                 }
 
@@ -255,203 +253,6 @@ namespace DAO
                 connection.Dispose();
             }
             return listReserva;
-        }
-
-        public List<ReservaViewModel> PesquisarNome(string nome)
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = @"
-                        SELECT R.ID 'Reserva',
-                               C.ID 'IDCliente',
-                               C.Nome 'NomeCliente',
-                               F.ID 'Funcionario',
-                               F.Nome 'NomeFuncionario',
-                               R.Data_ENTRADA 'DataEntrada',
-                               R.DATA_SAIDA_PREVISTA 'DataSaidaPrevista',
-                               Q.ID 'IDQuarto',
-                               Q.N_QUARTO 'Quarto'
-                        FROM RESERVAS R INNER JOIN CLIENTES C ON 
-                                            R.ID_CLIENTES = C.ID
-                                        INNER JOIN FUNCIONARIOS F ON
-                                            F.ID = R.ID_FUNCIONARIO
-                                        INNER JOIN QUARTOS Q ON
-                                            Q.ID = R.ID_QUARTO
-                        WHERE C.Nome LIKE @NOMEPESQUISA";
-            command.Parameters.AddWithValue("@NOMEPESQUISA", "%"+nome+"%");
-            List<ReservaViewModel> listReserva = new List<ReservaViewModel>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    ReservaViewModel viewModel = new ReservaViewModel();
-                    Cliente c = new Cliente()
-                    {
-                        ID = (int)reader["IDCliente"],
-                        Nome = (string)reader["NomeCliente"]
-                    };
-
-                    Funcionario f = new Funcionario((int)reader["Funcionario"]);
-                    f.Nome = (string)reader["NomeFuncionario"];
-                    viewModel.ID = (int)reader["Reserva"];
-                    viewModel.DataPrevistaEntrada = (DateTime)reader["DataEntrada"];
-                    viewModel.DataPrevistaSaida = (DateTime)reader["DataSaidaPrevista"];
-                    Quarto q = new Quarto((int)reader["IDQuarto"])
-                    {
-                        n_Quarto = (int)reader["Quarto"]
-                    };
-                    viewModel.Cliente = c;
-                    viewModel.Funcionario = f;
-                    viewModel.Quarto = q;
-                    listReserva.Add(viewModel);
-                }
-
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return listReserva;
-        }
-
-        public List<ReservaViewModel> PesquisarQuarto(string quarto)
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = @"
-                        SELECT R.ID 'Reserva',
-                               C.ID 'IDCliente',
-                               C.Nome 'NomeCliente',
-                               F.ID 'Funcionario',
-                               F.Nome 'NomeFuncionario',
-                               R.Data_ENTRADA 'DataEntrada',
-                               R.DATA_SAIDA_PREVISTA 'DataSaidaPrevista',
-                               Q.ID 'IDQuarto',
-                               Q.N_QUARTO 'Quarto'
-                        FROM RESERVAS R INNER JOIN CLIENTES C ON 
-                                            R.ID_CLIENTES = C.ID
-                                        INNER JOIN FUNCIONARIOS F ON
-                                            F.ID = R.ID_FUNCIONARIO
-                                        INNER JOIN QUARTOS Q ON
-                                            Q.ID = R.ID_QUARTO
-                        WHERE Q.N_QUARTO LIKE @NOMEPESQUISA";
-            command.Parameters.AddWithValue("@NOMEPESQUISA", quarto + "%");
-            List<ReservaViewModel> listReserva = new List<ReservaViewModel>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    ReservaViewModel viewModel = new ReservaViewModel();
-                    Cliente c = new Cliente()
-                    {
-                        ID = (int)reader["IDCliente"],
-                        Nome = (string)reader["NomeCliente"]
-                    };
-
-                    Funcionario f = new Funcionario((int)reader["Funcionario"]);
-                    f.Nome = (string)reader["NomeFuncionario"];
-                    viewModel.ID = (int)reader["Reserva"];
-                    viewModel.DataPrevistaEntrada = (DateTime)reader["DataEntrada"];
-                    viewModel.DataPrevistaSaida = (DateTime)reader["DataSaidaPrevista"];
-                    Quarto q = new Quarto((int)reader["IDQuarto"])
-                    {
-                        n_Quarto = (int)reader["Quarto"]
-                    };
-                    viewModel.Cliente = c;
-                    viewModel.Funcionario = f;
-                    viewModel.Quarto = q;
-                    listReserva.Add(viewModel);
-                }
-
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return listReserva;
-        }
-
-        public List<ReservaViewModel> PesquisarID(int id)
-        {
-            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
-
-            SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = @"
-                        SELECT R.ID 'Reserva',
-                               C.ID 'IDCliente',
-                               C.Nome 'NomeCliente',
-                               F.ID 'Funcionario',
-                               F.Nome 'NomeFuncionario',
-                               R.Data_ENTRADA 'DataEntrada',
-                               R.DATA_SAIDA_PREVISTA 'DataSaidaPrevista',
-                               Q.ID 'IDQuarto',
-                               Q.N_QUARTO 'Quarto'
-                        FROM RESERVAS R INNER JOIN CLIENTES C ON 
-                                            R.ID_CLIENTES = C.ID
-                                        INNER JOIN FUNCIONARIOS F ON
-                                            F.ID = R.ID_FUNCIONARIO
-                                        INNER JOIN QUARTOS Q ON
-                                            Q.ID = R.ID_QUARTO
-                        WHERE R.ID LIKE @NOMEPESQUISA";
-            command.Parameters.AddWithValue("@NOMEPESQUISA", id.ToString() + "%");
-            List<ReservaViewModel> listReserva = new List<ReservaViewModel>();
-            command.Connection = connection;
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    ReservaViewModel viewModel = new ReservaViewModel();
-                    Cliente c = new Cliente()
-                    {
-                        ID = (int)reader["IDCliente"],
-                        Nome = (string)reader["NomeCliente"]
-                    };
-
-                    Funcionario f = new Funcionario((int)reader["Funcionario"]);
-                    f.Nome = (string)reader["NomeFuncionario"];
-                    viewModel.ID = (int)reader["Reserva"];
-                    viewModel.DataPrevistaEntrada = (DateTime)reader["DataEntrada"];
-                    viewModel.DataPrevistaSaida = (DateTime)reader["DataSaidaPrevista"];
-                    Quarto q = new Quarto((int)reader["IDQuarto"])
-                    {
-                        n_Quarto = (int)reader["Quarto"]
-                    };
-                    viewModel.Cliente = c;
-                    viewModel.Funcionario = f;
-                    viewModel.Quarto = q;
-                    listReserva.Add(viewModel);
-                }
-
-            }
-            catch (Exception)
-            {
-
-            }
-            finally
-            {
-                connection.Dispose();
-            }
-            return listReserva;
-        }
-
-
+        }*/
     }
 }

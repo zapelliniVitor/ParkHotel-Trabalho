@@ -104,10 +104,10 @@ namespace BLL
             #endregion
 
             #region DATA_ENTRADA
-            if (chk.dataEntrada != DateTime.Now)
-            {
-                erros.Add("Data de entrada só pode ser efetuado na chegada do cliente.");
-            }
+            //if (chk.dataEntrada != DateTime.Now)
+            //{
+            //    erros.Add("Data de entrada só pode ser efetuado na chegada do cliente.");
+            //}
             #endregion
 
             #region SAIDA_PREVISTA
@@ -158,6 +158,12 @@ namespace BLL
         }
         #endregion
 
+        #region Ler Todos
+        public List<Check_in> lerTodos()
+        {
+            return dao.LerTodos();
+        }
+        #endregion
 
     }
 }

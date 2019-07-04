@@ -24,8 +24,7 @@ namespace WFPresentationLayer
         private void FormReservas_Load(object sender, EventArgs e)
         {
             dgvReservas.DataSource = null;
-            dgvReservas.DataSource = bll.LerTodos();
-            cboxPesquisa.SelectedIndex = 0;
+            dgvReservas.DataSource = bll.LerTodos(); 
         }
 
         private void btnReserva_Click(object sender, EventArgs e)
@@ -123,20 +122,18 @@ namespace WFPresentationLayer
         private void dgvReservas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = (int)dgvReservas.Rows[e.RowIndex].Cells[0].Value;
-            Cliente idC = (Cliente)dgvReservas.Rows[e.RowIndex].Cells[1].Value;
-            Quarto idQ = (Quarto)dgvReservas.Rows[e.RowIndex].Cells[2].Value;
-            Funcionario idF = (Funcionario)dgvReservas.Rows[e.RowIndex].Cells[3].Value;
-            DateTime entrada = (DateTime)dgvReservas.Rows[e.RowIndex].Cells[4].Value;
-            DateTime saidaP = (DateTime)dgvReservas.Rows[e.RowIndex].Cells[5].Value;
-            
-
+            int idC = (int)dgvReservas.Rows[e.RowIndex].Cells[1].Value;
+            DateTime entrada = (DateTime)dgvReservas.Rows[e.RowIndex].Cells[2].Value;
+            DateTime saidaP = (DateTime)dgvReservas.Rows[e.RowIndex].Cells[3].Value;
+            int idF = (int)dgvReservas.Rows[e.RowIndex].Cells[4].Value;
+            int idQ = (int)dgvReservas.Rows[e.RowIndex].Cells[5].Value;
 
             txtIDReserva.Text = id.ToString();
-            txtIDCliente.Text = idC.ID.ToString();
+            txtIDCliente.Text = id.ToString();
             dtpEntrada.Value = entrada;
             dtpSaidaPrevista.Value = saidaP;
-            txtIDFuncionario.Text = idF.ID.ToString();
-            txtIDQuarto.Text = idQ.ID.ToString();
+            txtIDFuncionario.Text = idF.ToString();
+            txtIDQuarto.Text = idQ.ToString();
 
         }
 
@@ -156,46 +153,6 @@ namespace WFPresentationLayer
             FormCleaner.Clear(this);
             dgvReservas.DataSource = null;
             dgvReservas.DataSource = bll.LerTodos();
-        }
-
-        private void txtPesquisa_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPesquisa.Text))
-            {
-                dgvReservas.DataSource = null;
-                dgvReservas.DataSource = bll.LerTodos();
-                return;
-            }
-
-            
-
-            if (cboxPesquisa.SelectedIndex == 0)
-            {//nome
-                dgvReservas.DataSource = null;
-                dgvReservas.DataSource = bll.PesquisarNome(txtPesquisa.Text);
-                return;
-
-            }
-
-            if (cboxPesquisa.SelectedIndex == 1)
-            {//quarto
-                if (int.TryParse(txtPesquisa.Text, out int id))
-                {
-                    dgvReservas.DataSource = null;
-                    dgvReservas.DataSource = bll.PesquisarQuarto(txtPesquisa.Text);
-                    return;
-                }
-            }
-            
-            if (cboxPesquisa.SelectedIndex == 2)
-            {
-                if (int.TryParse(txtPesquisa.Text, out int id))
-                {//id
-                    dgvReservas.DataSource = null;
-                    dgvReservas.DataSource = bll.PesquisarID(id);
-                    return;
-                }
-            }
         }
     }
 }

@@ -46,13 +46,18 @@
             this.txtID = new System.Windows.Forms.TextBox();
             this.DataGridViewClientes = new System.Windows.Forms.DataGridView();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnPesquisaCliente = new System.Windows.Forms.Button();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.lblPesquisar = new System.Windows.Forms.Label();
+            this.cboxDadosPesquisa = new System.Windows.Forms.ComboBox();
+            this.rbTodos = new System.Windows.Forms.RadioButton();
+            this.rbInativos = new System.Windows.Forms.RadioButton();
+            this.rbAtivos = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(17, 33);
+            this.txtNome.Location = new System.Drawing.Point(19, 77);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
             this.txtNome.TabIndex = 0;
@@ -60,7 +65,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 12);
+            this.label1.Location = new System.Drawing.Point(19, 56);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -69,7 +74,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 61);
+            this.label2.Location = new System.Drawing.Point(19, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 13);
             this.label2.TabIndex = 3;
@@ -78,7 +83,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 110);
+            this.label3.Location = new System.Drawing.Point(19, 154);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 5;
@@ -87,7 +92,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(147, 110);
+            this.label4.Location = new System.Drawing.Point(149, 154);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 11;
@@ -96,7 +101,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(147, 61);
+            this.label5.Location = new System.Drawing.Point(149, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(32, 13);
             this.label5.TabIndex = 9;
@@ -104,7 +109,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(147, 82);
+            this.txtEmail.Location = new System.Drawing.Point(149, 126);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(100, 20);
             this.txtEmail.TabIndex = 8;
@@ -112,7 +117,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(147, 12);
+            this.label6.Location = new System.Drawing.Point(149, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(27, 13);
             this.label6.TabIndex = 7;
@@ -120,7 +125,7 @@
             // 
             // mtxtCPF
             // 
-            this.mtxtCPF.Location = new System.Drawing.Point(147, 33);
+            this.mtxtCPF.Location = new System.Drawing.Point(149, 77);
             this.mtxtCPF.Mask = "000.000.000-00";
             this.mtxtCPF.Name = "mtxtCPF";
             this.mtxtCPF.Size = new System.Drawing.Size(100, 20);
@@ -128,7 +133,7 @@
             // 
             // mtxtRG
             // 
-            this.mtxtRG.Location = new System.Drawing.Point(17, 82);
+            this.mtxtRG.Location = new System.Drawing.Point(19, 126);
             this.mtxtRG.Mask = "0,000,000";
             this.mtxtRG.Name = "mtxtRG";
             this.mtxtRG.Size = new System.Drawing.Size(100, 20);
@@ -136,7 +141,7 @@
             // 
             // mtxtFone2
             // 
-            this.mtxtFone2.Location = new System.Drawing.Point(147, 131);
+            this.mtxtFone2.Location = new System.Drawing.Point(149, 175);
             this.mtxtFone2.Mask = "(00)00000-0000";
             this.mtxtFone2.Name = "mtxtFone2";
             this.mtxtFone2.Size = new System.Drawing.Size(100, 20);
@@ -144,7 +149,7 @@
             // 
             // mtxtFone1
             // 
-            this.mtxtFone1.Location = new System.Drawing.Point(17, 131);
+            this.mtxtFone1.Location = new System.Drawing.Point(19, 175);
             this.mtxtFone1.Mask = "(00)00000-0000";
             this.mtxtFone1.Name = "mtxtFone1";
             this.mtxtFone1.Size = new System.Drawing.Size(100, 20);
@@ -152,7 +157,7 @@
             // 
             // btnCadastro
             // 
-            this.btnCadastro.Location = new System.Drawing.Point(17, 200);
+            this.btnCadastro.Location = new System.Drawing.Point(19, 244);
             this.btnCadastro.Name = "btnCadastro";
             this.btnCadastro.Size = new System.Drawing.Size(230, 42);
             this.btnCadastro.TabIndex = 31;
@@ -162,7 +167,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(17, 248);
+            this.btnAtualizar.Location = new System.Drawing.Point(19, 292);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(230, 42);
             this.btnAtualizar.TabIndex = 32;
@@ -173,7 +178,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(17, 158);
+            this.label7.Location = new System.Drawing.Point(19, 202);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 13);
             this.label7.TabIndex = 34;
@@ -181,7 +186,7 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(17, 174);
+            this.txtID.Location = new System.Drawing.Point(19, 218);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 20);
@@ -191,7 +196,7 @@
             // 
             this.DataGridViewClientes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataGridViewClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewClientes.Location = new System.Drawing.Point(280, 12);
+            this.DataGridViewClientes.Location = new System.Drawing.Point(282, 56);
             this.DataGridViewClientes.Name = "DataGridViewClientes";
             this.DataGridViewClientes.ReadOnly = true;
             this.DataGridViewClientes.RowHeadersVisible = false;
@@ -202,7 +207,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(17, 296);
+            this.btnExcluir.Location = new System.Drawing.Point(19, 340);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(230, 42);
             this.btnExcluir.TabIndex = 36;
@@ -210,22 +215,81 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // btnPesquisaCliente
+            // txtPesquisa
             // 
-            this.btnPesquisaCliente.Location = new System.Drawing.Point(147, 171);
-            this.btnPesquisaCliente.Name = "btnPesquisaCliente";
-            this.btnPesquisaCliente.Size = new System.Drawing.Size(100, 23);
-            this.btnPesquisaCliente.TabIndex = 37;
-            this.btnPesquisaCliente.Text = "...";
-            this.btnPesquisaCliente.UseVisualStyleBackColor = true;
-            this.btnPesquisaCliente.Click += new System.EventHandler(this.btnPesquisaCliente_Click);
+            this.txtPesquisa.Location = new System.Drawing.Point(282, 30);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(337, 20);
+            this.txtPesquisa.TabIndex = 37;
+            // 
+            // lblPesquisar
+            // 
+            this.lblPesquisar.AutoSize = true;
+            this.lblPesquisar.Location = new System.Drawing.Point(282, 11);
+            this.lblPesquisar.Name = "lblPesquisar";
+            this.lblPesquisar.Size = new System.Drawing.Size(53, 13);
+            this.lblPesquisar.TabIndex = 38;
+            this.lblPesquisar.Text = "Pesquisar";
+            // 
+            // cboxDadosPesquisa
+            // 
+            this.cboxDadosPesquisa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxDadosPesquisa.FormattingEnabled = true;
+            this.cboxDadosPesquisa.Items.AddRange(new object[] {
+            "ID",
+            "Nome",
+            "CPF",
+            "RG",
+            "Telefone",
+            "Email"});
+            this.cboxDadosPesquisa.Location = new System.Drawing.Point(675, 8);
+            this.cboxDadosPesquisa.Name = "cboxDadosPesquisa";
+            this.cboxDadosPesquisa.Size = new System.Drawing.Size(159, 21);
+            this.cboxDadosPesquisa.TabIndex = 39;
+            // 
+            // rbTodos
+            // 
+            this.rbTodos.AutoSize = true;
+            this.rbTodos.Location = new System.Drawing.Point(779, 31);
+            this.rbTodos.Name = "rbTodos";
+            this.rbTodos.Size = new System.Drawing.Size(55, 17);
+            this.rbTodos.TabIndex = 40;
+            this.rbTodos.Text = "Todos";
+            this.rbTodos.UseVisualStyleBackColor = true;
+            // 
+            // rbInativos
+            // 
+            this.rbInativos.AutoSize = true;
+            this.rbInativos.Location = new System.Drawing.Point(711, 31);
+            this.rbInativos.Name = "rbInativos";
+            this.rbInativos.Size = new System.Drawing.Size(62, 17);
+            this.rbInativos.TabIndex = 41;
+            this.rbInativos.Text = "Inativos";
+            this.rbInativos.UseVisualStyleBackColor = true;
+            // 
+            // rbAtivos
+            // 
+            this.rbAtivos.AutoSize = true;
+            this.rbAtivos.Checked = true;
+            this.rbAtivos.Location = new System.Drawing.Point(651, 31);
+            this.rbAtivos.Name = "rbAtivos";
+            this.rbAtivos.Size = new System.Drawing.Size(54, 17);
+            this.rbAtivos.TabIndex = 42;
+            this.rbAtivos.TabStop = true;
+            this.rbAtivos.Text = "Ativos";
+            this.rbAtivos.UseVisualStyleBackColor = true;
             // 
             // FormManutençãoCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(862, 359);
-            this.Controls.Add(this.btnPesquisaCliente);
+            this.ClientSize = new System.Drawing.Size(862, 409);
+            this.Controls.Add(this.rbAtivos);
+            this.Controls.Add(this.rbInativos);
+            this.Controls.Add(this.rbTodos);
+            this.Controls.Add(this.cboxDadosPesquisa);
+            this.Controls.Add(this.lblPesquisar);
+            this.Controls.Add(this.txtPesquisa);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.DataGridViewClientes);
             this.Controls.Add(this.label7);
@@ -273,7 +337,12 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.DataGridView DataGridViewClientes;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnPesquisaCliente;
+        private System.Windows.Forms.TextBox txtPesquisa;
+        private System.Windows.Forms.Label lblPesquisar;
+        private System.Windows.Forms.ComboBox cboxDadosPesquisa;
+        private System.Windows.Forms.RadioButton rbTodos;
+        private System.Windows.Forms.RadioButton rbInativos;
+        private System.Windows.Forms.RadioButton rbAtivos;
     }
 }
 

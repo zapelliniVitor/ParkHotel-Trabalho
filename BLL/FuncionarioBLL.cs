@@ -179,7 +179,7 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            return dao.Inserir(func).Mensagem;
+            return dao.Inserir(func).ToString();
 
         }
         #endregion
@@ -321,7 +321,7 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            return dao.Atualizar(func).Mensagem;
+            return dao.Atualizar(func).ToString();
 
         }
         #endregion

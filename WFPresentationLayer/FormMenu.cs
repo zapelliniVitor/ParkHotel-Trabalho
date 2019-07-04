@@ -97,17 +97,19 @@ namespace WFPresentationLayer
             this.Show();
         }
 
-        private void checkInToolStripMenuItem_Click(object sender, EventArgs e)
+       
+
+        private void checkinToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FormReservas frm = new FormReservas();
+            FormManutençãoCheck_In frm = new FormManutençãoCheck_In();
             this.Hide();
             frm.ShowDialog();
             this.Show();
         }
 
-        private void checkinToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void reservarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormManutençãoCheck_In frm = new FormManutençãoCheck_In();
+            FormReservas frm = new FormReservas();
             this.Hide();
             frm.ShowDialog();
             this.Show();

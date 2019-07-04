@@ -19,6 +19,8 @@ namespace WFPresentationLayer
             InitializeComponent();
         }
 
+        ProdutoBLL bll = new ProdutoBLL();
+
         private void btnCadastro_Click(object sender, EventArgs e)
         {
             double Preco = 0;
@@ -36,9 +38,10 @@ namespace WFPresentationLayer
             }
             
             Produto prod = new Produto(txtNome.Text, rtxtDescricao.Text, Preco, Quantidade);
-            MessageBox.Show(new ProdutoBLL().Inserir(prod));
+            MessageBox.Show(bll.Inserir(prod));
             DGVProdutos.DataSource = null;
-            DGVProdutos.DataSource = new ProdutoBLL().LerTodos();
+            DGVProdutos.DataSource = bll.LerTodos();
+            FormCleaner.Clear(this);
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
@@ -59,9 +62,11 @@ namespace WFPresentationLayer
             }
 
             Produto prod = new Produto(id, txtNome.Text, rtxtDescricao.Text, Preco, Quantidade);
-            MessageBox.Show(new ProdutoBLL().Atualizar(prod));
+            MessageBox.Show(bll.Atualizar(prod));
             DGVProdutos.DataSource = null;
-            DGVProdutos.DataSource = new ProdutoBLL().LerTodos();
+            DGVProdutos.DataSource = bll.LerTodos();
+            FormCleaner.Clear(this);
+
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -71,15 +76,17 @@ namespace WFPresentationLayer
                 MessageBox.Show("Selecione um produto a ser excluido.");
                 return;
             }
-            MessageBox.Show(new ProdutoBLL().delete(Convert.ToInt32(txtID.Text)));
+            MessageBox.Show(bll.delete(Convert.ToInt32(txtID.Text)));
             DGVProdutos.DataSource = null;
-            DGVProdutos.DataSource = new ProdutoBLL().LerTodos();
+            DGVProdutos.DataSource = bll.LerTodos();
+            FormCleaner.Clear(this);
+
         }
 
         private void FormManutençãoProduto_Load(object sender, EventArgs e)
         {
             DGVProdutos.DataSource = null;
-            DGVProdutos.DataSource = new ProdutoBLL().LerTodos();
+            DGVProdutos.DataSource = bll.LerTodos();
         }
 
         private void DGVProdutos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -97,21 +104,6 @@ namespace WFPresentationLayer
             txtQuantidade.Text = Convert.ToString(estoque);
 
 
-        }
-
-        private void btnPesquisa_Click(object sender, EventArgs e)
-        {
-            FormPesquisaProduto frm = new FormPesquisaProduto();
-            frm.ShowDialog();
-            if (frm.ProdutoSelecionado != null)
-            {
-                Produto p = frm.ProdutoSelecionado;
-                txtID.Text = p.ID.ToString();
-                txtNome.Text = p.Nome;
-                txtPreco.Text = p.PrecoVenda.ToString();
-                txtQuantidade.Text = p.quantidadeEstoque.ToString();
-                rtxtDescricao.Text = p.Descricao;
-            }
         }
     }
 }

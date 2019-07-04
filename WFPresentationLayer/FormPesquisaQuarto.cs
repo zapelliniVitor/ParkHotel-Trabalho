@@ -57,23 +57,7 @@ namespace WFPresentationLayer
 
         private void dgvQuartos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int id = (int)dgvQuartos.Rows[e.RowIndex].Cells[0].Value;
-            int tipo = (int)dgvQuartos.Rows[e.RowIndex].Cells[1].Value;
-            string preco = (string)dgvQuartos.Rows[e.RowIndex].Cells[2].Value;
-            int status = (int)dgvQuartos.Rows[e.RowIndex].Cells[3].Value;
-            string descricao = (string)dgvQuartos.Rows[e.RowIndex].Cells[4].Value;
-            int numero = (int)dgvQuartos.Rows[e.RowIndex].Cells[5].Value;
-
-
-            this.QuartoSelecionado = new Quarto()
-            {
-                ID = id,
-                TipoQuarto = tipo,
-                PrecoQuarto = preco,
-                StatusQuarto = status,
-                DescriçãoQuarto = descricao,
-                n_Quarto = numero
-            };
+            this.QuartoSelecionado = new Quarto((int)this.dgvQuartos.Rows[e.RowIndex].Cells[0].Value);
             this.Close();
         }
 
