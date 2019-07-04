@@ -47,9 +47,6 @@
             this.btnPesquisaFuncionario = new System.Windows.Forms.Button();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.txtPesquisa = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cboxPesquisa = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,9 +63,8 @@
             // dgvReservas
             // 
             this.dgvReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReservas.Location = new System.Drawing.Point(237, 48);
+            this.dgvReservas.Location = new System.Drawing.Point(237, 13);
             this.dgvReservas.Name = "dgvReservas";
-            this.dgvReservas.ReadOnly = true;
             this.dgvReservas.RowHeadersVisible = false;
             this.dgvReservas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReservas.Size = new System.Drawing.Size(377, 160);
@@ -222,44 +218,11 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.Location = new System.Drawing.Point(237, 25);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(205, 20);
-            this.txtPesquisa.TabIndex = 24;
-            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(234, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(53, 13);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Pesquisar";
-            // 
-            // cboxPesquisa
-            // 
-            this.cboxPesquisa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboxPesquisa.FormattingEnabled = true;
-            this.cboxPesquisa.Items.AddRange(new object[] {
-            "Nome",
-            "Quarto",
-            "ID"});
-            this.cboxPesquisa.Location = new System.Drawing.Point(493, 25);
-            this.cboxPesquisa.Name = "cboxPesquisa";
-            this.cboxPesquisa.Size = new System.Drawing.Size(121, 21);
-            this.cboxPesquisa.TabIndex = 25;
-            // 
             // FormReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(630, 250);
-            this.Controls.Add(this.cboxPesquisa);
-            this.Controls.Add(this.txtPesquisa);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(630, 185);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.btnPesquisaFuncionario);
@@ -280,7 +243,7 @@
             this.Controls.Add(this.dgvReservas);
             this.Controls.Add(this.btnReserva);
             this.Name = "FormReservas";
-            this.Text = "Reservas";
+            this.Text = "FormCheckin";
             this.Load += new System.EventHandler(this.FormReservas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).EndInit();
             this.ResumeLayout(false);
@@ -309,8 +272,5 @@
         private System.Windows.Forms.Button btnPesquisaFuncionario;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.TextBox txtPesquisa;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cboxPesquisa;
     }
 }

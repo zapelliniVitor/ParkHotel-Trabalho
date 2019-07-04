@@ -43,9 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionarEntradaProduto.cs" />
+    <Compile Include="AdicionarSaidaProduto.cs" />
     <Compile Include="Check_in.cs" />
+    <Compile Include="Check_out.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DbResponse.cs" />
+    <Compile Include="EntradaProduto.cs" />
     <Compile Include="Fornecedor.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="FuncionarioLogado.cs" />
@@ -56,6 +60,7 @@
     <Compile Include="Quarto.cs" />
     <Compile Include="Reserva.cs" />
     <Compile Include="ReservaViewModel.cs" />
+    <Compile Include="SaidaProduto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

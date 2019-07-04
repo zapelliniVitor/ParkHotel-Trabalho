@@ -180,25 +180,11 @@ namespace BLL
         #endregion
 
         #region Ler Todos
-        public List<ReservaViewModel> LerTodos()
+        public List<Reserva> LerTodos()
         {
-            return dao.LerViewModels();
+            return dao.LerTodos();
         }
         #endregion
 
-        public List<ReservaViewModel> PesquisarNome(string nome)
-        {
-            return dao.PesquisarNome(nome);
-        }
-
-        public List<ReservaViewModel> PesquisarQuarto(string quarto)
-        {
-            return dao.PesquisarQuarto(quarto);
-        }
-
-        public List<ReservaViewModel> PesquisarID(int id)
-        {
-            return dao.PesquisarID(id);
-        }
     }
 }

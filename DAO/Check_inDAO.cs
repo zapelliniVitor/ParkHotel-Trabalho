@@ -70,5 +70,56 @@ namespace DAO
             };
         }
         #endregion
+
+        #region lerTodos
+        public List<Check_in> LerTodos()
+        {
+            string ConnectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = ConnectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "SELECT * FROM CHECK_INS";
+
+            command.Connection = connection;
+            List<Check_in> list = new List<Check_in>();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    int idR = 0;
+                    if ((idR = (int)reader["ID_RESERVA"]) != 0)
+                    {
+                        idR = (int)reader["ID_RESERVA"];
+                    }
+                    DateTime entrada = (DateTime)reader["DATA_ENTRADA"];
+                    DateTime saida = (DateTime)reader["DATA_SAIDA_PREVISTA"];
+                    int idC = (int)reader["ID_CLIENTE"];
+                    int idF = (int)reader["ID_FUNC"];
+                    int idQ = 0;
+                    if ((idQ = (int)reader["ID_QUARTO"]) != 0)
+                    {
+                        idQ = (int)reader["ID_QUARTO"];
+                    }
+
+                    Check_in check = new Check_in(id, idR, entrada, saida, idC, idF, idQ);
+                    list.Add(check);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                    
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return list;
+        }
+        #endregion
     }
 }
