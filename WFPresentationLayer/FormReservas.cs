@@ -24,7 +24,8 @@ namespace WFPresentationLayer
         private void FormReservas_Load(object sender, EventArgs e)
         {
             dgvReservas.DataSource = null;
-            dgvReservas.DataSource = bll.LerTodos(); 
+            dgvReservas.DataSource = bll.LerTodos();
+            cboxPesquisa.SelectedIndex = 0;
         }
 
         private void btnReserva_Click(object sender, EventArgs e)
@@ -155,6 +156,46 @@ namespace WFPresentationLayer
             FormCleaner.Clear(this);
             dgvReservas.DataSource = null;
             dgvReservas.DataSource = bll.LerTodos();
+        }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPesquisa.Text))
+            {
+                dgvReservas.DataSource = null;
+                dgvReservas.DataSource = bll.LerTodos();
+                return;
+            }
+
+            
+
+            if (cboxPesquisa.SelectedIndex == 0)
+            {//nome
+                dgvReservas.DataSource = null;
+                dgvReservas.DataSource = bll.PesquisarNome(txtPesquisa.Text);
+                return;
+
+            }
+
+            if (cboxPesquisa.SelectedIndex == 1)
+            {//quarto
+                if (int.TryParse(txtPesquisa.Text, out int id))
+                {
+                    dgvReservas.DataSource = null;
+                    dgvReservas.DataSource = bll.PesquisarQuarto(txtPesquisa.Text);
+                    return;
+                }
+            }
+            
+            if (cboxPesquisa.SelectedIndex == 2)
+            {
+                if (int.TryParse(txtPesquisa.Text, out int id))
+                {//id
+                    dgvReservas.DataSource = null;
+                    dgvReservas.DataSource = bll.PesquisarID(id);
+                    return;
+                }
+            }
         }
     }
 }

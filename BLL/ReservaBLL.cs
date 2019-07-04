@@ -186,5 +186,19 @@ namespace BLL
         }
         #endregion
 
+        public List<ReservaViewModel> PesquisarNome(string nome)
+        {
+            return dao.PesquisarNome(nome);
+        }
+
+        public List<ReservaViewModel> PesquisarQuarto(string quarto)
+        {
+            return dao.PesquisarQuarto(quarto);
+        }
+
+        public List<ReservaViewModel> PesquisarID(int id)
+        {
+            return dao.PesquisarID(id);
+        }
     }
 }

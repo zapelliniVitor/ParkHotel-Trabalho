@@ -17,7 +17,7 @@ namespace Metadata
 
         public override string ToString()
         {
-            return n_Quarto.ToString() + " (ID " + ID.ToString() + ")";
+            return n_Quarto.ToString();
         }
 
 
