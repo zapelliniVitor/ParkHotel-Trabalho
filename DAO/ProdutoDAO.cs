@@ -233,5 +233,106 @@ namespace DAO
         }
         #endregion
 
+        #region PesquisarID
+        public DbResponse<List<Produto>> PesquisarID(int idPesquisa)
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = "SELECT * FROM PRODUTOS WHERE ID LIKE @ID";
+            command.Parameters.AddWithValue("@ID", idPesquisa.ToString() + "%");
+
+            List<Produto> listPro = new List<Produto>();
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string nome = (string)reader["NOME"];
+                    string descricao = (string)reader["DESCRICAO"];
+                    double preco = (double)reader["PRECOVENDA"];
+                    int estoque = (int)reader["ESTOQUE_QUANTIDADES"];
+
+                    Produto pro = new Produto(id, nome, descricao, preco, estoque);
+                    listPro.Add(pro);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Produto>>
+                {
+                    Sucesso = false,
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível"
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Produto>>
+            {
+                Sucesso = true,
+                Dados = listPro,
+                Mensagem = "Produtos encontrados"
+            };
+        }
+        #endregion
+
+        #region PesquisarNome
+        public DbResponse<List<Produto>> PesquisarNome(string nomeP)
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = "SELECT * FROM PRODUTOS WHERE NOME LIKE @NOME";
+            command.Parameters.AddWithValue("@NOME", "%" + nomeP + "%");
+
+            List<Produto> listPro = new List<Produto>();
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string nome = (string)reader["NOME"];
+                    string descricao = (string)reader["DESCRICAO"];
+                    double preco = (double)reader["PRECOVENDA"];
+                    int estoque = (int)reader["ESTOQUE_QUANTIDADES"];
+
+                    Produto pro = new Produto(id, nome, descricao, preco, estoque);
+                    listPro.Add(pro);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Produto>>
+                {
+                    Sucesso = false,
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível"
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Produto>>
+            {
+                Sucesso = true,
+                Dados = listPro,
+                Mensagem = "Produtos encontrados"
+            };
+        }
+        #endregion
+
+
     }
 }

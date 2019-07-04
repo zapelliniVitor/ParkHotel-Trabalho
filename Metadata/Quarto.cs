@@ -20,6 +20,10 @@ namespace Metadata
             return n_Quarto.ToString();
         }
 
+        public Quarto()
+        {
+
+        }
 
         //Com ID
         public Quarto(int id, int tipoQuarto, string precoQuarto, int statusQuarto, string descricaoQuarto, int nQuarto)

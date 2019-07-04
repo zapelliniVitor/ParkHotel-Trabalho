@@ -27,6 +27,8 @@ namespace WFPresentationLayer
         {
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
+            cmbStatusQuarto.SelectedIndex = 0;
+            cmbTipoQuarto.SelectedIndex = 0;
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -214,6 +216,23 @@ namespace WFPresentationLayer
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
             FormCleaner.Clear(this);
+        }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            FormPesquisaQuarto frm = new FormPesquisaQuarto();
+            frm.ShowDialog();
+            if (frm.QuartoSelecionado != null)
+            {
+                Quarto q = frm.QuartoSelecionado;
+                txtID.Text = q.ID.ToString();
+                txtNQuarto.Text = q.n_Quarto.ToString();
+                txtPreco.Text = q.PrecoQuarto.ToString();
+                rtxtDescricao.Text = q.DescriçãoQuarto;
+                cmbStatusQuarto.SelectedIndex = q.StatusQuarto - 1;
+                cmbTipoQuarto.SelectedIndex = q.TipoQuarto - 1;
+            }
+            
         }
     }
 }
