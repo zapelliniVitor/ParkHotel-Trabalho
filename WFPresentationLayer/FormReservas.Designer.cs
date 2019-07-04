@@ -65,6 +65,7 @@
             this.dgvReservas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReservas.Location = new System.Drawing.Point(237, 13);
             this.dgvReservas.Name = "dgvReservas";
+            this.dgvReservas.ReadOnly = true;
             this.dgvReservas.RowHeadersVisible = false;
             this.dgvReservas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvReservas.Size = new System.Drawing.Size(377, 160);

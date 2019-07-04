@@ -197,7 +197,7 @@ namespace DAO
         }
         #endregion
 
-        /*public List<ReservaViewModel> LerViewModels()
+        public List<ReservaViewModel> LerViewModels()
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
@@ -238,6 +238,10 @@ namespace DAO
                     viewModel.ID = (int)reader["Reserva"];
                     viewModel.DataPrevistaEntrada = (DateTime)reader["DataEntrada"];
                     viewModel.DataPrevistaSaida = (DateTime)reader["DataSaidaPrevista"];
+                    Quarto q = new Quarto((int)reader["IDQuarto"])
+                    {
+                        n_Quarto = (int)reader["Quarto"]
+                    };
                     viewModel.Cliente = c;
                     viewModel.Funcionario = f;
                     listReserva.Add(viewModel);
@@ -253,6 +257,6 @@ namespace DAO
                 connection.Dispose();
             }
             return listReserva;
-        }*/
+        }
     }
 }

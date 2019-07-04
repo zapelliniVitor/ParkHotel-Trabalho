@@ -180,9 +180,9 @@ namespace BLL
         #endregion
 
         #region Ler Todos
-        public List<Reserva> LerTodos()
+        public List<ReservaViewModel> LerTodos()
         {
-            return dao.LerTodos();
+            return dao.LerViewModels();
         }
         #endregion
 
