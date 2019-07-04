@@ -27,6 +27,7 @@ namespace WFPresentationLayer
         {
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
+            cmbOption.SelectedIndex = 0;
         }
 
         private void cmbOption_SelectedIndexChanged(object sender, EventArgs e)
@@ -54,31 +55,6 @@ namespace WFPresentationLayer
 
         }
 
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            if (cmbOption.Text == "ID")
-            {
-                dgvQuartos.DataSource = null;
-                dgvQuartos.DataSource = bll.lerPorID(Convert.ToInt32(txtItemPesquisado.Text));
-            }
-            else if (cmbOption.Text == "Nº QUARTO")
-            {
-                dgvQuartos.DataSource = null;
-                dgvQuartos.DataSource = bll.lerPorNum(Convert.ToInt32(txtItemPesquisado.Text));
-            }
-            else if (cmbOption.Text == "LIVRES")
-            {
-                dgvQuartos.DataSource = null;
-                dgvQuartos.DataSource = bll.lerLivres();
-            }
-            else if (cmbOption.Text == "TODOS")
-            {
-                dgvQuartos.DataSource = null;
-                dgvQuartos.DataSource = bll.LerTodos();
-            }
-
-        }
-
         private void dgvQuartos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = (int)dgvQuartos.Rows[e.RowIndex].Cells[0].Value;
@@ -99,6 +75,43 @@ namespace WFPresentationLayer
                 n_Quarto = numero
             };
             this.Close();
+        }
+
+        private void txtItemPesquisado_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtItemPesquisado.Text))
+            {
+                dgvQuartos.DataSource = null;
+                dgvQuartos.DataSource = bll.LerTodos();
+                return;
+            }
+
+            if (cmbOption.SelectedIndex == 0)
+            {
+                if (int.TryParse(txtItemPesquisado.Text, out int id))
+                {
+                    dgvQuartos.DataSource = null;
+                    dgvQuartos.DataSource = bll.lerPorID(id);
+                }
+            }
+            else if (cmbOption.SelectedIndex == 1)
+            {
+                if (int.TryParse(txtItemPesquisado.Text, out int numero))
+                {
+                    dgvQuartos.DataSource = null;
+                    dgvQuartos.DataSource = bll.lerPorNum(numero);
+                }
+            }
+            else if (cmbOption.SelectedIndex == 2)
+            {
+                dgvQuartos.DataSource = null;
+                dgvQuartos.DataSource = bll.lerLivres();
+            }
+            else if (cmbOption.SelectedIndex == 3)
+            {
+                dgvQuartos.DataSource = null;
+                dgvQuartos.DataSource = bll.LerTodos();
+            }
         }
     }
 }

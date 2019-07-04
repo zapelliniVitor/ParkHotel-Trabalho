@@ -213,8 +213,8 @@ namespace DAO
             connection.ConnectionString = connectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"SELECT * FROM QUARTOS WHERE ID = @ID";
-            command.Parameters.AddWithValue("@ID", ID);
+            command.CommandText = @"SELECT * FROM QUARTOS WHERE ID LIKE @ID";
+            command.Parameters.AddWithValue("@ID", ID.ToString() + "%");
 
             command.Connection = connection;
 
