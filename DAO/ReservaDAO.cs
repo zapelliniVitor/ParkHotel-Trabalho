@@ -17,8 +17,8 @@ namespace DAO
 
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
             SqlCommand command = new SqlCommand(connection.ToString());
-            command.CommandText = @"INSERT INTO RESERVAS (ID_CLIENTES, DATA_ENTRADA, DATA_SAIDA_PREVISTA, ID_FUNCIONARIO) VALUES
-                                  (@ID_CLIENTE, @DATA_ENTRADA, @DATA_SAIDA_PREVISTA, @ID_FUNCIONARIO); select scope_identity();";
+            command.CommandText = @"INSERT INTO RESERVAS (ID_CLIENTES, DATA_ENTRADA, DATA_SAIDA_PREVISTA, ID_FUNCIONARIO, ID_QUARTO) VALUES
+                                  (@ID_CLIENTE, @DATA_ENTRADA, @DATA_SAIDA_PREVISTA, @ID_FUNCIONARIO, @ID_QUARTO); select scope_identity();";
                                     
             command.Parameters.AddWithValue("@ID_CLIENTE", reserva.IdCliente);
             command.Parameters.AddWithValue("@DATA_ENTRADA", reserva.dataEntrada);
@@ -33,10 +33,7 @@ namespace DAO
             {
                 connection.Open();
                 IdInserida = Convert.ToInt32(command.ExecuteNonQuery());
-                command.CommandText = @"INSERT INTO RESERVAS_QUARTOS (ID_RESERVAS, ID_QUARTO) VALUES
-                                        (@ID_RESERVAS, @ID_QUARTO)";
-                command.Parameters.AddWithValue("@ID_QUARTO", reserva.IdQuarto);
-                command.ExecuteNonQuery();
+                
 
             }
             catch (Exception EX)
@@ -244,6 +241,7 @@ namespace DAO
                     };
                     viewModel.Cliente = c;
                     viewModel.Funcionario = f;
+                    viewModel.Quarto = q;
                     listReserva.Add(viewModel);
                 }
 

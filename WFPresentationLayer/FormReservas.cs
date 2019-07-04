@@ -122,18 +122,20 @@ namespace WFPresentationLayer
         private void dgvReservas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int id = (int)dgvReservas.Rows[e.RowIndex].Cells[0].Value;
-            int idC = (int)dgvReservas.Rows[e.RowIndex].Cells[1].Value;
-            DateTime entrada = (DateTime)dgvReservas.Rows[e.RowIndex].Cells[2].Value;
-            DateTime saidaP = (DateTime)dgvReservas.Rows[e.RowIndex].Cells[3].Value;
-            int idF = (int)dgvReservas.Rows[e.RowIndex].Cells[4].Value;
-            int idQ = (int)dgvReservas.Rows[e.RowIndex].Cells[5].Value;
+            Cliente idC = (Cliente)dgvReservas.Rows[e.RowIndex].Cells[1].Value;
+            Quarto idQ = (Quarto)dgvReservas.Rows[e.RowIndex].Cells[2].Value;
+            Funcionario idF = (Funcionario)dgvReservas.Rows[e.RowIndex].Cells[3].Value;
+            DateTime entrada = (DateTime)dgvReservas.Rows[e.RowIndex].Cells[4].Value;
+            DateTime saidaP = (DateTime)dgvReservas.Rows[e.RowIndex].Cells[5].Value;
+            
+
 
             txtIDReserva.Text = id.ToString();
-            txtIDCliente.Text = id.ToString();
+            txtIDCliente.Text = idC.ID.ToString();
             dtpEntrada.Value = entrada;
             dtpSaidaPrevista.Value = saidaP;
-            txtIDFuncionario.Text = idF.ToString();
-            txtIDQuarto.Text = idQ.ToString();
+            txtIDFuncionario.Text = idF.ID.ToString();
+            txtIDQuarto.Text = idQ.ID.ToString();
 
         }
 
