@@ -137,7 +137,13 @@ namespace WFPresentationLayer
                 }
             }
 
-            Quarto quarto = new Quarto(tipoQuarto, txtPreco.Text, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
+            int id = -1;
+            if (!int.TryParse(txtID.Text, out id))
+            {
+                return;
+            }
+
+            Quarto quarto = new Quarto(id, tipoQuarto, txtPreco.Text, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
             MessageBox.Show(bll.AtualizarQuarto(quarto));
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();

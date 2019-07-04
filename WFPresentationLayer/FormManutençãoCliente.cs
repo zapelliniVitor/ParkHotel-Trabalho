@@ -44,7 +44,8 @@ namespace WFPresentationLayer
                 {
                     MessageBox.Show(new ClienteBLL().Atualizar(cli));
                 }
-                FormCleaner.Clear(this);;
+                FormCleaner.Clear(this);
+                AtualizarGrid();
                 return;
             }
 
@@ -99,7 +100,13 @@ namespace WFPresentationLayer
         #region Excluir
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(txtID.Text);
+            int id = -1;
+            if(!int.TryParse(txtID.Text, out id))
+            {
+                MessageBox.Show("Selecione um Cliente");
+            }
+
+            
             DialogResult resposta = MessageBox.Show("Deseja mesmo deletar esse cliente?", "Deletar Cliente", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (resposta == DialogResult.No || resposta == DialogResult.None)
             {
@@ -123,6 +130,23 @@ namespace WFPresentationLayer
         {
             DataGridViewClientes.DataSource = null;
             DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
+        }
+
+        private void btnPesquisaCliente_Click(object sender, EventArgs e)
+        {
+            FormPesquisaCliente frm = new FormPesquisaCliente();
+            frm.ShowDialog();
+            if(frm.clienteSelecionado != null)
+            {
+                Cliente c = frm.clienteSelecionado;
+                txtID.Text = c.ID.ToString();
+                txtNome.Text = c.Nome;
+                txtEmail.Text = c.Email;
+                mtxtCPF.Text = c.CPF;
+                mtxtFone1.Text = c.Telefone1;
+                mtxtFone2.Text = c.Telefone2;
+                mtxtRG.Text = c.RG;
+            }
         }
     }
 }
