@@ -38,10 +38,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.cmbCidade = new System.Windows.Forms.ComboBox();
-            this.chkEhAdm = new System.Windows.Forms.CheckBox();
+            this.chkÉAdm = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.chkEhAtivo = new System.Windows.Forms.CheckBox();
+            this.chkÉAtivo = new System.Windows.Forms.CheckBox();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.txtNomeFuncionario = new System.Windows.Forms.TextBox();
             this.mtxtTelefoneFuncionario = new System.Windows.Forms.MaskedTextBox();
@@ -52,7 +52,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.btnAtualizar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnPesquisa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,15 +146,15 @@
             this.cmbCidade.Size = new System.Drawing.Size(121, 21);
             this.cmbCidade.TabIndex = 13;
             // 
-            // chkEhAdm
+            // chkÉAdm
             // 
-            this.chkEhAdm.AutoSize = true;
-            this.chkEhAdm.Location = new System.Drawing.Point(139, 129);
-            this.chkEhAdm.Name = "chkEhAdm";
-            this.chkEhAdm.Size = new System.Drawing.Size(98, 17);
-            this.chkEhAdm.TabIndex = 14;
-            this.chkEhAdm.Text = "É administrador";
-            this.chkEhAdm.UseVisualStyleBackColor = true;
+            this.chkÉAdm.AutoSize = true;
+            this.chkÉAdm.Location = new System.Drawing.Point(139, 125);
+            this.chkÉAdm.Name = "chkÉAdm";
+            this.chkÉAdm.Size = new System.Drawing.Size(98, 17);
+            this.chkÉAdm.TabIndex = 14;
+            this.chkÉAdm.Text = "É administrador";
+            this.chkÉAdm.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -175,19 +174,19 @@
             this.label8.TabIndex = 16;
             this.label8.Text = "Cidade";
             // 
-            // chkEhAtivo
+            // chkÉAtivo
             // 
-            this.chkEhAtivo.AutoSize = true;
-            this.chkEhAtivo.Location = new System.Drawing.Point(139, 149);
-            this.chkEhAtivo.Name = "chkEhAtivo";
-            this.chkEhAtivo.Size = new System.Drawing.Size(59, 17);
-            this.chkEhAtivo.TabIndex = 20;
-            this.chkEhAtivo.Text = "É ativo";
-            this.chkEhAtivo.UseVisualStyleBackColor = true;
+            this.chkÉAtivo.AutoSize = true;
+            this.chkÉAtivo.Location = new System.Drawing.Point(139, 149);
+            this.chkÉAtivo.Name = "chkÉAtivo";
+            this.chkÉAtivo.Size = new System.Drawing.Size(59, 17);
+            this.chkÉAtivo.TabIndex = 20;
+            this.chkÉAtivo.Text = "É ativo";
+            this.chkÉAtivo.UseVisualStyleBackColor = true;
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(15, 253);
+            this.btnCadastrar.Location = new System.Drawing.Point(15, 225);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(245, 23);
             this.btnCadastrar.TabIndex = 22;
@@ -232,10 +231,9 @@
             this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFuncionarios.Location = new System.Drawing.Point(287, 9);
             this.dgvFuncionarios.Name = "dgvFuncionarios";
-            this.dgvFuncionarios.ReadOnly = true;
             this.dgvFuncionarios.RowHeadersVisible = false;
             this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFuncionarios.Size = new System.Drawing.Size(513, 325);
+            this.dgvFuncionarios.Size = new System.Drawing.Size(513, 297);
             this.dgvFuncionarios.TabIndex = 26;
             this.dgvFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -258,7 +256,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(15, 282);
+            this.btnAtualizar.Location = new System.Drawing.Point(15, 254);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(245, 23);
             this.btnAtualizar.TabIndex = 29;
@@ -268,7 +266,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(15, 311);
+            this.btnExcluir.Location = new System.Drawing.Point(15, 283);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(245, 23);
             this.btnExcluir.TabIndex = 30;
@@ -276,22 +274,11 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // btnPesquisa
-            // 
-            this.btnPesquisa.Location = new System.Drawing.Point(15, 224);
-            this.btnPesquisa.Name = "btnPesquisa";
-            this.btnPesquisa.Size = new System.Drawing.Size(100, 23);
-            this.btnPesquisa.TabIndex = 31;
-            this.btnPesquisa.Text = "Pesquisa";
-            this.btnPesquisa.UseVisualStyleBackColor = true;
-            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
-            // 
             // FormManutençãoFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 348);
-            this.Controls.Add(this.btnPesquisa);
+            this.ClientSize = new System.Drawing.Size(812, 315);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.txtID);
@@ -301,10 +288,10 @@
             this.Controls.Add(this.mtxtRGFuncionario);
             this.Controls.Add(this.mtxtTelefoneFuncionario);
             this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.chkEhAtivo);
+            this.Controls.Add(this.chkÉAtivo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.chkEhAdm);
+            this.Controls.Add(this.chkÉAdm);
             this.Controls.Add(this.cmbCidade);
             this.Controls.Add(this.cmbEstado);
             this.Controls.Add(this.txtSenhaFuncionario);
@@ -337,10 +324,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.ComboBox cmbCidade;
-        private System.Windows.Forms.CheckBox chkEhAdm;
+        private System.Windows.Forms.CheckBox chkÉAdm;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox chkEhAtivo;
+        private System.Windows.Forms.CheckBox chkÉAtivo;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.TextBox txtNomeFuncionario;
         private System.Windows.Forms.MaskedTextBox mtxtTelefoneFuncionario;
@@ -351,6 +338,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btnAtualizar;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnPesquisa;
     }
 }

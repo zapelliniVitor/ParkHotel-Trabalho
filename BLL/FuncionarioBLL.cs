@@ -179,7 +179,7 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            return dao.Inserir(func).Mensagem;
+            return dao.Inserir(func).ToString();
 
         }
         #endregion
@@ -321,7 +321,7 @@ namespace BLL
                 }
                 return builder.ToString();
             }
-            return dao.Atualizar(func).Mensagem;
+            return dao.Atualizar(func).ToString();
 
         }
         #endregion
@@ -329,7 +329,7 @@ namespace BLL
         #region Ler Todos
         public List<Funcionario> LerTodos()
         {
-            return dao.LerTodos().Dados;
+            return dao.LerTodos();
         }
         #endregion
 
@@ -352,20 +352,6 @@ namespace BLL
         {
             cpf = cpf.Replace(".", "").Replace("-", "");
             return dao.LerPorCPF(cpf).Dados;
-        }
-        #endregion
-
-        #region Ler Todos ativos
-        public List<Funcionario> LerAtivos()
-        {
-            return dao.LerAtivos().Dados;
-        }
-        #endregion
-
-        #region Ler Todos inativos
-        public List<Funcionario> LerInativos()
-        {
-            return dao.LerInativos().Dados;
         }
         #endregion
     }
