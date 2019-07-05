@@ -62,6 +62,7 @@
             this.dgvFornecedores.Location = new System.Drawing.Point(288, 12);
             this.dgvFornecedores.Name = "dgvFornecedores";
             this.dgvFornecedores.ReadOnly = true;
+            this.dgvFornecedores.RowHeadersVisible = false;
             this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFornecedores.Size = new System.Drawing.Size(358, 173);
             this.dgvFornecedores.TabIndex = 3;

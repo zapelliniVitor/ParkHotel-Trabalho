@@ -17,8 +17,7 @@ namespace WFPresentationLayer
         public FormManutençãoFornecedor()
         {
             InitializeComponent();
-            dgvFornecedores.DataSource = null;
-            dgvFornecedores.DataSource = bll.lerTodos();
+            AtualizarGrid();
         }
 
         FornecedorBLL bll = new FornecedorBLL();
@@ -30,12 +29,15 @@ namespace WFPresentationLayer
             dgvFornecedores.DataSource = null;
             dgvFornecedores.DataSource = bll.lerTodos();
             FormCleaner.Clear(this);
+            AtualizarGrid();
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
             Fornecedor fornecedor = new Fornecedor(Convert.ToInt32(txtID.Text), txtContato.Text, txtRSocial.Text, mtxtCnpj.Text, mtxtTelefone.Text, txtEmail.Text);
             MessageBox.Show(bll.atualizarFornecedor(fornecedor));
+            AtualizarGrid();
+            FormCleaner.Clear(this);
         }
 
         private void dgvFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -53,6 +55,12 @@ namespace WFPresentationLayer
             txtContato.Text = nomeContato;
             mtxtTelefone.Text = telefone;
             txtEmail.Text = email;
+        }
+
+        private void AtualizarGrid()
+        {
+            dgvFornecedores.DataSource = null;
+            dgvFornecedores.DataSource = bll.lerTodos();
         }
     }
 }
