@@ -44,12 +44,14 @@ namespace WFPresentationLayer
                 {
                     MessageBox.Show(new ClienteBLL().Atualizar(cli));
                 }
-                FormCleaner.Clear(this);;
+                FormCleaner.Clear(this);
+                AtualizarGrid();
                 return;
             }
 
             MessageBox.Show(new ClienteBLL().Inserir(cli));
             FormCleaner.Clear(this);
+            AtualizarGrid();
         }
         #endregion
 
@@ -70,7 +72,7 @@ namespace WFPresentationLayer
             MessageBox.Show(new ClienteBLL().Atualizar(cli));
             txtID.Text = null;
             FormCleaner.Clear(this);
-
+            AtualizarGrid();
         }
         #endregion
 
@@ -109,15 +111,37 @@ namespace WFPresentationLayer
                 new ClienteBLL().Excluir(id);
             }
             FormCleaner.Clear(this);
-            DataGridViewClientes.DataSource = null;
-            DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
+            AtualizarGrid();
         }
         #endregion
 
         private void FormManutençãoCliente_Load(object sender, EventArgs e)
         {
+            AtualizarGrid();
+        }
+
+        private void AtualizarGrid()
+        {
             DataGridViewClientes.DataSource = null;
             DataGridViewClientes.DataSource = new ClienteBLL().LerTodos();
+        }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            FormPesquisaCliente frm = new FormPesquisaCliente();
+            frm.ShowDialog();
+            if(frm.clienteSelecionado != null)
+            {
+                Cliente c = frm.clienteSelecionado;
+                txtID.Text = c.ID.ToString();
+                txtNome.Text = c.Nome;
+                txtEmail.Text = c.Email;
+                mtxtCPF.Text = c.CPF;
+                mtxtFone1.Text = c.Telefone1;
+                mtxtFone2.Text = c.Telefone2;
+                mtxtRG.Text = c.RG;
+
+            }
         }
     }
 }
