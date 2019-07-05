@@ -105,5 +105,12 @@ namespace WFPresentationLayer
 
 
         }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            FormPesquisaProduto frm = new FormPesquisaProduto();
+            frm.ShowDialog();
+            
+        }
     }
 }

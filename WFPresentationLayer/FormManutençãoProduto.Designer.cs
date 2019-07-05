@@ -42,12 +42,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPreco = new System.Windows.Forms.TextBox();
             this.rtxtDescricao = new System.Windows.Forms.RichTextBox();
+            this.btnPesquisa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGVProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(12, 257);
+            this.btnExcluir.Location = new System.Drawing.Point(11, 271);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(230, 42);
             this.btnExcluir.TabIndex = 54;
@@ -64,7 +65,7 @@
             this.DGVProdutos.ReadOnly = true;
             this.DGVProdutos.RowHeadersVisible = false;
             this.DGVProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVProdutos.Size = new System.Drawing.Size(561, 287);
+            this.DGVProdutos.Size = new System.Drawing.Size(561, 301);
             this.DGVProdutos.TabIndex = 53;
             this.DGVProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVProdutos_CellDoubleClick);
             // 
@@ -87,7 +88,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(12, 209);
+            this.btnAtualizar.Location = new System.Drawing.Point(11, 223);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(230, 42);
             this.btnAtualizar.TabIndex = 50;
@@ -97,7 +98,7 @@
             // 
             // btnCadastro
             // 
-            this.btnCadastro.Location = new System.Drawing.Point(12, 161);
+            this.btnCadastro.Location = new System.Drawing.Point(11, 175);
             this.btnCadastro.Name = "btnCadastro";
             this.btnCadastro.Size = new System.Drawing.Size(230, 42);
             this.btnCadastro.TabIndex = 49;
@@ -170,11 +171,22 @@
             this.rtxtDescricao.TabIndex = 61;
             this.rtxtDescricao.Text = "";
             // 
+            // btnPesquisa
+            // 
+            this.btnPesquisa.Location = new System.Drawing.Point(138, 137);
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(100, 23);
+            this.btnPesquisa.TabIndex = 62;
+            this.btnPesquisa.Text = "Pesquisa";
+            this.btnPesquisa.UseVisualStyleBackColor = true;
+            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
+            // 
             // FormManutençãoProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(866, 314);
+            this.ClientSize = new System.Drawing.Size(866, 330);
+            this.Controls.Add(this.btnPesquisa);
             this.Controls.Add(this.rtxtDescricao);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPreco);
@@ -214,5 +226,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPreco;
         private System.Windows.Forms.RichTextBox rtxtDescricao;
+        private System.Windows.Forms.Button btnPesquisa;
     }
 }

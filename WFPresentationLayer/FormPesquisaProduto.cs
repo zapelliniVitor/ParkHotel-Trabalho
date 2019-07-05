@@ -1,4 +1,5 @@
 ﻿using BLL;
+using Metadata;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,24 +20,41 @@ namespace WFPresentationLayer
         }
 
         ProdutoBLL bll = new ProdutoBLL();
+        public Produto ProdutoSelecionado { get; set; }
 
         private void FormPesquisaProduto_Load(object sender, EventArgs e)
         {
             dgvProdutos.DataSource = null;
             dgvProdutos.DataSource = bll.LerTodos();
+            cboxPesquisa.SelectedIndex = 0;
         }
 
-        private void btnPesquisar_Click(object sender, EventArgs e)
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
-            if (txtID.Text == null)
+            if (string.IsNullOrWhiteSpace(txtPesquisa.Text))
             {
-                MessageBox.Show("Informe um ID a ser pesquisado.");
+                dgvProdutos.DataSource = null;
+                dgvProdutos.DataSource = bll.LerTodos();
                 return;
             }
 
-            FormCleaner.Clear(this);
-            dgvProdutos.DataSource = null;
-            dgvProdutos.DataSource = bll.LerPorID(Convert.ToInt32(txtID.Text));
+            if (cboxPesquisa.SelectedIndex == 1)
+            {
+                if (int.TryParse(txtPesquisa.Text, out int id))
+                {//id
+                    dgvProdutos.DataSource = null;
+                    dgvProdutos.DataSource = bll.PesquisarID(id);
+                    return;
+                }
+            }
+
+            if (cboxPesquisa.SelectedIndex == 0)
+            {//nome
+                dgvProdutos.DataSource = null;
+                dgvProdutos.DataSource = bll.PesquisarNome(txtPesquisa.Text);
+                return;
+
+            }
         }
     }
 }
