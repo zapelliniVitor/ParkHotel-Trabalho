@@ -110,7 +110,16 @@ namespace WFPresentationLayer
         {
             FormPesquisaProduto frm = new FormPesquisaProduto();
             frm.ShowDialog();
-            
+            if (frm.ProdutoSelecionado != null)
+            {
+                Produto p = frm.ProdutoSelecionado;
+                txtID.Text = p.ID.ToString();
+                txtNome.Text = p.Nome;
+                txtPreco.Text = p.PrecoVenda.ToString();
+                txtQuantidade.Text = p.quantidadeEstoque.ToString();
+                rtxtDescricao.Text = p.Descricao;
+
+            }
         }
     }
 }
