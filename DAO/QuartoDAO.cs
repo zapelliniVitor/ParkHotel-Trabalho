@@ -86,7 +86,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
@@ -228,7 +228,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
@@ -284,7 +284,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
@@ -340,7 +340,7 @@ namespace DAO
                 {
                     int id = (int)reader["ID"];
                     int tipoQuarto = (int)reader["TIPO_QUARTO"];
-                    double preco = (double)reader["PRECO"];
+                    string preco = (string)reader["PRECO"];
                     int statusQuarto = (int)reader["STATUSQUARTO"];
                     string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
                     int nQuarto = (int)reader["N_QUARTO"];
@@ -368,6 +368,62 @@ namespace DAO
             {
                 Sucesso = true,
                 Mensagem = "Quartos localizados.",
+                Dados = list
+            };
+        }
+        #endregion
+
+        #region Read Type
+        public DbResponse<List<Quarto>> LerPorTipo(int tipo)
+        {
+            string connectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.ConnectionString = connectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = @"SELECT * FROM QUARTOS WHERE TIPO_QUARTO = @TIPO";
+            command.Parameters.AddWithValue("@TIPO", tipo.ToString());
+
+            command.Connection = connection;
+
+            List<Quarto> list = new List<Quarto>();
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    int tipoQuarto = (int)reader["TIPO_QUARTO"];
+                    string preco = (string)reader["PRECO"];
+                    int statusQuarto = (int)reader["STATUSQUARTO"];
+                    string descricaoQuarto = (string)reader["DESCRICAO_QUARTO"];
+                    int nQuarto = (int)reader["N_QUARTO"];
+
+                    string preco2 = preco.ToString();
+                    Quarto quarto = new Quarto(id, tipoQuarto, preco2, statusQuarto, descricaoQuarto, nQuarto);
+                    list.Add(quarto);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Quarto>>
+                {
+                    Sucesso = false,
+                    Mensagem = "Erro no banco de dados, favor contatar o suporte.",
+                    Excessao = ex
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+
+            return new DbResponse<List<Quarto>>
+            {
+                Sucesso = true,
+                Mensagem = "Quarto localizado.",
                 Dados = list
             };
         }

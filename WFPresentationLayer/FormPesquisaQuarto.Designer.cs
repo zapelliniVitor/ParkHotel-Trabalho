@@ -55,6 +55,7 @@
             this.cmbOption.Items.AddRange(new object[] {
             "ID",
             "Nº QUARTO",
+            "TIPO",
             "LIVRES",
             "TODOS"});
             this.cmbOption.Location = new System.Drawing.Point(12, 25);
@@ -93,7 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 303);
+            this.ClientSize = new System.Drawing.Size(576, 337);
             this.Controls.Add(this.labelTextoPesuisa);
             this.Controls.Add(this.txtItemPesquisado);
             this.Controls.Add(this.label1);

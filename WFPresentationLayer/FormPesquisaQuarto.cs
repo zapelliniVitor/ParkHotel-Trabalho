@@ -32,22 +32,27 @@ namespace WFPresentationLayer
 
         private void cmbOption_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbOption.Text == "ID")
+            if (cmbOption.SelectedIndex == 0)
             {
                 labelTextoPesuisa.Text = "Digite o ID";
                 txtItemPesquisado.Enabled = true;
             }
-            else if (cmbOption.Text == "Nº QUARTO")
+            else if (cmbOption.SelectedIndex == 1)
             {
                 labelTextoPesuisa.Text = "Digite o Nº QUARTO";
                 txtItemPesquisado.Enabled = true;
             }
-            else if (cmbOption.Text == "LIVRES")
+            else if(cmbOption.SelectedIndex == 2)
+            {
+                labelTextoPesuisa.Text = "Digite o Tipo do quarto";
+                txtItemPesquisado.Enabled = true;
+            }
+            else if (cmbOption.SelectedIndex == 3)
             {
                 labelTextoPesuisa.Text = "Clique em Pesquisar";
                 txtItemPesquisado.Enabled = false;
             }
-            else if (cmbOption.Text == "TODOS")
+            else if (cmbOption.SelectedIndex == 4)
             {
                 labelTextoPesuisa.Text = "Clique em Pesquisar";
                 txtItemPesquisado.Enabled = false;
@@ -57,7 +62,23 @@ namespace WFPresentationLayer
 
         private void dgvQuartos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.QuartoSelecionado = new Quarto((int)this.dgvQuartos.Rows[e.RowIndex].Cells[0].Value);
+            int id = (int)dgvQuartos.Rows[e.RowIndex].Cells[0].Value;
+            int tipo = (int)dgvQuartos.Rows[e.RowIndex].Cells[1].Value;
+            string preco = (string)dgvQuartos.Rows[e.RowIndex].Cells[2].Value;
+            int status = (int)dgvQuartos.Rows[e.RowIndex].Cells[3].Value;
+            string descricao = (string)dgvQuartos.Rows[e.RowIndex].Cells[4].Value;
+            int quarto = (int)dgvQuartos.Rows[e.RowIndex].Cells[5].Value;
+
+
+            QuartoSelecionado = new Quarto()
+            {
+                ID = id,
+                TipoQuarto = tipo,
+                PrecoQuarto = preco,
+                StatusQuarto = status,
+                DescriçãoQuarto = descricao,
+                n_Quarto = quarto
+            };
             this.Close();
         }
 
@@ -86,12 +107,20 @@ namespace WFPresentationLayer
                     dgvQuartos.DataSource = bll.lerPorNum(numero);
                 }
             }
-            else if (cmbOption.SelectedIndex == 2)
+            else if(cmbOption.SelectedIndex == 2)
+            {
+                if (int.TryParse(txtItemPesquisado.Text, out int tipo))
+                {
+                    dgvQuartos.DataSource = null;
+                    dgvQuartos.DataSource = bll.lerPorTipo(tipo);
+                }
+            }
+            else if (cmbOption.SelectedIndex == 3)
             {
                 dgvQuartos.DataSource = null;
                 dgvQuartos.DataSource = bll.lerLivres();
             }
-            else if (cmbOption.SelectedIndex == 3)
+            else if (cmbOption.SelectedIndex == 4)
             {
                 dgvQuartos.DataSource = null;
                 dgvQuartos.DataSource = bll.LerTodos();

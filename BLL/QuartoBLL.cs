@@ -156,5 +156,11 @@ namespace BLL
         }
         #endregion
 
+        #region Ler por ID
+        public List<Quarto> lerPorTipo(int tipo)
+        {
+            return dao.LerPorTipo(tipo).Dados;
+        }
+        #endregion
     }
 }
