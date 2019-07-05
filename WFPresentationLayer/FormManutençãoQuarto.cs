@@ -83,13 +83,6 @@ namespace WFPresentationLayer
 
         private void btnAtualizar_Click(object sender, EventArgs e)
         {
-            int id = -1;
-            if(!int.TryParse(txtID.Text, out id) || string.IsNullOrWhiteSpace(txtID.Text))
-            {
-                MessageBox.Show("Selecione um quarto válido para atualizar");
-                return;
-            }
-
             #region TipoQuarto
             int tipoQuarto = 0;
             if (cmbTipoQuarto.Text.Contains("1"))
@@ -144,7 +137,7 @@ namespace WFPresentationLayer
                 }
             }
 
-            Quarto quarto = new Quarto(id, tipoQuarto, txtPreco.Text, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
+            Quarto quarto = new Quarto(tipoQuarto, txtPreco.Text, statusQuarto, rtxtDescricao.Text, Convert.ToInt32(txtNQuarto.Text));
             MessageBox.Show(bll.AtualizarQuarto(quarto));
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
@@ -215,22 +208,6 @@ namespace WFPresentationLayer
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
             FormCleaner.Clear(this);
-        }
-
-        private void btnPesquisa_Click(object sender, EventArgs e)
-        {
-            FormPesquisaQuarto frm = new FormPesquisaQuarto();
-            frm.ShowDialog();
-            if(frm.QuartoSelecionado != null)
-            {
-                Quarto q = frm.QuartoSelecionado;
-                txtID.Text = q.ID.ToString();
-                txtNQuarto.Text = q.n_Quarto.ToString();
-                txtPreco.Text = q.PrecoQuarto;
-                rtxtDescricao.Text = q.DescriçãoQuarto;
-                cmbStatusQuarto.SelectedIndex = q.StatusQuarto - 1;
-                cmbTipoQuarto.SelectedIndex = q.TipoQuarto - 1;
-            }
         }
     }
 }

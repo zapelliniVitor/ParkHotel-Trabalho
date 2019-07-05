@@ -13,7 +13,7 @@ namespace DAO
         {
             //return @"Data Source=(LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\moc\Documents\ParkHotel.mdf; Integrated Security = True; Connect Timeout = 30";
             return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\moc\Documents\ParkHotel.mdf;Integrated Security=True;Connect Timeout=30";
-            //return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\User\Documents\ParkHotelHomeEdition.mdf;Integrated Security=True;Connect Timeout=30";
+            //return @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\moc\Documents\HotelPark.mdf;Integrated Security=True;Connect Timeout=30";
         }
         
             public static FuncionarioLogado Funcionario { get; set; }

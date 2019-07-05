@@ -44,7 +44,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtNQuarto = new System.Windows.Forms.TextBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
-            this.btnPesquisa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQuartos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,7 +69,6 @@
             this.dgvQuartos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvQuartos.Location = new System.Drawing.Point(224, 20);
             this.dgvQuartos.Name = "dgvQuartos";
-            this.dgvQuartos.ReadOnly = true;
             this.dgvQuartos.RowHeadersVisible = false;
             this.dgvQuartos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvQuartos.Size = new System.Drawing.Size(403, 272);
@@ -201,22 +199,11 @@
             this.txtPreco.Size = new System.Drawing.Size(100, 20);
             this.txtPreco.TabIndex = 17;
             // 
-            // btnPesquisa
-            // 
-            this.btnPesquisa.Location = new System.Drawing.Point(122, 104);
-            this.btnPesquisa.Name = "btnPesquisa";
-            this.btnPesquisa.Size = new System.Drawing.Size(96, 23);
-            this.btnPesquisa.TabIndex = 18;
-            this.btnPesquisa.Text = "Pesquisa";
-            this.btnPesquisa.UseVisualStyleBackColor = true;
-            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
-            // 
             // FormManutençãoQuarto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(642, 304);
-            this.Controls.Add(this.btnPesquisa);
             this.Controls.Add(this.txtPreco);
             this.Controls.Add(this.txtNQuarto);
             this.Controls.Add(this.label6);
@@ -259,6 +246,5 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtNQuarto;
         private System.Windows.Forms.TextBox txtPreco;
-        private System.Windows.Forms.Button btnPesquisa;
     }
 }

@@ -145,6 +145,12 @@ namespace BLL
             }
             #endregion
 
+            #region ATIVO
+            if (!chk.EhAtivo)
+                erros.Add("Check-in deve ser ativo.");
+            #endregion
+
+
             StringBuilder sb = new StringBuilder();
             if (erros.Count != 0)
             {
