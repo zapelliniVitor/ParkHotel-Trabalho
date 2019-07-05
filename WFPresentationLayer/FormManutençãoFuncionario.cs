@@ -27,7 +27,7 @@ namespace WFPresentationLayer
         {
             string endereco = cmbCidade.Text + ", " + cmbEstado.Text;
             bool ehAtivo;
-            if (chkÉAtivo.Checked)
+            if (chkEhAtivo.Checked)
             {
                 ehAtivo = true;
             }
@@ -36,7 +36,7 @@ namespace WFPresentationLayer
                 ehAtivo = false;
             }
             bool ehAdmin;
-            if (chkÉAdm.Checked)
+            if (chkEhAdm.Checked)
             {
                 ehAdmin = true;
             }
@@ -124,11 +124,11 @@ namespace WFPresentationLayer
             txtEmailFuncionario.Text = email;
             if (ehAdmin)
             {
-                chkÉAdm.Checked = true;
+                chkEhAdm.Checked = true;
             }
             if (ehAtivo)
             {
-                chkÉAtivo.Checked = true;
+                chkEhAtivo.Checked = true;
             }
             
         }
@@ -142,7 +142,7 @@ namespace WFPresentationLayer
         {
             string endereco = cmbCidade.Text + ", " + cmbEstado.Text;
             bool ehAtivo;
-            if (chkÉAtivo.Checked)
+            if (chkEhAtivo.Checked)
             {
                 ehAtivo = true;
             }
@@ -151,7 +151,7 @@ namespace WFPresentationLayer
                 ehAtivo = false;
             }
             bool ehAdmin;
-            if (chkÉAdm.Checked)
+            if (chkEhAdm.Checked)
             {
                 ehAdmin = true;
             }
@@ -182,6 +182,24 @@ namespace WFPresentationLayer
             dgvFuncionarios.DataSource = null;
             dgvFuncionarios.DataSource = bll.LerTodos();
             FormCleaner.Clear(this);
-        }   
+        }
+
+        private void btnPesquisa_Click(object sender, EventArgs e)
+        {
+            FormPesquisaFuncionario frm = new FormPesquisaFuncionario();
+            frm.ShowDialog();
+            if (frm.funcionarioSelecionado != null)
+            {
+                Funcionario f = frm.funcionarioSelecionado;
+                txtID.Text = f.ID.ToString();
+                txtNomeFuncionario.Text = f.Nome;
+                txtEmailFuncionario.Text = f.Email;
+                mtxtCPFFuncionario.Text = f.CPF;
+                mtxtRGFuncionario.Text = f.RG;
+                mtxtTelefoneFuncionario.Text = f.Telefone;
+                chkEhAdm.Checked = f.EhAdmin;
+                chkEhAtivo.Checked = f.EhAtivo;
+            }
+        }
     }
 }

@@ -134,8 +134,8 @@ namespace DAO
 
             SqlCommand command = new SqlCommand("", connection);
 
-            command.CommandText = @"UPDATE FUNCIONARIOS SET EHATIVO = @EHATIVO WHERE  ID = " + id;
-            command.Parameters.AddWithValue("@EHATIVO", false);
+            command.CommandText = @"UPDATE FUNCIONARIOS SET EHATIVO = 0 WHERE  ID = @ID";
+            command.Parameters.AddWithValue("@ID", id);
 
             try
             {
@@ -223,14 +223,14 @@ namespace DAO
         #endregion
 
         #region lerTodos
-        public List<Funcionario> LerTodos()
+        public DbResponse<List<Funcionario>> LerTodos()
         {
             string ConnectionString = Parametros.GetConnectionString();
             SqlConnection connection =  new SqlConnection();
             connection.ConnectionString = ConnectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = "SELECT * FROM FUNCIONARIOS WHERE EHATIVO = 1";
+            command.CommandText = "SELECT * FROM FUNCIONARIOS";
 
             command.Connection = connection;
             List<Funcionario> listFunc = new List<Funcionario>();
@@ -248,7 +248,7 @@ namespace DAO
                     string Telefone = (string)reader["TELEFONE"];
                     string Email = (string)reader["EMAIL"];
                     bool EhAdmin = (bool)reader["EHADMIN"];
-                    bool EhAtivo = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHATIVO"];
 
                     //Utilizado construtor SEM senha do Funcionario
                     Funcionario funcionar = new Funcionario(id ,nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
@@ -256,15 +256,27 @@ namespace DAO
 	            }
 
         	}
-	        catch (Exception)
+	        catch (Exception ex)
 	        {
-                throw new Exception("Banco de dados indisponivel.");
+                return new DbResponse<List<Funcionario>>()
+                {
+                    Sucesso = false,
+                    Mensagem = "Banco de dados indisponíveis",
+                    Excessao = ex
+                };
 	        }
             finally
             {
                 connection.Dispose();
             }
-            return listFunc;
+            return new DbResponse<List<Funcionario>>()
+            {
+                Sucesso = true,
+                Mensagem = "Funcionarios encontrados",
+                Dados = listFunc
+            };
+                
+                
         }
         #endregion
 
@@ -276,8 +288,8 @@ namespace DAO
             connection.ConnectionString = connectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE NOME LIKE '%@NOME%'";
-            command.Parameters.AddWithValue("@NOME", nome);
+            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE NOME LIKE @NOME";
+            command.Parameters.AddWithValue("@NOME", "%" + nome + "%");
 
             command.Connection = connection;
 
@@ -333,8 +345,8 @@ namespace DAO
             connection.ConnectionString = connectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE CPF = @CPF";
-            command.Parameters.AddWithValue("@CPF", cpf);
+            command.CommandText = @"SELECT * FROM FUNCIONARIOS WHERE CPF LIKE @CPF";
+            command.Parameters.AddWithValue("@CPF", cpf.Trim() + "%");
 
             command.Connection = connection;
 
@@ -378,6 +390,118 @@ namespace DAO
                 Sucesso = true,
                 Mensagem = "Funcionario encontrado.",
                 Dados = listF
+            };
+        }
+        #endregion
+
+        #region lerAtivos
+        public DbResponse<List<Funcionario>> LerAtivos()
+        {
+            string ConnectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = ConnectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "SELECT * FROM FUNCIONARIOS WHERE EHATIVO = 1";
+
+            command.Connection = connection;
+            List<Funcionario> listFunc = new List<Funcionario>();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string nome = (string)reader["NOME"];
+                    string CPF = (string)reader["CPF"];
+                    string RG = (string)reader["RG"];
+                    string Endereco = (string)reader["ENDERECO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+                    bool EhAdmin = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHATIVO"];
+
+                    //Utilizado construtor SEM senha do Funcionario
+                    Funcionario funcionar = new Funcionario(id, nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
+                    listFunc.Add(funcionar);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Funcionario>>()
+                {
+                    Sucesso = false,
+                    Mensagem = "Banco de dados indisponíveis",
+                    Excessao = ex
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Funcionario>>()
+            {
+                Sucesso = true,
+                Mensagem = "Funcionarios encontrados",
+                Dados = listFunc
+            };
+        }
+        #endregion
+
+        #region lerInativos
+        public DbResponse<List<Funcionario>> LerInativos()
+        {
+            string ConnectionString = Parametros.GetConnectionString();
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = ConnectionString;
+
+            SqlCommand command = new SqlCommand();
+            command.CommandText = "SELECT * FROM FUNCIONARIOS WHERE EHATIVO = 0";
+
+            command.Connection = connection;
+            List<Funcionario> listFunc = new List<Funcionario>();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string nome = (string)reader["NOME"];
+                    string CPF = (string)reader["CPF"];
+                    string RG = (string)reader["RG"];
+                    string Endereco = (string)reader["ENDERECO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+                    bool EhAdmin = (bool)reader["EHADMIN"];
+                    bool EhAtivo = (bool)reader["EHATIVO"];
+
+                    //Utilizado construtor SEM senha do Funcionario
+                    Funcionario funcionar = new Funcionario(id, nome, CPF, RG, Endereco, Telefone, Email, EhAdmin, EhAtivo);
+                    listFunc.Add(funcionar);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Funcionario>>()
+                {
+                    Sucesso = false,
+                    Mensagem = "Banco de dados indisponíveis",
+                    Excessao = ex
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Funcionario>>()
+            {
+                Sucesso = true,
+                Mensagem = "Funcionarios encontrados",
+                Dados = listFunc
             };
         }
         #endregion
