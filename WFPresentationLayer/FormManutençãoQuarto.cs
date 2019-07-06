@@ -79,6 +79,7 @@ namespace WFPresentationLayer
             MessageBox.Show(bll.CadastrarQuarto(quarto));
             dgvQuartos.DataSource = null;
             dgvQuartos.DataSource = bll.LerTodos();
+            FormCleaner.Clear(this);
         }
 
         private void btnAtualizar_Click(object sender, EventArgs e)

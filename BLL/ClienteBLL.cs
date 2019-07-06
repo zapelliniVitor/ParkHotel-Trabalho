@@ -380,5 +380,9 @@ namespace BLL
             return new ClienteDAO().PesquisarTel(tel).Dados;
         }
 
+        public string Ativar(Cliente cli)
+        {
+            return new ClienteDAO().Ativar(cli).Mensagem;
+        }
     }
 }

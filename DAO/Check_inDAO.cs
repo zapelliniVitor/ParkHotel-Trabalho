@@ -110,7 +110,7 @@ namespace DAO
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                     
             }

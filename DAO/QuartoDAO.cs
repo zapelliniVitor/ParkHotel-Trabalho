@@ -269,8 +269,8 @@ namespace DAO
             connection.ConnectionString = connectionString;
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"SELECT * FROM QUARTOS WHERE N_QUARTO = @N_QUARTO";
-            command.Parameters.AddWithValue("@N_QUARTO", nQ);
+            command.CommandText = @"SELECT * FROM QUARTOS WHERE N_QUARTO LIKE @N_QUARTO";
+            command.Parameters.AddWithValue("@N_QUARTO", nQ + "%");
 
             command.Connection = connection;
 
@@ -317,7 +317,7 @@ namespace DAO
         }
         #endregion
 
-        #region Read Nº
+        #region Read livre
         public DbResponse<List<Quarto>> LerLivres()
         {
             string connectionString = Parametros.GetConnectionString();

@@ -201,7 +201,7 @@ namespace BLL
             }
             else
             {
-                f.CNPJ = f.CNPJ.Trim().Replace(".", "").Replace("-", "").Replace(",", "");
+                f.CNPJ = f.CNPJ.Trim().Replace(".", "").Replace("-", "").Replace(",", "").Replace("/","");
                 if (!validaCNPJ(f.CNPJ))
                 {
                     erros.Add("CNPJ inválido." +
@@ -274,12 +274,12 @@ namespace BLL
                 return sb.ToString();
             }
 
-            return dao.Atualizar(f).ToString();
+            return dao.Atualizar(f).Mensagem;
 ;
         }
 
         //Ler Todos
-        public List<Fornecedor> lerTodos()
+        public List<Fornecedor> LerTodos()
         {
             return dao.LerTodos().Dados;
         }
@@ -288,6 +288,21 @@ namespace BLL
         public List<Fornecedor> lerPorId(int id)
         {
             return dao.LerPorID(id);
+        }
+
+        public List<Fornecedor> PesquisarID(int id)
+        {
+            return new FornecedorDAO().PesquisarID(id).Dados;
+        }
+
+        public List<Fornecedor> PesquisarNome(string nome)
+        {
+            return new FornecedorDAO().PesquisarNome(nome).Dados;
+        }
+
+        public List<Fornecedor> PesquisarCNPJ(string cnpj)
+        {
+            return new FornecedorDAO().PesquisarCNPJ(cnpj).Dados;
         }
     }
 }

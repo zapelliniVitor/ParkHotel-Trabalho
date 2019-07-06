@@ -43,12 +43,13 @@
             this.mtxtCnpj = new System.Windows.Forms.MaskedTextBox();
             this.mtxtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.btnAtualizar = new System.Windows.Forms.Button();
+            this.btnPesquisa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedores)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(12, 133);
+            this.btnCadastrar.Location = new System.Drawing.Point(12, 167);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(270, 23);
             this.btnCadastrar.TabIndex = 0;
@@ -62,8 +63,9 @@
             this.dgvFornecedores.Location = new System.Drawing.Point(288, 12);
             this.dgvFornecedores.Name = "dgvFornecedores";
             this.dgvFornecedores.ReadOnly = true;
+            this.dgvFornecedores.RowHeadersVisible = false;
             this.dgvFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFornecedores.Size = new System.Drawing.Size(358, 173);
+            this.dgvFornecedores.Size = new System.Drawing.Size(358, 207);
             this.dgvFornecedores.TabIndex = 3;
             this.dgvFornecedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFornecedores_CellDoubleClick);
             // 
@@ -168,7 +170,7 @@
             // 
             // btnAtualizar
             // 
-            this.btnAtualizar.Location = new System.Drawing.Point(12, 162);
+            this.btnAtualizar.Location = new System.Drawing.Point(12, 196);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(270, 23);
             this.btnAtualizar.TabIndex = 18;
@@ -176,11 +178,22 @@
             this.btnAtualizar.UseVisualStyleBackColor = true;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
+            // btnPesquisa
+            // 
+            this.btnPesquisa.Location = new System.Drawing.Point(12, 133);
+            this.btnPesquisa.Name = "btnPesquisa";
+            this.btnPesquisa.Size = new System.Drawing.Size(100, 23);
+            this.btnPesquisa.TabIndex = 19;
+            this.btnPesquisa.Text = "Pesquisa";
+            this.btnPesquisa.UseVisualStyleBackColor = true;
+            this.btnPesquisa.Click += new System.EventHandler(this.btnPesquisa_Click);
+            // 
             // FormManutençãoFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 197);
+            this.ClientSize = new System.Drawing.Size(658, 231);
+            this.Controls.Add(this.btnPesquisa);
             this.Controls.Add(this.btnAtualizar);
             this.Controls.Add(this.mtxtTelefone);
             this.Controls.Add(this.mtxtCnpj);
@@ -221,5 +234,6 @@
         private System.Windows.Forms.MaskedTextBox mtxtCnpj;
         private System.Windows.Forms.MaskedTextBox mtxtTelefone;
         private System.Windows.Forms.Button btnAtualizar;
+        private System.Windows.Forms.Button btnPesquisa;
     }
 }

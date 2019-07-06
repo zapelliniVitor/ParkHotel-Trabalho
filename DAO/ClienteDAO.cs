@@ -34,7 +34,8 @@ namespace DAO
             }
             catch (Exception ex)
             {
-                return new DbResponse<int> {
+                return new DbResponse<int>
+                {
                     Excessao = ex,
                     Mensagem = "Banco de dados indisponível",
                     Sucesso = false,
@@ -246,9 +247,9 @@ namespace DAO
                 }
 
             }
-            catch (Exception )
+            catch (Exception)
             {
-              
+
             }
             finally
             {
@@ -303,7 +304,8 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE ID LIKE '%" + idPesquisa.ToString() + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE ID LIKE @ID";
+            command.Parameters.AddWithValue("@ID", idPesquisa.ToString() + "%");
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -355,7 +357,8 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE NOME LIKE '%" + nomeP + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE NOME LIKE @NOME";
+            command.Parameters.AddWithValue("@NOME", "%" + nomeP + "%");
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -407,7 +410,9 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE CPF LIKE '" + CPF1 + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE CPF LIKE @CPF";
+            command.Parameters.AddWithValue("@CPF", CPF1 + "%");
+
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -459,7 +464,9 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE RG LIKE '" + RG1 + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE RG LIKE @RG";
+            command.Parameters.AddWithValue("@RG", RG1 + "%");
+
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -511,7 +518,9 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE EMAIL LIKE '%" + Email1 + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE EMAIL LIKE @EMAIL";
+            command.Parameters.AddWithValue("@EMAIL", "%" + Email1 + "%");
+
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -563,7 +572,9 @@ namespace DAO
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
             SqlCommand command = new SqlCommand("", connection);
-            command.CommandText = "SELECT * FROM CLIENTES WHERE TELEFONE1 LIKE '" + tel + "%' OR TELEFONE2 LIKE '%" + tel + "%'";
+            command.CommandText = "SELECT * FROM CLIENTES WHERE TELEFONE1 LIKE @TEL OR TELEFONE2 LIKE @TEL";
+            command.Parameters.AddWithValue("@TEL", tel + "%");
+
 
             List<Cliente> listCli = new List<Cliente>();
             command.Connection = connection;
@@ -609,8 +620,42 @@ namespace DAO
         }
         #endregion
 
+        public DbResponse<Cliente> Ativar(Cliente cli)
+        {
 
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
+            SqlCommand command = new SqlCommand("", connection);
 
+            command.CommandText = @"UPDATE CLIENTES SET EHATIVO = @EHATIVO WHERE  CPF = @CPF";
+            command.Parameters.AddWithValue("@CPF", cli.CPF);
+            command.Parameters.AddWithValue("@EHATIVO", true);
+
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<Cliente>
+                {
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível",
+                    Sucesso = false,
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<Cliente>
+            {
+                Dados = PesquisarCPF(cli.CPF).Dados[0],
+                Mensagem = "Cliente atualizado com sucesso",
+                Sucesso = true,
+            };
+        }
     }
 }

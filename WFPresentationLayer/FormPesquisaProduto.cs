@@ -56,5 +56,26 @@ namespace WFPresentationLayer
 
             }
         }
+
+        private void dgvProdutos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = (int)dgvProdutos.Rows[e.RowIndex].Cells[0].Value;
+            string nome = (string)dgvProdutos.Rows[e.RowIndex].Cells[1].Value;
+            string descricao = (string)dgvProdutos.Rows[e.RowIndex].Cells[2].Value;
+            double preco = (double)dgvProdutos.Rows[e.RowIndex].Cells[3].Value;
+            int estoque = (int)dgvProdutos.Rows[e.RowIndex].Cells[4].Value;
+
+
+            this.ProdutoSelecionado = new Produto()
+            {
+                ID = id,
+                Nome = nome,
+                Descricao = descricao,
+                PrecoVenda = preco,
+                quantidadeEstoque = estoque
+            };
+
+            this.Close();
+        }
     }
 }

@@ -89,7 +89,7 @@ namespace DAO
                     string Telefone = (string)reader["TELEFONE"];
                     string Email = (string)reader["EMAIL"];
 
-                    Fornecedor f = new Fornecedor(id, razaoSocial, cnpj, nomeContato, Telefone, Email);
+                    Fornecedor f = new Fornecedor(id,nomeContato, razaoSocial, cnpj,  Telefone, Email);
                     listF.Add(f);
                 }
 
@@ -165,14 +165,15 @@ namespace DAO
         {
             SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
-            SqlCommand command = new SqlCommand(connection.ToString());
+            SqlCommand command = new SqlCommand("", connection);
 
-            command.CommandText = @"UPDATE FORNECEDORES SET RAZAOSOCIAL = @RAZAOSOCIAL, CNPJ = @CNPJ, NOMECONTATO = @NOMECONTATO ,TELEFONE = @TELEFONE1, EMAIL = @EMAIL WHERE  ID = " + f.ID;
-            command.Parameters.AddWithValue("@NOME", f.RazaoSocial);
-            command.Parameters.AddWithValue("@CPF", f.CNPJ);
+            command.CommandText = @"UPDATE FORNECEDORES SET RAZAOSOCIAL = @RAZAOSOCIAL, CNPJ = @CNPJ, NOMECONTATO = @NOMECONTATO ,TELEFONE = @TELEFONE, EMAIL = @EMAIL WHERE  ID = @ID";
+            command.Parameters.AddWithValue("@RAZAOSOCIAL", f.RazaoSocial);
+            command.Parameters.AddWithValue("@CNPJ", f.CNPJ);
             command.Parameters.AddWithValue("@NOMECONTATO", f.NomeContato);
-            command.Parameters.AddWithValue("@TELEFONE1", f.Telefone);
+            command.Parameters.AddWithValue("@TELEFONE", f.Telefone);
             command.Parameters.AddWithValue("@EMAIL", f.Email);
+            command.Parameters.AddWithValue("@ID", f.ID);
 
             try
             {
@@ -240,7 +241,159 @@ namespace DAO
         }
         #endregion
 
+        #region PesquisarID
+        public DbResponse<List<Fornecedor>> PesquisarID(int idPesquisa)
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
 
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = "SELECT * FROM FORNECEDORES WHERE ID LIKE @ID";
+            command.Parameters.AddWithValue("@ID", idPesquisa.ToString() + "%");
+
+            List<Fornecedor> listFor = new List<Fornecedor>();
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string razao = (string)reader["RAZAOSOCIAL"];
+                    string cnpj = (string)reader["CNPJ"];
+                    string nome = (string)reader["NOMECONTATO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+
+                    Fornecedor forn = new Fornecedor(id,nome,razao, cnpj, Telefone, Email);
+                    listFor.Add(forn);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Fornecedor>>
+                {
+                    Sucesso = false,
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível"
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Fornecedor>>
+            {
+                Sucesso = true,
+                Dados = listFor,
+                Mensagem = "Fornecedors encontrados"
+            };
+        }
+        #endregion
+
+        #region PesqsuiarNome
+        public DbResponse<List<Fornecedor>> PesquisarNome(string nomeP)
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = "SELECT * FROM FORNECEDORES WHERE NOMECONTATO LIKE @NOME";
+            command.Parameters.AddWithValue("@NOME", "%" + nomeP + "%");
+
+            List<Fornecedor> listFor = new List<Fornecedor>();
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string razao = (string)reader["RAZAOSOCIAL"];
+                    string cnpj = (string)reader["CNPJ"];
+                    string nome = (string)reader["NOMECONTATO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+
+                    Fornecedor forn = new Fornecedor(id, nome, razao, cnpj, Telefone, Email);
+                    listFor.Add(forn);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Fornecedor>>
+                {
+                    Sucesso = false,
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível"
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Fornecedor>>
+            {
+                Sucesso = true,
+                Dados = listFor,
+                Mensagem = "Fornecedors encontrados"
+            };
+        }
+        #endregion
+
+        #region PesqsuiarCNPJ
+        public DbResponse<List<Fornecedor>> PesquisarCNPJ(string CNPJ1)
+        {
+            SqlConnection connection = new SqlConnection(Parametros.GetConnectionString());
+
+            SqlCommand command = new SqlCommand("", connection);
+            command.CommandText = "SELECT * FROM FORNECEDORES WHERE CNPJ LIKE @CNPJ";
+            command.Parameters.AddWithValue("@CNPJ", CNPJ1 + "%");
+
+
+            List<Fornecedor> listFor = new List<Fornecedor>();
+            command.Connection = connection;
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    int id = (int)reader["ID"];
+                    string razao = (string)reader["RAZAOSOCIAL"];
+                    string cnpj = (string)reader["CNPJ"];
+                    string nome = (string)reader["NOMECONTATO"];
+                    string Telefone = (string)reader["TELEFONE"];
+                    string Email = (string)reader["EMAIL"];
+
+                    Fornecedor forn = new Fornecedor(id, nome, razao, cnpj, Telefone, Email);
+                    listFor.Add(forn);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return new DbResponse<List<Fornecedor>>
+                {
+                    Sucesso = false,
+                    Excessao = ex,
+                    Mensagem = "Banco de dados indisponível"
+                };
+            }
+            finally
+            {
+                connection.Dispose();
+            }
+            return new DbResponse<List<Fornecedor>>
+            {
+                Sucesso = true,
+                Dados = listFor,
+                Mensagem = "Fornecedors encontrados"
+            };
+        }
+        #endregion
     }
 }
               

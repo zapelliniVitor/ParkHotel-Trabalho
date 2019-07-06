@@ -27,6 +27,7 @@ namespace WFPresentationLayer
         {
             cboxDadoPesquisa.SelectedIndex = 1;
             dgvClientes.DataSource = bll.LerTodos();
+            cboxDadoPesquisa.SelectedIndex = 0;
         }
 
         private void txtPesquisa_TextChanged(object sender, EventArgs e)

@@ -42,7 +42,7 @@ namespace WFPresentationLayer
                 DialogResult resposta = MessageBox.Show("Cliente já cadastrado, porém inativo\r\nDeseja ativá-lo?", "Cliente inativo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (resposta == DialogResult.Yes)
                 {
-                    MessageBox.Show(new ClienteBLL().Atualizar(cli));
+                    MessageBox.Show(new ClienteBLL().Ativar(cli));
                 }
                 FormCleaner.Clear(this);
                 AtualizarGrid();
