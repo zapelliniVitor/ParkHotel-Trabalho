@@ -72,12 +72,12 @@ namespace WFPresentationLayer
 
             if (rbReserva.Checked == true)
             {
-                Check_in chk = new Check_in(Convert.ToInt32(txtIdReserva.Text), DateTime.Now, dtpSaida.Value, Convert.ToInt32(txtIdCliente.Text), Convert.ToInt32(txtIdFunc.Text));
+                Check_in chk = new Check_in(Convert.ToInt32(txtIdReserva.Text), DateTime.Now, dtpSaida.Value, Convert.ToInt32(txtIdCliente.Text), Convert.ToInt32(txtIdFunc.Text), true);
                 MessageBox.Show(bll.cadastrar(chk));
             }
             if (rbSemReserva.Checked == true)
             {
-                Check_in chk = new Check_in(DateTime.Now, dtpSaida.Value, Convert.ToInt32(txtIdCliente.Text), Convert.ToInt32(txtIdFunc.Text), Convert.ToInt32(txtIDQuarto.Text));
+                Check_in chk = new Check_in(DateTime.Now, dtpSaida.Value, Convert.ToInt32(txtIdCliente.Text), Convert.ToInt32(txtIdFunc.Text), Convert.ToInt32(txtIDQuarto.Text), true);
                 MessageBox.Show(bll.inserir(chk));
             }
         }
@@ -102,7 +102,12 @@ namespace WFPresentationLayer
 
         private void btnPesquisarReserva_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Não funciona ainda.");
+            FormPesquisaReserva frm = new FormPesquisaReserva();
+            frm.ShowDialog();
+            if (frm.ReservaSelecionada != null)
+            {
+                this.txtIdReserva.Text = frm.ReservaSelecionada.ID.ToString();
+            }
         }
 
         private void btnPesquisarQuarto_Click(object sender, EventArgs e)

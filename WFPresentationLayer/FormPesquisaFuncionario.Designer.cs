@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvFuncionarios = new System.Windows.Forms.DataGridView();
+            this.dgvFuncionario = new System.Windows.Forms.DataGridView();
             this.lblPesquisa = new System.Windows.Forms.Label();
             this.txtItemPesquisado = new System.Windows.Forms.TextBox();
             this.cmbOption = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.mtxtCPF = new System.Windows.Forms.MaskedTextBox();
             this.lblCpf = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionario)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvFuncionarios
+            // dgvFuncionario
             // 
-            this.dgvFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFuncionarios.Location = new System.Drawing.Point(12, 51);
-            this.dgvFuncionarios.Name = "dgvFuncionarios";
-            this.dgvFuncionarios.ReadOnly = true;
-            this.dgvFuncionarios.RowHeadersVisible = false;
-            this.dgvFuncionarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvFuncionarios.Size = new System.Drawing.Size(614, 150);
-            this.dgvFuncionarios.TabIndex = 0;
-            this.dgvFuncionarios.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFuncionario_CellDoubleClick);
+            this.dgvFuncionario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFuncionario.Location = new System.Drawing.Point(12, 51);
+            this.dgvFuncionario.Name = "dgvFuncionario";
+            this.dgvFuncionario.ReadOnly = true;
+            this.dgvFuncionario.RowHeadersVisible = false;
+            this.dgvFuncionario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvFuncionario.Size = new System.Drawing.Size(614, 150);
+            this.dgvFuncionario.TabIndex = 0;
+            this.dgvFuncionario.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFuncionario_CellDoubleClick);
             // 
             // lblPesquisa
             // 
@@ -75,9 +75,7 @@
             "ID",
             "NOME",
             "CPF",
-            "TODOS",
-            "ATIVOS",
-            "INATIVOS"});
+            "TODOS"});
             this.cmbOption.Location = new System.Drawing.Point(13, 25);
             this.cmbOption.Name = "cmbOption";
             this.cmbOption.Size = new System.Drawing.Size(121, 21);
@@ -101,7 +99,6 @@
             this.mtxtCPF.Name = "mtxtCPF";
             this.mtxtCPF.Size = new System.Drawing.Size(128, 20);
             this.mtxtCPF.TabIndex = 6;
-            this.mtxtCPF.TextChanged += new System.EventHandler(this.mtxtCPF_TextChanged);
             // 
             // lblCpf
             // 
@@ -123,11 +120,11 @@
             this.Controls.Add(this.cmbOption);
             this.Controls.Add(this.txtItemPesquisado);
             this.Controls.Add(this.lblPesquisa);
-            this.Controls.Add(this.dgvFuncionarios);
+            this.Controls.Add(this.dgvFuncionario);
             this.Name = "FormPesquisaFuncionario";
             this.Text = "FormPesquisaFuncionario";
             this.Load += new System.EventHandler(this.FormPesquisaFuncionario_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFuncionario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -135,7 +132,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvFuncionarios;
+        private System.Windows.Forms.DataGridView dgvFuncionario;
         private System.Windows.Forms.Label lblPesquisa;
         private System.Windows.Forms.TextBox txtItemPesquisado;
         private System.Windows.Forms.ComboBox cmbOption;

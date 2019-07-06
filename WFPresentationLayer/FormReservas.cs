@@ -21,6 +21,8 @@ namespace WFPresentationLayer
 
         ReservaBLL bll = new ReservaBLL();
 
+        public Reserva ReservaSelecionada { get; set; }
+
         private void FormReservas_Load(object sender, EventArgs e)
         {
             dgvReservas.DataSource = null;
@@ -29,6 +31,7 @@ namespace WFPresentationLayer
 
         private void btnReserva_Click(object sender, EventArgs e)
         {
+            #region verificações simples
             StringBuilder sb = new StringBuilder();
             if (string.IsNullOrWhiteSpace(txtIDCliente.Text))
             {
@@ -47,6 +50,7 @@ namespace WFPresentationLayer
                 MessageBox.Show(sb.ToString());
                 return;
             }
+            #endregion
 
             int idC = Convert.ToInt32(txtIDCliente.Text);
             int idF = Convert.ToInt32(txtIDFuncionario.Text);
@@ -148,7 +152,7 @@ namespace WFPresentationLayer
             DialogResult result = MessageBox.Show("Deseja cancelar essa reserva?", "ATENÇÂO", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
             if (result == DialogResult.OK)
             {
-                MessageBox.Show(new ReservaBLL().delete(Convert.ToInt32(txtIDCliente.Text)));
+                MessageBox.Show(new ReservaBLL().delete(Convert.ToInt32(txtIDCliente.Text), Convert.ToInt32(txtIDQuarto.Text)));
             }
             FormCleaner.Clear(this);
             dgvReservas.DataSource = null;

@@ -34,5 +34,10 @@ namespace Metadata
             this.IdFuncionario = idFuncionario;
             this.IdQuarto = idQuarto;
         }
+
+        public Reserva(int id)
+        {
+            this.ID = id;
+        }
     }
 }

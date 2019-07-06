@@ -173,9 +173,9 @@ namespace BLL
         #endregion
 
         #region Delete
-        public string delete(int id)
+        public string delete(int id, int idQuarto)
         {
-            return dao.Delete(id).Mensagem;
+            return dao.Delete(id, idQuarto).Mensagem;
         }
         #endregion
 

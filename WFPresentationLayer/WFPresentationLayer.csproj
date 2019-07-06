@@ -58,6 +58,12 @@
     <Compile Include="FormPesquisaCheckIn.Designer.cs">
       <DependentUpon>FormPesquisaCheckIn.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPesquisaReserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPesquisaReserva.Designer.cs">
+      <DependentUpon>FormPesquisaReserva.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormReservas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPesquisaQuarto.resx">
       <DependentUpon>FormPesquisaQuarto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPesquisaReserva.resx">
+      <DependentUpon>FormPesquisaReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormReservas.resx">
       <DependentUpon>FormReservas.cs</DependentUpon>

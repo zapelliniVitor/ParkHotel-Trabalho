@@ -20,14 +20,16 @@ namespace DAO
             SqlConnection connection = new SqlConnection(connectionString);
 
             SqlCommand command = new SqlCommand();
-            command.CommandText = @"INSERT INTO CHECK_INS (ID_RESERVA, DATA_ENTRADA, DATA_SAIDA_PREVISTA, ID_CLIENTE, ID_FUNC) VALUES
-                                  (@ID_RESERVA, @DATA_ENTRADA, @DATA_SAIDA_PREVISTA, @ID_CLIENTE, @ID_FUNC); select scope_identity()";
+            command.CommandText = @"INSERT INTO CHECK_INS (ID_RESERVA, DATA_ENTRADA, DATA_SAIDA_PREVISTA, ID_CLIENTE, ID_FUNC, ID_QUARTO, EHATIVO) VALUES
+                                  (@ID_RESERVA, @DATA_ENTRADA, @DATA_SAIDA_PREVISTA, @ID_CLIENTE, @ID_FUNC, @ID_QUARTO, @EHATIVO); select scope_identity()";
 
             command.Parameters.AddWithValue("@ID_RESERVA", chk.id_reserva);
             command.Parameters.AddWithValue("@DATA_ENTRADA", chk.dataEntrada);
             command.Parameters.AddWithValue("@DATA_SAIDA_PREVISTA", chk.dataSaidaPrevista);
             command.Parameters.AddWithValue("@ID_CLIENTE", chk.id_cliente);
             command.Parameters.AddWithValue("@ID_FUNC", chk.id_func);
+            command.Parameters.AddWithValue("@ID_QUARTO", chk.id_quarto);
+            command.Parameters.AddWithValue("@EHATIVO", chk.EhAtivo);
 
 
             command.Connection = connection;
@@ -104,8 +106,9 @@ namespace DAO
                     {
                         idQ = (int)reader["ID_QUARTO"];
                     }
+                    bool ehAtivo = (bool)reader["EHATIVO"];
 
-                    Check_in check = new Check_in(id, idR, entrada, saida, idC, idF, idQ);
+                    Check_in check = new Check_in(id, idR, entrada, saida, idC, idF, idQ, ehAtivo);
                     list.Add(check);
                 }
 

@@ -157,15 +157,5 @@ namespace BLL
             return dao.LerTodos().Dados;
         }
         #endregion
-
-        public List<Produto> PesquisarID(int id)
-        {
-            return new ProdutoDAO().PesquisarID(id).Dados;
-        }
-
-        public List<Produto> PesquisarNome(string nome)
-        {
-            return new ProdutoDAO().PesquisarNome(nome).Dados;
-        }
     }
 }
